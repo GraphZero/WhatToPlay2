@@ -1,6 +1,10 @@
 
-package com.aa.config;
+package com.aa.whattoplay.security.config;
 import com.aa.whattoplay.security.application.UserAuthService;
+import com.aa.whattoplay.security.config.rest.RESTAuthenticationEntryPoint;
+import com.aa.whattoplay.security.config.rest.RESTAuthenticationFailureHandler;
+import com.aa.whattoplay.security.config.rest.RESTAuthenticationSuccessHandler;
+import com.aa.whattoplay.security.config.rest.RESTLogoutSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,10 +19,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import com.aa.config.rest.RESTLogoutSuccessHandler;
-import com.aa.config.rest.RESTAuthenticationEntryPoint;
-import com.aa.config.rest.RESTAuthenticationFailureHandler;
-import com.aa.config.rest.RESTAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity @RequiredArgsConstructor
@@ -86,7 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         @Bean
         public PasswordEncoder encoder() {
-        return new BCryptPasswordEncoder(11);
+            return new BCryptPasswordEncoder(11);
         }
 
 

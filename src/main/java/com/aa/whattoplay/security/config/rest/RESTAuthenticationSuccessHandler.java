@@ -1,4 +1,4 @@
-package com.aa.config.rest;
+package com.aa.whattoplay.security.config.rest;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;

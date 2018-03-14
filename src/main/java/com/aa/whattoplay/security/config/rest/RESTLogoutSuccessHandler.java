@@ -1,4 +1,4 @@
-package com.aa.config.rest;
+package com.aa.whattoplay.security.config.rest;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;

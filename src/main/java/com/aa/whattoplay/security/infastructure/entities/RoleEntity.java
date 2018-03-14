@@ -1,12 +1,13 @@
 package com.aa.whattoplay.security.infastructure.entities;
 
 import com.aa.ddd.common.domain.AbstractEntity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Roles")
-@Getter
+@Getter @AllArgsConstructor
 public class RoleEntity extends AbstractEntity{
 
     @Column(nullable = false)
