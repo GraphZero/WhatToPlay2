@@ -10,8 +10,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collections;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,5 +47,18 @@ class UserAuthServiceTest {
         UserDetails userDetails = userAuthService.loadUserByUsername("a");
         // then
         assertEquals( "d", userDetails.getUsername(), "Didnt load user.");
+    }
+
+    @Test
+    void name() {
+        // given
+        // when
+        // then
+        String test = "abrakadabra";
+        Map<Character, Long> map = test
+                .chars()
+                .boxed()
+                .collect(Collectors.groupingBy(( x -> (char) x.intValue()), Collectors.counting()));
+        System.out.println(map);
     }
 }
