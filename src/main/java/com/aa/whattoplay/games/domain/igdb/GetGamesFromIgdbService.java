@@ -8,15 +8,13 @@ import java.util.List;
 
 @ApplicationService
 @RequiredArgsConstructor
-public class GetGamesFromIgdbService implements IGetGamesFromExternalSourceService{
+public class GetGamesFromIgdbService{
     private final IgdbGamesJsonRequester igdbGamesJsonRequester;
-    private final JsonGameSaverService jsonGameSaverService;
+    private final JsonGameFileCacher jsonGameFileCacher;
 
-    @Override
-    public boolean getGames() {
-        List<GameJson> games = igdbGamesJsonRequester.getAllGamesFromIgdb();
-        jsonGameSaverService.saveGames(games);
-        return false;
+    public void getGamesFromIgdb() {
+        List<GameJson> games = igdbGamesJsonRequester.getGamesFromExternalSource();
+        jsonGameFileCacher.saveGames(games);
     }
 
 }

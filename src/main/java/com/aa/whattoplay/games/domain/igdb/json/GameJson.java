@@ -89,48 +89,40 @@ public class GameJson implements Serializable {
         status = Status.RELEASED;
     }
 
-//    public void setUpdatedAt(LocalDate updatedAt) {
-//        this.updatedAt = updatedAt;
+//    @JsonSetter("created_at")
+//    public void setCreatedAt(long createdAt) {
+//        this.createdAt = Instant.ofEpochMilli(createdAt).atZone(ZoneId.systemDefault()).toLocalDate();
 //    }
 //
-//    public void setFirstReleaseDate(LocalDate firstReleaseDate) {
-//        this.firstReleaseDate = firstReleaseDate;
+//    @JsonSetter("first_release_date")
+//    public void setFirstReleaseDate(long firstReleaseDate) {
+//        this.firstReleaseDate = Instant.ofEpochMilli(firstReleaseDate).atZone(ZoneId.systemDefault()).toLocalDate();
 //    }
+//
+//    @JsonSetter("updated_at")
+//    public void setUpdatedAt(long updatedAt) {
+//        this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
+//    }
+
+
 
     @JsonGetter("created_at")
     public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-//    @JsonSetter("created_at")
-//    public void setCreatedAt(long createdAt) {
-//        this.createdAt = Instant.ofEpochMilli(createdAt).atZone(ZoneId.systemDefault()).toLocalDate();
-//    }
-
-    @JsonSetter("created_at")
-    public void setCreatedAt(LocalDate createdAt) {
-        this.createdAt = createdAt;
-    }
 
     @JsonGetter("updated_at")
     public LocalDate getUpdatedAt() {
         return updatedAt;
     }
 
-//    @JsonSetter("updated_at")
-//    public void setUpdatedAt(long updatedAt) {
-//        this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
-//    }
 
     @JsonGetter("first_release_date")
     public LocalDate getFirstReleaseDate() {
         return firstReleaseDate;
     }
 
-//    @JsonSetter("first_release_date")
-//    public void setFirstReleaseDate(long firstReleaseDate) {
-//        this.firstReleaseDate = Instant.ofEpochMilli(firstReleaseDate).atZone(ZoneId.systemDefault()).toLocalDate();
-//    }
 
     @JsonGetter("rating_count")
     public int getRatingCount() {

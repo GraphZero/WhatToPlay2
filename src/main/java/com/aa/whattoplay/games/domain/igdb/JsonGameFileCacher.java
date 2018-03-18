@@ -3,9 +3,6 @@ package com.aa.whattoplay.games.domain.igdb;
 import com.aa.ddd.common.annotations.DomainService;
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,11 +11,11 @@ import java.io.IOException;
 import java.util.List;
 
 @DomainService
-public class JsonGameSaverService {
+public class JsonGameFileCacher {
     private final ObjectMapper objectMapper;
     private static Logger logger = LoggerFactory.getLogger(IgdbGamesJsonRequester.class);
 
-    public JsonGameSaverService() {
+    public JsonGameFileCacher() {
         this.objectMapper = new ObjectMapper();
     }
 

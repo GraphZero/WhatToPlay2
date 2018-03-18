@@ -17,8 +17,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * TODO: create custom deserializer, so it wont conflict with GetGamesFromJsonFiles
+ */
+
 @DomainService
-public class IgdbGamesJsonRequester {
+public class IgdbGamesJsonRequester implements IGetGamesFromExternalSourceService {
     private static final String token = "8dcd2a959fef891fbac266d5046e0414";
     private static Logger logger = LoggerFactory.getLogger(IgdbGamesJsonRequester.class);
 
@@ -180,7 +184,8 @@ public class IgdbGamesJsonRequester {
 
     }
 
-    public List<GameJson> getAllGamesFromIgdb(){
+    @Override
+    public List<GameJson> getGamesFromExternalSource(){
         logger.info("Persisting games starts.  ");
         List<GameJson> games = null;
         final String urlForScroll = "https://api-2445582011268.apicast.io/games/";

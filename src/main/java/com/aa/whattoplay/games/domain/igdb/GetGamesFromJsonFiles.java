@@ -17,12 +17,15 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @DomainService
-public class GetGamesFromJsonFiles {
-    private final ObjectMapper objectMapper;
+public class GetGamesFromJsonFiles implements IGetGamesFromExternalSourceService {
     private static Logger logger = LoggerFactory.getLogger(GetGamesFromJsonFiles.class);
+    private final String filesPath = "games/";
+    private final ObjectMapper objectMapper;
 
     public GetGamesFromJsonFiles() {
         SimpleModule module = new SimpleModule();
@@ -32,17 +35,24 @@ public class GetGamesFromJsonFiles {
                 .registerModule(module);
     }
 
-    public List<GameJson> getGamesFromFiles(){
+    public List<GameJson> getGamesFromFile(int fileNumber){
         List<GameJson> listCar = null;
         try {
-            listCar = objectMapper.readValue(new File("games/gamesPart1.json"), new TypeReference<List<GameJson>>(){});
+            listCar = objectMapper.readValue(new File(filesPath + "gamesPart" + fileNumber + ".json"), new TypeReference<List<GameJson>>(){});
         } catch (IOException e) {
             logger.error("Couldnt get json games because of: \n" + e.getMessage());
         }
         return listCar;
     }
 
-
+    @Override
+    public List<GameJson> getGamesFromExternalSource(){
+        List<GameJson> listCar = new ArrayList<>();
+        for (int i = 1; i <= new File(filesPath).listFiles().length; i++) {
+            listCar.addAll(getGamesFromFile(i));
+        }
+        return listCar;
+    }
 
 
 
