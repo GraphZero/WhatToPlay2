@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @RequiredArgsConstructor
-public class AccountControlController {
+public class AccountManagmentController {
     private final IAccountControlService accountControlService;
 
     @RequestMapping(path = "/registerUser", method = RequestMethod.POST)

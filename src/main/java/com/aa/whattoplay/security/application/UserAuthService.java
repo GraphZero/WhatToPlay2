@@ -23,8 +23,6 @@ public class UserAuthService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String username) {
-        System.out.println(userRepository.findByUsername(username)
-                .map(UserEntityToUserConverter::convert));
         return userRepository.findByUsername(username)
                 .map(UserEntityToUserConverter::convert)
                 .orElseThrow(
