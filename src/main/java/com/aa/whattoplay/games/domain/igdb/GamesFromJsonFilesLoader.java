@@ -8,9 +8,6 @@ import com.aa.whattoplay.games.domain.igdb.json.TimeToBeatJson;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,15 +16,14 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @DomainService
-public class GetGamesFromJsonFiles implements IGetGamesFromExternalSourceService {
-    private static Logger logger = LoggerFactory.getLogger(GetGamesFromJsonFiles.class);
+public class GamesFromJsonFilesLoader implements IGetGamesFromExternalSourceService {
+    private static Logger logger = LoggerFactory.getLogger(GamesFromJsonFilesLoader.class);
     private final String filesPath = "games/";
     private final ObjectMapper objectMapper;
 
-    public GetGamesFromJsonFiles() {
+    public GamesFromJsonFilesLoader() {
         SimpleModule module = new SimpleModule();
         module.addDeserializer(LocalDate.class, new LocalDateDeserializer());
         module.addDeserializer(TimeToBeatJson.class, new TimeToBeatDeserializer());

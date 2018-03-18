@@ -4,16 +4,20 @@ import com.aa.ddd.common.domain.AbstractEntity;
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "Games")
 @AllArgsConstructor
+@Setter @Getter
 public class GameEntity extends AbstractEntity implements Serializable {
     @Column(nullable = false)
     @NotNull
@@ -31,7 +35,9 @@ public class GameEntity extends AbstractEntity implements Serializable {
     private int aggregatedRatingCount;
     private double totalRating;
     private int totalRatingCount;
-
+    private LocalDate createdAt;
+    private LocalDate updatedAt;
+    private LocalDate firstReleaseDate;
 
     @ManyToOne
     @JoinColumn(name = "collection_id", nullable = false, referencedColumnName = "id")
@@ -41,9 +47,24 @@ public class GameEntity extends AbstractEntity implements Serializable {
     @JoinColumn(name = "franchise_id", nullable = false, referencedColumnName = "id")
     private Franchise franchise;
 
-    private LocalDate createdAt;
-    private LocalDate updatedAt;
-    private LocalDate firstReleaseDate;
+    @ManyToMany
+    @JoinTable(name="Games_Developers")
+    private Set<Developer> developers;
+
+    @ManyToMany
+    @JoinTable(name="Games_Game_Modes")
+    private Set<GameModeEntity> gameModes;
+
+    @ManyToMany
+    @JoinTable(name="Games_Genres")
+    private Set<Genre> genres;
+
+    @ManyToMany
+    @JoinTable(name="Games_Player_Perspectives")
+    private Set<PlayerPerspective> playerPerspectives;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "game")
+    private Set<WebsiteEntity> websites;
 
     @Enumerated(EnumType.STRING)
     private Status status;

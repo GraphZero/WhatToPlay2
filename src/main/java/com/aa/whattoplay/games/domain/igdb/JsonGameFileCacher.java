@@ -13,7 +13,7 @@ import java.util.List;
 @DomainService
 public class JsonGameFileCacher {
     private final ObjectMapper objectMapper;
-    private static Logger logger = LoggerFactory.getLogger(IgdbGamesJsonRequester.class);
+    private static Logger logger = LoggerFactory.getLogger(IgdbJsonRequester.class);
 
     public JsonGameFileCacher() {
         this.objectMapper = new ObjectMapper();

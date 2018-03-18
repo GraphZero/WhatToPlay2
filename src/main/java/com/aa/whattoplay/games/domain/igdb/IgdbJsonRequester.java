@@ -22,12 +22,12 @@ import java.util.List;
  */
 
 @DomainService
-public class IgdbGamesJsonRequester implements IGetGamesFromExternalSourceService {
+public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
     private static final String token = "8dcd2a959fef891fbac266d5046e0414";
-    private static Logger logger = LoggerFactory.getLogger(IgdbGamesJsonRequester.class);
+    private static Logger logger = LoggerFactory.getLogger(IgdbJsonRequester.class);
 
     @Autowired
-    public IgdbGamesJsonRequester() {
+    public IgdbJsonRequester() {
         Unirest.setObjectMapper(new ObjectMapper() {
             private com.fasterxml.jackson.databind.ObjectMapper jacksonObjectMapper
                     = new com.fasterxml.jackson.databind.ObjectMapper();
