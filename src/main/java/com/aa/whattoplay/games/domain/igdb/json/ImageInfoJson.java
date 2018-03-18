@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
+import com.aa.whattoplay.games.infastructure.entities.ImageInfo;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -25,6 +26,15 @@ public class ImageInfoJson {
     @JsonSetter("cloudinary_id")
     public void setCloudinaryId(String cloudinaryId) {
         this.cloudinaryId = cloudinaryId;
+    }
+
+    public ImageInfo entity(){
+        return ImageInfo.builder()
+                .imageUrl(imageUrl)
+                .cloudinaryId(cloudinaryId)
+                .width(width)
+                .height(height)
+                .build();
     }
 
 }

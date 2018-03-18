@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
+import com.aa.whattoplay.games.infastructure.entities.TimeToBeat;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
@@ -27,6 +28,14 @@ public class TimeToBeatJson {
     @JsonSetter("completely")
     public void setCompletely(long completely) {
         this.completely = Duration.ofSeconds(completely);
+    }
+
+    public TimeToBeat entity(){
+        return TimeToBeat.builder()
+                .hastly(hastly)
+                .normally(normally)
+                .completely(completely)
+                .build();
     }
 
 }

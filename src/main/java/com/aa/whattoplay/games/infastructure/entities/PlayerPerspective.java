@@ -1,6 +1,7 @@
 package com.aa.whattoplay.games.infastructure.entities;
 
 import com.aa.ddd.common.domain.AbstractEntity;
+import lombok.Builder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,16 @@ public class PlayerPerspective extends AbstractEntity {
     private String url;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+
+    @Builder
+    public PlayerPerspective(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        super(id);
+        this.id = id1;
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -16,8 +16,8 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Collection extends AbstractEntity {
     @Column(nullable = false)
     @NotNull
@@ -26,6 +26,22 @@ public class Collection extends AbstractEntity {
     private String url;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+
+    public Collection(@NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    @Builder
+    public Collection(long id, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        super(id);
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     @Override
     public boolean equals(Object o) {

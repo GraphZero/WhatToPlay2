@@ -1,6 +1,7 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
 import com.aa.whattoplay.games.domain.igdb.value.PegiRating;
+import com.aa.whattoplay.games.infastructure.entities.Pegi;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
@@ -25,5 +26,12 @@ public class PegiJson {
         this.pegiSynopsis = pegiSynopsis;
     }
 
+
+    public Pegi entity(){
+        return Pegi.builder()
+                .pegiRating(pegiRating)
+                .pegiSynopsis(pegiSynopsis)
+                .build();
+    }
 
 }

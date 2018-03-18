@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
+import com.aa.whattoplay.games.infastructure.entities.PlayerPerspective;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -39,6 +40,16 @@ public class PlayerPerspectiveJson {
     @JsonSetter("updated_at")
     public void setUpdatedAt(long updatedAt) {
         this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    public PlayerPerspective entity(){
+        return PlayerPerspective.builder()
+                .id(id)
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
     }
 
 }

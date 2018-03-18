@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 public class Franchise extends AbstractEntity {
     @Column(name ="name", nullable = false)
@@ -30,6 +29,22 @@ public class Franchise extends AbstractEntity {
 
     @Column(name ="updated_at", nullable = true)
     private LocalDate updatedAt;
+
+    public Franchise(@NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    @Builder
+    public Franchise(long id, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        super(id);
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     @Override
     public int hashCode() {

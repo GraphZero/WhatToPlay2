@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
+import com.aa.whattoplay.games.infastructure.entities.Collection;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
@@ -29,4 +30,16 @@ public class CollectionJson {
     public void setUpdatedAt(long createdAt) {
         this.updatedAt = Instant.ofEpochMilli(createdAt).atZone(ZoneId.systemDefault()).toLocalDate();
     }
+
+
+    public Collection entity(){
+        return Collection.builder()
+                .id(id)
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
+
 }

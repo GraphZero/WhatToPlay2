@@ -1,5 +1,7 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
+import com.aa.whattoplay.games.infastructure.entities.Collection;
+import com.aa.whattoplay.games.infastructure.entities.Developer;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -43,4 +45,20 @@ public class DeveloperJson {
         this.developerImageWidth = developerImageUrl.getWidth();
         this.developerImageHeight = developerImageUrl.getHeight();
     }
+
+    public Developer entity(){
+        return Developer.builder()
+                .id(id)
+                .name(name)
+                .url(url)
+                .description(description)
+                .website(website)
+                .startDate(startDate)
+                .developerImageUrl(developerImageUrl)
+                .developerImageCloudinaryId(developerImageCloudinaryId)
+                .developerImageWidth(developerImageWidth)
+                .developerImageHeight(developerImageHeight)
+                .build();
+    }
+
 }

@@ -50,6 +50,4 @@ public class GamesFromJsonFilesLoader implements IGetGamesFromExternalSourceServ
         return listCar;
     }
 
-
-
 }

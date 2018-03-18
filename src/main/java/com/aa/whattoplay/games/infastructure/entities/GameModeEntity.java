@@ -19,13 +19,21 @@ import java.time.ZoneId;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 public class GameModeEntity extends AbstractEntity {
     private String name;
     private String url;
     private LocalDate createdAt;
     private LocalDate updatedAt;
+
+    @Builder
+    public GameModeEntity(long id, String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        super(id);
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 
     @Override
     public int hashCode() {

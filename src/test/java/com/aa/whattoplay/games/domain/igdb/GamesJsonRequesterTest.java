@@ -13,12 +13,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GamesJsonRequesterTest {
-    private IgdbGamesJsonRequester igdbGamesJsonRequester;
+    private IgdbJsonRequester igdbJsonRequester;
 
     @BeforeEach
     void setIgdbGamesInfoRequester(){
         LoggingSystem.get(ClassLoader.getSystemClassLoader()).setLogLevel(Logger.ROOT_LOGGER_NAME, LogLevel.INFO);
-        igdbGamesJsonRequester = new IgdbGamesJsonRequester();
+        igdbJsonRequester = new IgdbJsonRequester();
     }
 
     @Test
@@ -26,7 +26,7 @@ class GamesJsonRequesterTest {
     void getSomeGamesFromIgdb() {
         // given
         // when
-        List<GameJson> games = igdbGamesJsonRequester.getSomeGamesFromIgdb(2);
+        List<GameJson> games = igdbJsonRequester.getSomeGamesFromIgdb(2);
         // then
         assertEquals(250, games.size());
     }

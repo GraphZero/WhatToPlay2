@@ -16,7 +16,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 public class Developer extends AbstractEntity {
 
@@ -28,6 +27,36 @@ public class Developer extends AbstractEntity {
     private String description;
     private String website;
     private LocalDate startDate;
+
+
+    public Developer(@NotNull String name, String url, String description, String website,
+                     LocalDate startDate, String developerImageUrl, String developerImageCloudinaryId, int developerImageWidth, int developerImageHeight) {
+        this.name = name;
+        this.url = url;
+        this.description = description;
+        this.website = website;
+        this.startDate = startDate;
+        this.developerImageUrl = developerImageUrl;
+        this.developerImageCloudinaryId = developerImageCloudinaryId;
+        this.developerImageWidth = developerImageWidth;
+        this.developerImageHeight = developerImageHeight;
+    }
+
+    @Builder
+    public Developer(long id, @NotNull String name, String url, String description, String website,
+                     LocalDate startDate, String developerImageUrl, String developerImageCloudinaryId,
+                     int developerImageWidth, int developerImageHeight) {
+        super(id);
+        this.name = name;
+        this.url = url;
+        this.description = description;
+        this.website = website;
+        this.startDate = startDate;
+        this.developerImageUrl = developerImageUrl;
+        this.developerImageCloudinaryId = developerImageCloudinaryId;
+        this.developerImageWidth = developerImageWidth;
+        this.developerImageHeight = developerImageHeight;
+    }
 
     @Column(name ="image_url", nullable = true )
     private String developerImageUrl;

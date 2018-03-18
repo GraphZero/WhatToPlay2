@@ -1,6 +1,7 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
 import com.aa.whattoplay.games.domain.igdb.value.EsrbRating;
+import com.aa.whattoplay.games.infastructure.entities.Esrb;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,13 @@ public class EsrbJson {
             }
         }
         this.esrbRating = EsrbRating.UNKNOWN;
+    }
+
+    public Esrb entity(){
+        return Esrb.builder()
+                .esrbRating(esrbRating)
+                .esrbSynopsis(synopsis)
+                .build();
     }
 
 }

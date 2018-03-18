@@ -27,6 +27,16 @@ public class Genre extends AbstractEntity {
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
+    @Builder
+    public Genre(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        super(id);
+        this.id = id1;
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

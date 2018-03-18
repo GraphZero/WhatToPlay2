@@ -1,7 +1,6 @@
 package com.aa.ddd.common.domain;
 
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -20,6 +19,11 @@ public abstract class AbstractEntity {
     private int version;
 
     protected final LocalDate creationDate;
+
+    protected AbstractEntity(long id) {
+        this();
+        this.id = id;
+    }
 
     public AbstractEntity() {
         creationDate = LocalDate.now();
