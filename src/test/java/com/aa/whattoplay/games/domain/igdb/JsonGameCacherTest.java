@@ -13,27 +13,27 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class JsonGameCacherTest {
-    private JsonToFileCacherService jsonToFileCacherService;
+    private JsonFilesManager jsonFilesManager;
 
     @Test
     @Disabled
     void shouldSaveGamesToDefaultPath() {
         // given
-        jsonToFileCacherService = new JsonToFileCacherService();
+        jsonFilesManager = new JsonFilesManager();
 
         // when
         // then
-        jsonToFileCacherService.saveJsonToDefaultPath(getTestGames());
+        jsonFilesManager.saveJsonToDefaultPath(getTestGames());
         assertTrue(new File("./Games/GamesPart1.json").exists());
     }
 
     @Test
     void shouldSaveGamesToCustomPath() {
         // given
-        jsonToFileCacherService = new JsonToFileCacherService();
+        jsonFilesManager = new JsonFilesManager();
         // when
         // then
-        jsonToFileCacherService.saveJsonToCustomPath(getTestGames(), "D:\\");
+        jsonFilesManager.saveJsonToCustomPath(getTestGames(), "D:\\");
         assertTrue(new File("D:\\GamesPart1.json").exists());
     }
 
@@ -41,10 +41,10 @@ class JsonGameCacherTest {
     @Disabled
     void shouldSaveFranchisesToDefaultPath() {
         // given
-        jsonToFileCacherService = new JsonToFileCacherService();
+        jsonFilesManager = new JsonFilesManager();
         // when
         // then
-        jsonToFileCacherService.saveJsonToDefaultPath(getTestFranchises());
+        jsonFilesManager.saveJsonToDefaultPath(getTestFranchises());
         assertTrue(new File("./Franchises/FranchisesPart1.json").exists());
     }
 
@@ -52,10 +52,10 @@ class JsonGameCacherTest {
     @Disabled
     void shouldSave1002FranchisesToDefaultPath() {
         // given
-        jsonToFileCacherService = new JsonToFileCacherService();
+        jsonFilesManager = new JsonFilesManager();
         // when
         // then
-        jsonToFileCacherService.saveJsonToDefaultPath(get1002TestFranchises());
+        jsonFilesManager.saveJsonToDefaultPath(get1002TestFranchises());
         assertTrue(new File("./Franchises/FranchisesPart1.json").exists() && new File("./Franchises/FranchisesPart2.json").exists());
     }
 

@@ -10,8 +10,10 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -89,39 +91,65 @@ public class GameJson implements Serializable {
         status = Status.RELEASED;
     }
 
-//    @JsonSetter("created_at")
-//    public void setCreatedAt(long createdAt) {
-//        this.createdAt = Instant.ofEpochMilli(createdAt).atZone(ZoneId.systemDefault()).toLocalDate();
-//    }
-//
-//    @JsonSetter("first_release_date")
-//    public void setFirstReleaseDate(long firstReleaseDate) {
-//        this.firstReleaseDate = Instant.ofEpochMilli(firstReleaseDate).atZone(ZoneId.systemDefault()).toLocalDate();
-//    }
-//
-//    @JsonSetter("updated_at")
-//    public void setUpdatedAt(long updatedAt) {
-//        this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
-//    }
+    @JsonSetter("created_at")
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = Instant.ofEpochMilli(createdAt).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 
+    @JsonSetter("first_release_date")
+    public void setFirstReleaseDate(long firstReleaseDate) {
+        this.firstReleaseDate = Instant.ofEpochMilli(firstReleaseDate).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    @JsonSetter("updated_at")
+    public void setUpdatedAt(long updatedAt) {
+        this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
 
 
     @JsonGetter("created_at")
-    public LocalDate getCreatedAt() {
-        return createdAt;
+    public long getCreatedAt() {
+        return Optional.ofNullable(createdAt).map(createdAt -> {
+            ZonedDateTime zdt = createdAt.atStartOfDay(ZoneId.systemDefault());
+            return zdt.toInstant().toEpochMilli();
+            })
+            .orElse((long) 0);
     }
-
 
     @JsonGetter("updated_at")
-    public LocalDate getUpdatedAt() {
-        return updatedAt;
+    public long getUpdatedAt() {
+        return Optional.ofNullable(updatedAt).map(createdAt -> {
+            ZonedDateTime zdt = createdAt.atStartOfDay(ZoneId.systemDefault());
+            return zdt.toInstant().toEpochMilli();
+            })
+            .orElse((long) 0);
     }
-
 
     @JsonGetter("first_release_date")
-    public LocalDate getFirstReleaseDate() {
-        return firstReleaseDate;
+    public long getFirstReleaseDate() {
+        return Optional.ofNullable(firstReleaseDate).map(createdAt -> {
+            ZonedDateTime zdt = createdAt.atStartOfDay(ZoneId.systemDefault());
+            return zdt.toInstant().toEpochMilli();
+            })
+            .orElse((long) 0);
     }
+
+//    @JsonGetter("created_at")
+//    public LocalDate getCreatedAt() {
+//        return createdAt;
+//    }
+//
+//
+//    @JsonGetter("updated_at")
+//    public LocalDate getUpdatedAt() {
+//        return updatedAt;
+//    }
+//
+//
+//    @JsonGetter("first_release_date")
+//    public LocalDate getFirstReleaseDate() {
+//        return firstReleaseDate;
+//    }
 
 
     @JsonGetter("rating_count")

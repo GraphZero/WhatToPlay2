@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 @DomainService
-public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
+public class IgdbJsonRequester  {
     private static final String token = "c984d9be38401fb2807d383c03d34599";
     private static Logger logger = LoggerFactory.getLogger(IgdbJsonRequester.class);
 
@@ -217,8 +217,7 @@ public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
 
     }
 
-    @Override
-    public List<GameJson> getGamesFromExternalSource(){
+    public List<GameJson> getAllGamesFromIgdb(){
         logger.info("Persisting games starts.  ");
         List<GameJson> games = null;
         final String urlForScroll = "https://api-2445582011268.apicast.io/games/";
