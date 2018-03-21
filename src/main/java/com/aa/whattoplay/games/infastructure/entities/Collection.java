@@ -17,7 +17,6 @@ import java.util.Objects;
 @Setter
 @ToString
 @NoArgsConstructor
-@Builder
 public class Collection extends AbstractEntity {
     @Column(nullable = false)
     @NotNull

@@ -82,7 +82,7 @@ public class JsonFilesManager {
         return listCar;
     }
 
-    public List<GameJson> getGamesFromExternalSource(String filesPath){
+    public List<GameJson> getAllGamesFromJsonFiles(String filesPath){
         List<GameJson> list = new ArrayList<>();
 
         for (int i = 1; i <= new File(filesPath).listFiles().length; i++) {

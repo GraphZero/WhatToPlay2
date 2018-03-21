@@ -45,14 +45,14 @@ public class CollectionJson {
         return zdt.toInstant().toEpochMilli();
     }
 
-//    public Collection entity(){
-//        return Collection.builder()
-//                .id(id)
-//                .name(name)
-//                .url(url)
-//                .createdAt(createdAt)
-//                .updatedAt(updatedAt)
-//                .build();
-//    }
+    public Collection entity(){
+        return Collection.builder()
+                .id(id)
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
 
 }
