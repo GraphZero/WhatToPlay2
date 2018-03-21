@@ -25,7 +25,7 @@ public class JsonToFileCacherService {
         String className = collection.get(0).getClass().getSimpleName().replaceAll("Json", "").concat("s");
         logger.info("Starting saving "  + className +  " jsons. ");
         int partNumber = 0;
-        for (int i = 0; i < collection.size(); i += 1001 ) {
+        for (int i = 0; i < collection.size(); i += 1000 ) {
             if ( i % 1000 == 0){
                 partNumber++;
                 logger.info("Starting creating file number: " + partNumber);

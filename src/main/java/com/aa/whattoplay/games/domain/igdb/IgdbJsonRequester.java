@@ -23,7 +23,7 @@ import java.util.List;
 
 @DomainService
 public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
-    private static final String token = "8dcd2a959fef891fbac266d5046e0414";
+    private static final String token = "c984d9be38401fb2807d383c03d34599";
     private static Logger logger = LoggerFactory.getLogger(IgdbJsonRequester.class);
 
     @Autowired
@@ -129,6 +129,7 @@ public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
         final String scrollUrlFranchises;
         final long requiredRequestsNumb;
         final HttpResponse<FranchiseJson[]> jsonResponse;
+        List<FranchiseJson> franchiseJsons;
         try {
             jsonResponse = getScrollFromIGDB(urlForScroll, getBasicFields()).asObject(FranchiseJson[].class);
             scrollUrlFranchises = jsonResponse.getHeaders().get("X-Next-Page").get(0);
@@ -136,11 +137,21 @@ public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
             logger.info(new StringBuilder().append(" Scroll url for requests: ").append(scrollUrlFranchises).toString());
             logger.info(new StringBuilder().append(" Got ").append(jsonResponse.getHeaders().get("X-Count").get(0)).append(" franchsises. ").toString());
             logger.info(new StringBuilder().append(" Doing ").append(requiredRequestsNumb + 1).append(" iterations. ").toString());
+            franchiseJsons = new ArrayList<>(Arrays.asList(jsonResponse.getBody()));
+            for (int i = 0; i < requiredRequestsNumb; i++) {
+                try {
+                    franchiseJsons.addAll(Arrays.asList(getSetOfObjectsFromIGDB(scrollUrlFranchises)
+                            .asObject(FranchiseJson[].class)
+                            .getBody()));
+                } catch (UnirestException e) {
+                    logger.info(new StringBuilder().append(" Got to the end of the franchises scroll! ").toString());
+                }
+            }
         } catch (UnirestException e) {
             logger.error(new StringBuilder().append(" Couldnt get the scroll for Franchises ").append(e.getMessage()).toString());
             throw new CouldntParseFranchisesException();
         }
-        return Arrays.asList(jsonResponse.getBody());
+        return franchiseJsons;
     }
 
     public List<DeveloperJson> getAllDevelopersFromIgdb() {
@@ -149,18 +160,29 @@ public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
         final String scrollUrlForDevelopers;
         final long requiredRequestsNumb;
         final HttpResponse<DeveloperJson[]> jsonResponse;
+        List<DeveloperJson> developerJsons;
         try {
             jsonResponse = getScrollFromIGDB(urlForScroll, getDeveloperFields()).asObject(DeveloperJson[].class);
             scrollUrlForDevelopers = jsonResponse.getHeaders().get("X-Next-Page").get(0);
-            requiredRequestsNumb = Math.round(4696 / 50);
+            requiredRequestsNumb = Math.round(Integer.parseInt(jsonResponse.getHeaders().get("X-Count").get(0)) / 50);
             logger.info(new StringBuilder().append(" Scroll url for requests: ").append(scrollUrlForDevelopers).toString());
             logger.info(new StringBuilder().append(" Got ").append(jsonResponse.getHeaders().get("X-Count").get(0)).append(" developers. ").toString());
             logger.info(new StringBuilder().append(" Doing ").append(requiredRequestsNumb + 1).append(" iterations. ").toString());
+            developerJsons = new ArrayList<>(Arrays.asList(jsonResponse.getBody()));
+            for (int i = 0; i < requiredRequestsNumb; i++) {
+                try {
+                    developerJsons.addAll(Arrays.asList(getSetOfObjectsFromIGDB(scrollUrlForDevelopers)
+                            .asObject(DeveloperJson[].class)
+                            .getBody()));
+                } catch (UnirestException e) {
+                    logger.info(new StringBuilder().append(" Got to the end of the developers scroll! ").toString());
+                }
+            }
         } catch (UnirestException e) {
             logger.error(new StringBuilder().append(" Couldnt get the scroll for Developers ").append(e.getMessage()).toString());
             throw new CouldntParseDevelopersException();
         }
-        return Arrays.asList(jsonResponse.getBody());
+        return developerJsons;
     }
 
     public List<CollectionJson> getAllCollectionsFromIgdb() {
@@ -169,6 +191,7 @@ public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
         final String scrollUrlForCollections;
         final long requiredRequestsNumb;
         final HttpResponse<CollectionJson[]> jsonResponse;
+        List<CollectionJson> collectionJsons;
         try {
             jsonResponse = getScrollFromIGDB(urlForScroll, getBasicFields()).asObject(CollectionJson[].class);
             scrollUrlForCollections = jsonResponse.getHeaders().get("X-Next-Page").get(0);
@@ -176,11 +199,21 @@ public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
             logger.info(new StringBuilder().append(" Scroll url for requests: ").append(scrollUrlForCollections).toString());
             logger.info(new StringBuilder().append(" Got ").append(jsonResponse.getHeaders().get("X-Count").get(0)).append(" collections. ").toString());
             logger.info(new StringBuilder().append(" Doing ").append(requiredRequestsNumb + 1).append(" iterations. ").toString());
+            collectionJsons = new ArrayList<>(Arrays.asList(jsonResponse.getBody()));
+            for (int i = 0; i < requiredRequestsNumb; i++) {
+                try {
+                    collectionJsons.addAll(Arrays.asList(getSetOfObjectsFromIGDB(scrollUrlForCollections)
+                            .asObject(CollectionJson[].class)
+                            .getBody()));
+                } catch (UnirestException e) {
+                    logger.info(new StringBuilder().append(" Got to the end of the franchises scroll! ").toString());
+                }
+            }
         } catch (UnirestException e) {
             logger.error(new StringBuilder().append(" Couldnt get the scroll for collections \n").append(e.getMessage()).toString());
             throw new CouldntParseCollectionsException();
         }
-        return Arrays.asList(jsonResponse.getBody());
+        return collectionJsons;
 
     }
 

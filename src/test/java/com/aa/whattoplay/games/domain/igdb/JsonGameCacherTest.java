@@ -2,16 +2,21 @@ package com.aa.whattoplay.games.domain.igdb;
 
 import com.aa.whattoplay.games.domain.igdb.json.FranchiseJson;
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
-import com.aa.whattoplay.games.infastructure.entities.Franchise;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 class JsonGameCacherTest {
     private JsonToFileCacherService jsonToFileCacherService;
 
     @Test
+    @Disabled
     void shouldSaveGamesToDefaultPath() {
         // given
         jsonToFileCacherService = new JsonToFileCacherService();
@@ -19,6 +24,7 @@ class JsonGameCacherTest {
         // when
         // then
         jsonToFileCacherService.saveJsonToDefaultPath(getTestGames());
+        assertTrue(new File("./Games/GamesPart1.json").exists());
     }
 
     @Test
@@ -28,24 +34,29 @@ class JsonGameCacherTest {
         // when
         // then
         jsonToFileCacherService.saveJsonToCustomPath(getTestGames(), "D:\\");
+        assertTrue(new File("D:\\GamesPart1.json").exists());
     }
 
     @Test
+    @Disabled
     void shouldSaveFranchisesToDefaultPath() {
         // given
         jsonToFileCacherService = new JsonToFileCacherService();
         // when
         // then
         jsonToFileCacherService.saveJsonToDefaultPath(getTestFranchises());
+        assertTrue(new File("./Franchises/FranchisesPart1.json").exists());
     }
 
     @Test
+    @Disabled
     void shouldSave1002FranchisesToDefaultPath() {
         // given
         jsonToFileCacherService = new JsonToFileCacherService();
         // when
         // then
         jsonToFileCacherService.saveJsonToDefaultPath(get1002TestFranchises());
+        assertTrue(new File("./Franchises/FranchisesPart1.json").exists() && new File("./Franchises/FranchisesPart2.json").exists());
     }
 
     private ArrayList<GameJson> getTestGames(){

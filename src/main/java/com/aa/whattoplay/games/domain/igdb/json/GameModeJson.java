@@ -8,6 +8,7 @@ import lombok.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -26,14 +27,21 @@ public class GameModeJson {
         this.createdAt = Instant.ofEpochMilli(createdAt).atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    @JsonGetter("updated_at")
-    public LocalDate getUpdatedAt() {
-        return updatedAt;
-    }
-
     @JsonSetter("updated_at")
     public void setUpdatedAt(long updatedAt) {
         this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    @JsonGetter("created_at")
+    public long getCreatedAt() {
+        ZonedDateTime zdt = createdAt.atStartOfDay(ZoneId.systemDefault());
+        return zdt.toInstant().toEpochMilli();
+    }
+
+    @JsonGetter("updated_at")
+    public long getUpdatedAt() {
+        ZonedDateTime zdt = updatedAt.atStartOfDay(ZoneId.systemDefault());
+        return zdt.toInstant().toEpochMilli();
     }
 
     public GameModeEntity entity(){

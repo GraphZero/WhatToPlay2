@@ -1,12 +1,14 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
 import com.aa.whattoplay.games.infastructure.entities.Collection;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -31,15 +33,26 @@ public class CollectionJson {
         this.updatedAt = Instant.ofEpochMilli(createdAt).atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-
-    public Collection entity(){
-        return Collection.builder()
-                .id(id)
-                .name(name)
-                .url(url)
-                .createdAt(createdAt)
-                .updatedAt(updatedAt)
-                .build();
+    @JsonGetter("created_at")
+    public long getCreatedAt() {
+        ZonedDateTime zdt = createdAt.atStartOfDay(ZoneId.systemDefault());
+        return zdt.toInstant().toEpochMilli();
     }
+
+    @JsonGetter("updated_at")
+    public long getUpdatedAt() {
+        ZonedDateTime zdt = updatedAt.atStartOfDay(ZoneId.systemDefault());
+        return zdt.toInstant().toEpochMilli();
+    }
+
+//    public Collection entity(){
+//        return Collection.builder()
+//                .id(id)
+//                .name(name)
+//                .url(url)
+//                .createdAt(createdAt)
+//                .updatedAt(updatedAt)
+//                .build();
+//    }
 
 }

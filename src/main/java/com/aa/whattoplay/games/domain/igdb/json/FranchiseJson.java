@@ -1,12 +1,14 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
 import com.aa.whattoplay.games.infastructure.entities.Franchise;
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 
 @Getter
@@ -29,6 +31,18 @@ public class FranchiseJson {
     @JsonSetter("updated_at")
     public void setUpdatedAt(long updatedAt) {
         this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    @JsonGetter("created_at")
+    public long getCreatedAt() {
+        ZonedDateTime zdt = createdAt.atStartOfDay(ZoneId.systemDefault());
+        return zdt.toInstant().toEpochMilli();
+    }
+
+    @JsonGetter("updated_at")
+    public long getUpdatedAt() {
+        ZonedDateTime zdt = updatedAt.atStartOfDay(ZoneId.systemDefault());
+        return zdt.toInstant().toEpochMilli();
     }
 
     public Franchise entity(){

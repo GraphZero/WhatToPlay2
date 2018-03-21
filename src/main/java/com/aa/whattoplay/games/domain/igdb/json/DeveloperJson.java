@@ -9,6 +9,7 @@ import lombok.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 
 @Getter
@@ -28,15 +29,20 @@ public class DeveloperJson {
     private int developerImageWidth;
     private int developerImageHeight;
 
-    @JsonGetter("start_date")
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
     @JsonSetter("start_date")
     public void setStartDate(long startDate) {
         this.startDate = Instant.ofEpochMilli(startDate).atZone(ZoneId.systemDefault()).toLocalDate();
     }
+
+    @JsonGetter("start_date")
+    public long getStartDate() {
+        if ( startDate != null ){
+            ZonedDateTime zdt = startDate.atStartOfDay(ZoneId.systemDefault());
+            return zdt.toInstant().toEpochMilli();
+        }
+        return 0;
+    }
+
 
     @JsonSetter("logo")
     public void setDeveloperImageUrl(ImageInfoJson developerImageUrl) {

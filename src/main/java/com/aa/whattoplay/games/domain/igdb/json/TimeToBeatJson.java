@@ -13,8 +13,6 @@ public class TimeToBeatJson {
     private Duration normally;
     private Duration completely;
 
-
-
     @JsonSetter("hastly")
     public void setHastly(long hastly) {
         this.hastly = Duration.ofSeconds(hastly);
