@@ -44,6 +44,7 @@ public class GamesFromJsonFilesLoader implements IGetGamesFromExternalSourceServ
     @Override
     public List<GameJson> getGamesFromExternalSource(){
         List<GameJson> listCar = new ArrayList<>();
+
         for (int i = 1; i <= new File(filesPath).listFiles().length; i++) {
             listCar.addAll(getGamesFromFile(i));
         }

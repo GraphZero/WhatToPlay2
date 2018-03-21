@@ -26,9 +26,15 @@ class GamesJsonRequesterTest {
     void getSomeGamesFromIgdb() {
         // given
         // when
-        List<GameJson> games = igdbJsonRequester.getSomeGamesFromIgdb(2);
+        List<GameJson> games = igdbJsonRequester.getSomeGamesFromIgdb(19);
         // then
-        assertEquals(250, games.size());
+        assertEquals(1000, games.size());
     }
 
+    @Test
+    void getFranchisesFromIgdb() {
+        // given
+        // when
+        // then
+    }
 }

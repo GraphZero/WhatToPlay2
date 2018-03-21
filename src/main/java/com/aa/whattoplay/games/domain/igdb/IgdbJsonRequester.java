@@ -226,9 +226,9 @@ public class IgdbJsonRequester implements IGetGamesFromExternalSourceService {
             jsonResponse = getScrollFromIGDB(urlForScroll, getGameFields()).asObject(GameJson[].class);
             scrollUrlForGames = jsonResponse.getHeaders().get("X-Next-Page").get(0);
             logger.info(String.format(" Scroll url for requests: %s", scrollUrlForGames));
-            logger.info(String.format(" Got %s collections. ", 50 * numbOfRequests));
+            logger.info(String.format(" Got %s collections. ", 50 * numbOfRequests + 50));
             games = new ArrayList<>(Arrays.asList(jsonResponse.getBody()));
-            for (int i = 0; i <= numbOfRequests + 1; i++) {
+            for (int i = 0; i < numbOfRequests; i++) {
                 try {
                     games.addAll(Arrays.asList(getSetOfObjectsFromIGDB(scrollUrlForGames)
                             .asObject(GameJson[].class)

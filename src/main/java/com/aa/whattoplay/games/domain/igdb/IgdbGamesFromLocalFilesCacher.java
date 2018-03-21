@@ -8,12 +8,12 @@ import java.util.List;
 
 @DomainService
 @RequiredArgsConstructor
-public class IgdbGamesFromFilesCacher {
+public class IgdbGamesFromLocalFilesCacher {
     private final GamesFromJsonFilesLoader gamesFromJsonFilesLoader;
 
     public void persistGamesFromFiles(){
         List<GameJson> gameJsons = gamesFromJsonFilesLoader.getGamesFromExternalSource();
-
+        System.out.println(gameJsons.size());
     }
 
 }
