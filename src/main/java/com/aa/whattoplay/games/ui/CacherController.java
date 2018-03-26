@@ -25,4 +25,10 @@ public class CacherController {
         return new ResponseEntity<>("Finished caching franchises", HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/cacheDevelopers", method = RequestMethod.POST)
+    public ResponseEntity<String> cacheDevelopers(){
+        externalDataCacherService.cacheDevelopers();
+        return new ResponseEntity<>("Finished caching developers", HttpStatus.OK);
+    }
+
 }

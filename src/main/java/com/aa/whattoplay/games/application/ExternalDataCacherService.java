@@ -4,8 +4,10 @@ import com.aa.ddd.common.annotations.ApplicationService;
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.domain.igdb.JsonFilesManager;
 import com.aa.whattoplay.games.domain.igdb.json.CollectionJson;
+import com.aa.whattoplay.games.domain.igdb.json.DeveloperJson;
 import com.aa.whattoplay.games.domain.igdb.json.FranchiseJson;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
+import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +21,7 @@ public class ExternalDataCacherService {
     private final JsonFilesManager jsonFilesManager;
     private final IGenericCrudDao<Collection> collectionsEntityCrudDao;
     private final IGenericCrudDao<Franchise> franchisesEntityCrudDao;
+    private final IGenericCrudDao<Developer> developerEntityCrudDao;
 
     public void cacheCollections(){
         collectionsEntityCrudDao.setClazz(Collection.class);
@@ -30,11 +33,18 @@ public class ExternalDataCacherService {
 
     public void cacheFranchises(){
         franchisesEntityCrudDao.setClazz(Franchise.class);
-        List<FranchiseJson> franchisesJson = (List<FranchiseJson>) jsonFilesManager.getAllObjectsFromJsons("./franchises/", FranchiseJson.class);
-        franchisesJson.forEach( franchiseJson ->
+        List<FranchiseJson> franchisesJsons = (List<FranchiseJson>) jsonFilesManager.getAllObjectsFromJsons("./franchises/", FranchiseJson.class);
+        franchisesJsons.forEach( franchiseJson ->
                 franchisesEntityCrudDao.save(franchiseJson.entity())
         );
     }
 
+    public void cacheDevelopers(){
+        developerEntityCrudDao.setClazz(Developer.class);
+        List<DeveloperJson> developerJsons = (List<DeveloperJson>) jsonFilesManager.getAllObjectsFromJsons("./developers/", DeveloperJson.class);
+        developerJsons.forEach( developerJson ->
+                developerEntityCrudDao.save(developerJson.entity())
+        );
+    }
 
 }

@@ -19,7 +19,9 @@ public class Franchise extends IgdbAbstractEntity {
     @Column(name ="name", nullable = false)
     private String name;
     private String url;
+    @Column(name ="created_at", nullable = false)
     private LocalDate createdAt;
+    @Column(name ="updated_at", nullable = false)
     private LocalDate updatedAt;
 
     public Franchise(@NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {

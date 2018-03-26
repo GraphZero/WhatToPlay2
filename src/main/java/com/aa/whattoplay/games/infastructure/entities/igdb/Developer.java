@@ -27,6 +27,17 @@ public class Developer extends IgdbAbstractEntity {
     private String website;
     private LocalDate startDate;
 
+    @Column(name ="image_url" )
+    private String developerImageUrl;
+
+    @Column(name ="image_cloudinary_id")
+    private String developerImageCloudinaryId;
+
+    @Column(name ="image_width" )
+    private int developerImageWidth;
+
+    @Column(name ="image_height")
+    private int developerImageHeight;
 
     public Developer(@NotNull String name, String url, String description, String website,
                      LocalDate startDate, String developerImageUrl, String developerImageCloudinaryId, int developerImageWidth, int developerImageHeight) {
@@ -57,17 +68,6 @@ public class Developer extends IgdbAbstractEntity {
         this.developerImageHeight = developerImageHeight;
     }
 
-    @Column(name ="image_url", nullable = true )
-    private String developerImageUrl;
-
-    @Column(name ="image_cloudinary_id", nullable = true )
-    private String developerImageCloudinaryId;
-
-    @Column(name ="image_width", nullable = true )
-    private int developerImageWidth;
-
-    @Column(name ="image_height", nullable = true )
-    private int developerImageHeight;
 
     @Override
     public boolean equals(Object o) {

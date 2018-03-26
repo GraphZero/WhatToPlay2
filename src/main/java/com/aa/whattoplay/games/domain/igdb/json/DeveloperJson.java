@@ -42,6 +42,25 @@ public class DeveloperJson {
         return 0;
     }
 
+    @JsonSetter
+    public void setDeveloperImageUrl(String developerImageUrl) {
+        this.developerImageUrl = developerImageUrl;
+    }
+
+    @JsonSetter
+    public void setDeveloperImageCloudinaryId(String developerImageCloudinaryId) {
+        this.developerImageCloudinaryId = developerImageCloudinaryId;
+    }
+
+    @JsonSetter
+    public void setDeveloperImageWidth(int developerImageWidth) {
+        this.developerImageWidth = developerImageWidth;
+    }
+
+    @JsonSetter  
+    public void setDeveloperImageHeight(int developerImageHeight) {
+        this.developerImageHeight = developerImageHeight;
+    }
 
     @JsonSetter("logo")
     public void setDeveloperImageUrl(ImageInfoJson developerImageUrl) {
