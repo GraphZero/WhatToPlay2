@@ -1,19 +1,11 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
-import com.aa.ddd.common.domain.AbstractEntity;
 import com.aa.whattoplay.games.infastructure.entities.IgdbAbstractEntity;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 @Entity
 @Table(name = "Game_Modes")

@@ -4,12 +4,14 @@ import com.aa.ddd.common.domain.PersistentClass;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 
 /**
- * Its ID is set.
+ * It's ID is set.
  */
+
 @MappedSuperclass
 @ToString
 @Getter

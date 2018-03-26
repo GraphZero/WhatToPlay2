@@ -2,7 +2,6 @@ package com.aa.whattoplay.accounts.application.utility;
 
 import com.aa.whattoplay.accounts.domain.Account;
 import com.aa.whattoplay.accounts.infastructure.entities.AccountEntity;
-import com.aa.whattoplay.security.application.utility.UserEntityToUserConverter;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

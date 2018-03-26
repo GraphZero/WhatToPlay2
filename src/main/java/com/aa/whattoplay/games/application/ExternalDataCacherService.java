@@ -4,7 +4,9 @@ import com.aa.ddd.common.annotations.ApplicationService;
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.domain.igdb.JsonFilesManager;
 import com.aa.whattoplay.games.domain.igdb.json.CollectionJson;
+import com.aa.whattoplay.games.domain.igdb.json.FranchiseJson;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
+import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,14 +17,24 @@ import java.util.List;
 @Transactional
 public class ExternalDataCacherService {
     private final JsonFilesManager jsonFilesManager;
-    private final IGenericCrudDao<Collection> gameEntityCrudDao;
+    private final IGenericCrudDao<Collection> collectionsEntityCrudDao;
+    private final IGenericCrudDao<Franchise> franchisesEntityCrudDao;
 
     public void cacheCollections(){
+        collectionsEntityCrudDao.setClazz(Collection.class);
         List<CollectionJson> collectionJsons = (List<CollectionJson>) jsonFilesManager.getAllObjectsFromJsons("./collections/", CollectionJson.class);
-        gameEntityCrudDao.setClazz(Collection.class);
         collectionJsons.forEach( collectionJson ->
-                gameEntityCrudDao.save(collectionJson.entity())
+                collectionsEntityCrudDao.save(collectionJson.entity())
         );
     }
+
+    public void cacheFranchises(){
+        franchisesEntityCrudDao.setClazz(Franchise.class);
+        List<FranchiseJson> franchisesJson = (List<FranchiseJson>) jsonFilesManager.getAllObjectsFromJsons("./franchises/", FranchiseJson.class);
+        franchisesJson.forEach( franchiseJson ->
+                franchisesEntityCrudDao.save(franchiseJson.entity())
+        );
+    }
+
 
 }

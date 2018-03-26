@@ -14,10 +14,15 @@ public class CacherController {
     private final ExternalDataCacherService externalDataCacherService;
 
     @RequestMapping(path = "/cacheCollections", method = RequestMethod.POST)
-    public ResponseEntity<String> finishActivity(){
+    public ResponseEntity<String> cacheCollections(){
         externalDataCacherService.cacheCollections();
         return new ResponseEntity<>("Finished caching collections", HttpStatus.OK);
     }
 
+    @RequestMapping(path = "/cacheFranchises", method = RequestMethod.POST)
+    public ResponseEntity<String> cacheFranchises(){
+        externalDataCacherService.cacheFranchises();
+        return new ResponseEntity<>("Finished caching franchises", HttpStatus.OK);
+    }
 
 }

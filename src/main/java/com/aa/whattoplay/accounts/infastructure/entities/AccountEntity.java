@@ -1,12 +1,12 @@
 package com.aa.whattoplay.accounts.infastructure.entities;
 
 import com.aa.ddd.common.domain.AbstractEntity;
-import com.aa.whattoplay.security.infastructure.entities.RoleEntity;
 import lombok.Getter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
 @Entity
 @Table(name = "Users")

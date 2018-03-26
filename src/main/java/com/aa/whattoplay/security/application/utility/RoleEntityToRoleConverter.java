@@ -2,6 +2,7 @@ package com.aa.whattoplay.security.application.utility;
 
 import com.aa.whattoplay.security.domain.Role;
 import com.aa.whattoplay.security.infastructure.entities.RoleEntity;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 
