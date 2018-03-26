@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-class JsonGameCacherTest {
+class JsonFilesManagerTest {
     private JsonFilesManager jsonFilesManager;
 
     @Test
@@ -33,8 +35,19 @@ class JsonGameCacherTest {
         jsonFilesManager = new JsonFilesManager();
         // when
         // then
-        jsonFilesManager.saveJsonToCustomPath(getTestGames(), "D:\\");
-        assertTrue(new File("D:\\GamesPart1.json").exists());
+        jsonFilesManager.saveJsonToCustomPath(getTestGames(), "D:\\test\\");
+        assertTrue(new File("D:\\test\\GamesPart1.json").exists());
+    }
+
+    @Test
+    void shouldLoadGenericObjects() {
+        // given
+        jsonFilesManager = new JsonFilesManager();
+        // when
+        // then
+        jsonFilesManager.saveJsonToCustomPath(getTestGames(), "D:\\test\\");
+        List<GameJson> gameJsons = (List<GameJson> ) jsonFilesManager.getAllObjectsFromJsons("D:\\test\\", GameJson.class);
+        assertEquals(3, gameJsons.size());
     }
 
     @Test
@@ -69,6 +82,12 @@ class JsonGameCacherTest {
         ));
         gameJsons.add(new GameJson(
                 6, "a", "b", "c", "d", "f", 6, 5.5,
+                6.6, 4, 5.5, 3, 7.7,
+                9, 2, 9, LocalDate.now(), LocalDate.now(),
+                LocalDate.now(), null, null, null, null ,null
+        ));
+        gameJsons.add(new GameJson(
+                7, "a", "b", "c", "d", "f", 6, 5.5,
                 6.6, 4, 5.5, 3, 7.7,
                 9, 2, 9, LocalDate.now(), LocalDate.now(),
                 LocalDate.now(), null, null, null, null ,null

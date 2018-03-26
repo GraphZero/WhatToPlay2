@@ -17,13 +17,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * TODO: create custom deserializer, so it wont conflict with GetGamesFromJsonFiles
- */
-
 @DomainService
 public class IgdbJsonRequester  {
-    private static final String token = "c984d9be38401fb2807d383c03d34599";
+    private static final String TOKEN = "c984d9be38401fb2807d383c03d34599";
     private static Logger logger = LoggerFactory.getLogger(IgdbJsonRequester.class);
 
     @Autowired
@@ -63,7 +59,7 @@ public class IgdbJsonRequester  {
     protected HttpRequest getScrollFromIGDB(String url, String fields) {
         return Unirest.get(url)
                 .header("accept", "application/json")
-                .header("user-key", token)
+                .header("user-key", TOKEN)
                 .queryString("fields", fields)
                 .queryString("limit", "50")
                 .queryString("scroll", 1);
@@ -72,7 +68,7 @@ public class IgdbJsonRequester  {
     protected HttpRequest getSetOfObjectsFromIGDB(String url) {
         return Unirest.get("https://api-2445582011268.apicast.io/" + url)
                 .header("accept", "application/json")
-                .header("user-key", token);
+                .header("user-key", TOKEN);
     }
 
     public List<GenreJson> getAllGenresFromIgdb()  {
@@ -80,7 +76,7 @@ public class IgdbJsonRequester  {
         try {
             genresJson = Unirest.get("https://api-2445582011268.apicast.io/genres/")
                     .header("accept", "application/json")
-                    .header("user-key", token)
+                    .header("user-key", TOKEN)
                     .queryString("fields", getBasicFields())
                     .queryString("limit", "50")
                     .asObject(GenreJson[].class);
@@ -96,7 +92,7 @@ public class IgdbJsonRequester  {
         try {
             genresJson = Unirest.get("https://api-2445582011268.apicast.io/game_modes/")
                     .header("accept", "application/json")
-                    .header("user-key", token)
+                    .header("user-key", TOKEN)
                     .queryString("fields", getBasicFields())
                     .queryString("limit", "50")
                     .asObject(GameModeJson[].class);
@@ -112,7 +108,7 @@ public class IgdbJsonRequester  {
         try {
             genresJson = Unirest.get("https://api-2445582011268.apicast.io/player_perspectives/")
                     .header("accept", "application/json")
-                    .header("user-key", token)
+                    .header("user-key", TOKEN)
                     .queryString("fields", getBasicFields())
                     .queryString("limit", "50")
                     .asObject(PlayerPerspectiveJson[].class);

@@ -106,7 +106,6 @@ public class GameJson implements Serializable {
         this.updatedAt = Instant.ofEpochMilli(updatedAt).atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-
     @JsonGetter("created_at")
     public long getCreatedAt() {
         return Optional.ofNullable(createdAt).map(createdAt -> {
@@ -133,24 +132,6 @@ public class GameJson implements Serializable {
             })
             .orElse((long) 0);
     }
-
-//    @JsonGetter("created_at")
-//    public LocalDate getCreatedAt() {
-//        return createdAt;
-//    }
-//
-//
-//    @JsonGetter("updated_at")
-//    public LocalDate getUpdatedAt() {
-//        return updatedAt;
-//    }
-//
-//
-//    @JsonGetter("first_release_date")
-//    public LocalDate getFirstReleaseDate() {
-//        return firstReleaseDate;
-//    }
-
 
     @JsonGetter("rating_count")
     public int getRatingCount() {

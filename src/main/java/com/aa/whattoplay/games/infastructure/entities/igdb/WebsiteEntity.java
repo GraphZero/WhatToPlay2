@@ -1,7 +1,7 @@
-package com.aa.whattoplay.games.infastructure.entities;
+package com.aa.whattoplay.games.infastructure.entities.igdb;
 
-import com.aa.ddd.common.domain.AbstractEntity;
 import com.aa.whattoplay.games.domain.igdb.value.WebsiteCategory;
+import com.aa.whattoplay.games.infastructure.entities.IgdbAbstractEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Websites")
 @NoArgsConstructor @Getter @Setter
-public class WebsiteEntity extends AbstractEntity {
+public class WebsiteEntity extends IgdbAbstractEntity {
 
     @Enumerated(value = EnumType.STRING)
     private WebsiteCategory websiteCategory;

@@ -1,11 +1,10 @@
 package com.aa.ddd.common.domain;
 
-import org.hibernate.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public abstract class AbstractHibernateDao <T extends AbstractEntity > {
+public abstract class AbstractHibernateDao <T extends PersistentClass> {
     private Class< T > clazz;
 
     @PersistenceContext

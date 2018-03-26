@@ -1,6 +1,7 @@
-package com.aa.whattoplay.games.infastructure.entities;
+package com.aa.whattoplay.games.infastructure.entities.igdb;
 
 import com.aa.ddd.common.domain.AbstractEntity;
+import com.aa.whattoplay.games.infastructure.entities.IgdbAbstractEntity;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Franchise extends AbstractEntity {
+public class Franchise extends IgdbAbstractEntity {
     @Column(name ="name", nullable = false)
     @NotNull
     private String name;

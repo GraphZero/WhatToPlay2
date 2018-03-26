@@ -1,7 +1,7 @@
-package com.aa.whattoplay.games.infastructure.entities;
+package com.aa.whattoplay.games.infastructure.entities.igdb;
 
-import com.aa.ddd.common.domain.AbstractEntity;
-import lombok.*;
+import com.aa.whattoplay.games.infastructure.entities.IgdbAbstractEntity;
+import lombok.Builder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,23 +12,23 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Genres")
-@Getter @Setter @ToString  @NoArgsConstructor @AllArgsConstructor
-public class Genre extends AbstractEntity {
+@Table(name = "Player_Perspectives")
+public class PlayerPerspective extends IgdbAbstractEntity {
     @Id
     @Column(nullable = false)
     @NotNull
     private long id;
 
-    @Column(nullable = false)
+    @Column( nullable = false)
     @NotNull
     private String name;
+
     private String url;
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
     @Builder
-    public Genre(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+    public PlayerPerspective(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         super(id);
         this.id = id1;
         this.name = name;
@@ -40,13 +40,13 @@ public class Genre extends AbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Genre)) return false;
-        Genre genre = (Genre) o;
-        return id == genre.id &&
-                Objects.equals(name, genre.name) &&
-                Objects.equals(url, genre.url) &&
-                Objects.equals(createdAt, genre.createdAt) &&
-                Objects.equals(updatedAt, genre.updatedAt);
+        if (!(o instanceof PlayerPerspective)) return false;
+        PlayerPerspective that = (PlayerPerspective) o;
+        return id == that.id &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(url, that.url) &&
+                Objects.equals(createdAt, that.createdAt) &&
+                Objects.equals(updatedAt, that.updatedAt);
     }
 
     @Override

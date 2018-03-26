@@ -1,6 +1,9 @@
 package com.aa.whattoplay.games.infastructure.entities;
 
 import com.aa.whattoplay.games.domain.igdb.value.Status;
+import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
+import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

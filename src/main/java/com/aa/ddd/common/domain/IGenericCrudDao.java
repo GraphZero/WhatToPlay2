@@ -2,7 +2,7 @@ package com.aa.ddd.common.domain;
 
 import java.util.List;
 
-public interface IGenericCrudDao<T extends AbstractEntity> {
+public interface IGenericCrudDao<T extends PersistentClass> {
 
     T findById(final Long id);
 

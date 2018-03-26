@@ -1,15 +1,14 @@
-package com.aa.whattoplay.games.infastructure.entities;
+package com.aa.whattoplay.games.infastructure.entities.igdb;
 
-import com.aa.ddd.common.domain.AbstractEntity;
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
+import com.aa.whattoplay.games.infastructure.entities.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
@@ -18,7 +17,7 @@ import java.util.Set;
 @Table(name = "Games")
 @AllArgsConstructor
 @Setter @Getter
-public class GameEntity extends AbstractEntity implements Serializable {
+public class GameEntity extends IgdbAbstractEntity {
     @Column(nullable = false)
     @NotNull
     private String name;

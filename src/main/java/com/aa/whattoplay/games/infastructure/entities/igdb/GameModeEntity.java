@@ -1,6 +1,7 @@
-package com.aa.whattoplay.games.infastructure.entities;
+package com.aa.whattoplay.games.infastructure.entities.igdb;
 
 import com.aa.ddd.common.domain.AbstractEntity;
+import com.aa.whattoplay.games.infastructure.entities.IgdbAbstractEntity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -20,7 +21,7 @@ import java.time.ZoneId;
 @Setter
 @ToString
 @NoArgsConstructor
-public class GameModeEntity extends AbstractEntity {
+public class GameModeEntity extends IgdbAbstractEntity {
     private String name;
     private String url;
     private LocalDate createdAt;

@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.GameModeEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameModeEntity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
