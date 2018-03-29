@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 class JsonNormalizerTest {
     @Autowired
-    private JsonNormalizer jsonNormalizer;
+    private JsonGamesPersistenceService jsonGamesPersistenceService;
 
     @Test
     void persistGamesFromFiles() {

@@ -1,6 +1,8 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
 import com.aa.whattoplay.games.domain.igdb.value.WebsiteCategory;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.WebsiteEntity;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
@@ -18,6 +20,14 @@ public class WebsiteJson {
             }
         }
         this.websiteCategory = WebsiteCategory.OFFICIAL;
+    }
+
+    public WebsiteEntity entity(GameEntity gameEntity){
+        return WebsiteEntity.builder()
+                .game(gameEntity)
+                .websiteCategory(websiteCategory)
+                .url(url)
+                .build();
     }
 
 }

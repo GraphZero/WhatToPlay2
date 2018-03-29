@@ -3,6 +3,7 @@ package com.aa.ddd.common.domain;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractHibernateDao <T extends PersistentClass> {
     private Class< T > clazz;
@@ -10,12 +11,12 @@ public abstract class AbstractHibernateDao <T extends PersistentClass> {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public final void setClazz(Class< T > clazzToSet ){
+    public void setClazz(Class< T > clazzToSet ){
         this.clazz = clazzToSet;
     }
 
-    public T findById( Long id ){
-        return entityManager.find( clazz, id );
+    public Optional<T> findById(Long id ){
+        return Optional.ofNullable(entityManager.find( clazz, id ));
     }
     public List< T > findAll(){
         return entityManager
@@ -34,9 +35,9 @@ public abstract class AbstractHibernateDao <T extends PersistentClass> {
     public void delete( T entity ){
         entityManager.remove( entity );
     }
+
     public void deleteById( Long entityId ){
-        T entity = findById( entityId );
-        delete( entity );
+        findById( entityId ).ifPresent( this::delete);
     }
 
 }

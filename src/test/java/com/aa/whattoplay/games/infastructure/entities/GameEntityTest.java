@@ -1,6 +1,5 @@
 package com.aa.whattoplay.games.infastructure.entities;
 
-import com.aa.whattoplay.games.domain.igdb.value.Status;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
@@ -16,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.util.*;
 
+import static com.aa.whattoplay.games.TestDataGenerator.getTestDevelopersEntities;
+import static com.aa.whattoplay.games.TestDataGenerator.getTestGameEntity;
 import static org.junit.jupiter.api.Assertions.*;
 
 @AutoConfigureTestEntityManager
@@ -27,24 +28,7 @@ class GameEntityTest {
     @Autowired
     private TestEntityManager testEntityManager;
 
-    private static GameEntity getTestGameEntity(){
-        return new GameEntity( "nam", "a", "b", "c", "d", 7, 6, 5,
-                6, 4, 7, 3, 7,
-                 LocalDate.now(), LocalDate.now(), LocalDate.now(), null, null,null,
-                 null, null, null, null, Status.RELEASED,  null, null, null, null ,null);
-    }
 
-    private static Set<Developer> getTestDevelopers(){
-        Set<Developer> developers;
-        Developer developer = new Developer("a", "b", "c", "d",
-                LocalDate.now(), "e", "f", 5, 10);
-        Developer developer1 = new Developer("b", "b", "c", "d",
-                LocalDate.now(), "e", "f", 5, 10);
-        Developer developer2 = new Developer("c", "b", "c", "d",
-                LocalDate.now(), "e", "f", 5, 10);
-        developers = new HashSet<>( Arrays.asList( developer, developer1, developer2 ));
-        return developers;
-    }
 
     @Test
     void shouldLinkGameEntityAndFranchises() {
@@ -63,7 +47,7 @@ class GameEntityTest {
     void shouldLinkDevelopersWithGames() {
         // given
         GameEntity gameEntity = getTestGameEntity();
-        Set<Developer> developers = getTestDevelopers();
+        Set<Developer> developers = getTestDevelopersEntities();
         developers.forEach(testEntityManager::persist);
         gameEntity.setDevelopers(developers);
         // when

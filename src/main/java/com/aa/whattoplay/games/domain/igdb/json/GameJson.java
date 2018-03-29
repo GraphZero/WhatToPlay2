@@ -55,7 +55,6 @@ public class GameJson implements Serializable {
     private List<WebsiteJson> websites;
     private List<ImageInfoJson> screenshots;
 
-
     public GameJson(long id, String name, String slug, String url, String summary, String storyline,
                     int hypes, double popularity, double rating, int ratingCount, double aggregatedRating,
                     int aggregatedRatingCount, double totalRating, int totalRatingCount, long collectionId,

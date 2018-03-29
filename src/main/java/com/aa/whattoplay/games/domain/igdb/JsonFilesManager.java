@@ -70,7 +70,7 @@ public class JsonFilesManager {
         }
     }
 
-    public List<?> getAllObjectsFromJsons(String filesPath, Class clazz) {
+    public List getAllObjectsFromJsonsFiles(String filesPath, Class clazz) {
         List list = new ArrayList<>();
         for (int i = 1; i <= new File(filesPath).listFiles().length; i++) {
             list.addAll(getObjectsFromFile(filesPath, clazz, i));

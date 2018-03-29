@@ -4,10 +4,12 @@ import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
 import com.aa.whattoplay.games.infastructure.entities.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -19,7 +21,7 @@ import java.util.Set;
 @Setter @Getter
 public class GameEntity extends IgdbAbstractEntity {
     @Column(nullable = false)
-    @NotNull
+    @NotEmpty
     private String name;
 
     private String slug;
@@ -84,6 +86,45 @@ public class GameEntity extends IgdbAbstractEntity {
     private ImageInfo cover;
 
     public GameEntity() {
+    }
+
+    @Builder
+    public GameEntity(long id, @NotNull String name, String slug, String url, String summary, String storyline,
+                      int hypes, double popularity, double rating, int ratingCount, double aggregatedRating,
+                      int aggregatedRatingCount, double totalRating, int totalRatingCount, LocalDate createdAt,
+                      LocalDate updatedAt, LocalDate firstReleaseDate, Collection collection, Franchise franchise,
+                      Set<Developer> developers, Set<GameModeEntity> gameModes, Set<Genre> genres, Set<PlayerPerspective> playerPerspectives,
+                      Set<WebsiteEntity> websites, Status status, TimeToBeat timeToBeat, Esrb esrb, Pegi pegi, External external, ImageInfo cover) {
+        super(id);
+        this.name = name;
+        this.slug = slug;
+        this.url = url;
+        this.summary = summary;
+        this.storyline = storyline;
+        this.hypes = hypes;
+        this.popularity = popularity;
+        this.rating = rating;
+        this.ratingCount = ratingCount;
+        this.aggregatedRating = aggregatedRating;
+        this.aggregatedRatingCount = aggregatedRatingCount;
+        this.totalRating = totalRating;
+        this.totalRatingCount = totalRatingCount;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.firstReleaseDate = firstReleaseDate;
+        this.collection = collection;
+        this.franchise = franchise;
+        this.developers = developers;
+        this.gameModes = gameModes;
+        this.genres = genres;
+        this.playerPerspectives = playerPerspectives;
+        this.websites = websites;
+        this.status = status;
+        this.timeToBeat = timeToBeat;
+        this.esrb = esrb;
+        this.pegi = pegi;
+        this.external = external;
+        this.cover = cover;
     }
 
     @Override

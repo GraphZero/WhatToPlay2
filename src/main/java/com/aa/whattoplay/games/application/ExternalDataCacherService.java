@@ -6,6 +6,7 @@ import com.aa.whattoplay.games.domain.igdb.JsonFilesManager;
 import com.aa.whattoplay.games.domain.igdb.json.CollectionJson;
 import com.aa.whattoplay.games.domain.igdb.json.DeveloperJson;
 import com.aa.whattoplay.games.domain.igdb.json.FranchiseJson;
+import com.aa.whattoplay.games.domain.igdb.json.GameJson;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
@@ -25,7 +26,7 @@ public class ExternalDataCacherService {
 
     public void cacheCollections(){
         collectionsEntityCrudDao.setClazz(Collection.class);
-        List<CollectionJson> collectionJsons = (List<CollectionJson>) jsonFilesManager.getAllObjectsFromJsons("./collections/", CollectionJson.class);
+        List<CollectionJson> collectionJsons = (List<CollectionJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./collections/", CollectionJson.class);
         collectionJsons.forEach( collectionJson ->
                 collectionsEntityCrudDao.save(collectionJson.entity())
         );
@@ -33,7 +34,7 @@ public class ExternalDataCacherService {
 
     public void cacheFranchises(){
         franchisesEntityCrudDao.setClazz(Franchise.class);
-        List<FranchiseJson> franchisesJsons = (List<FranchiseJson>) jsonFilesManager.getAllObjectsFromJsons("./franchises/", FranchiseJson.class);
+        List<FranchiseJson> franchisesJsons = (List<FranchiseJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./franchises/", FranchiseJson.class);
         franchisesJsons.forEach( franchiseJson ->
                 franchisesEntityCrudDao.save(franchiseJson.entity())
         );
@@ -41,10 +42,16 @@ public class ExternalDataCacherService {
 
     public void cacheDevelopers(){
         developerEntityCrudDao.setClazz(Developer.class);
-        List<DeveloperJson> developerJsons = (List<DeveloperJson>) jsonFilesManager.getAllObjectsFromJsons("./developers/", DeveloperJson.class);
+        List<DeveloperJson> developerJsons = (List<DeveloperJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./developers/", DeveloperJson.class);
         developerJsons.forEach( developerJson ->
                 developerEntityCrudDao.save(developerJson.entity())
         );
+    }
+
+    public void cacheGames(){
+        List<GameJson> gamesJsons = (List<GameJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./games/", GameJson.class);
+
+        System.out.println(gamesJsons.size());
     }
 
 }
