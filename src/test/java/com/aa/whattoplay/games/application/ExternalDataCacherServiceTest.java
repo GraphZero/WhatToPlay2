@@ -2,6 +2,7 @@ package com.aa.whattoplay.games.application;
 
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.domain.igdb.JsonFilesManager;
+import com.aa.whattoplay.games.domain.igdb.JsonGamesPersistenceService;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
@@ -26,10 +27,13 @@ class ExternalDataCacherServiceTest {
     @Mock
     private IGenericCrudDao<Developer> developerIGenericCrudDao;
 
+    @Mock
+    private JsonGamesPersistenceService jsonGamesPersistenceService;
+
     @BeforeEach
     void setExternalDataCacherService(){
         jsonFilesManager = new JsonFilesManager();
-        externalDataCacherService = new ExternalDataCacherService(jsonFilesManager, collectionIGenericCrudDao, franchiseIGenericCrudDao, developerIGenericCrudDao);
+        externalDataCacherService = new ExternalDataCacherService(jsonFilesManager, jsonGamesPersistenceService, collectionIGenericCrudDao, franchiseIGenericCrudDao, developerIGenericCrudDao);
     }
 
     @Test
@@ -38,6 +42,6 @@ class ExternalDataCacherServiceTest {
         // given
         // when
         // then
-        externalDataCacherService.cacheGames();
+        externalDataCacherService.persistGamesFromDefaultJsonFiles();
     }
 }

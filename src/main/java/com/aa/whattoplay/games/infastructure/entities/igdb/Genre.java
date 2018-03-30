@@ -13,7 +13,11 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Genres")
-@Getter @Setter @ToString  @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Genre extends IgdbAbstractEntity {
     @Id
     @Column(nullable = false)

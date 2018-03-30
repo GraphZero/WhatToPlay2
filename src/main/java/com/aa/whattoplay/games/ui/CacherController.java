@@ -15,20 +15,26 @@ public class CacherController {
 
     @RequestMapping(path = "/cacheCollections", method = RequestMethod.POST)
     public ResponseEntity<String> cacheCollections(){
-        externalDataCacherService.cacheCollections();
+        externalDataCacherService.persistCollectionsFromDefaultJsonFiles();
         return new ResponseEntity<>("Finished caching collections", HttpStatus.OK);
     }
 
     @RequestMapping(path = "/cacheFranchises", method = RequestMethod.POST)
     public ResponseEntity<String> cacheFranchises(){
-        externalDataCacherService.cacheFranchises();
+        externalDataCacherService.persistFranchisesFromDefaultJsonFiles();
         return new ResponseEntity<>("Finished caching franchises", HttpStatus.OK);
     }
 
     @RequestMapping(path = "/cacheDevelopers", method = RequestMethod.POST)
     public ResponseEntity<String> cacheDevelopers(){
-        externalDataCacherService.cacheDevelopers();
+        externalDataCacherService.persistDevelopersFromDefaultJsonFiles();
         return new ResponseEntity<>("Finished caching developers", HttpStatus.OK);
+    }
+
+    @RequestMapping(path = "/cacheGames", method = RequestMethod.POST)
+    public ResponseEntity<String> cacheGames(){
+        externalDataCacherService.persistGamesFromDefaultJsonFiles();
+        return new ResponseEntity<>("Finished caching games", HttpStatus.OK);
     }
 
 }

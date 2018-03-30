@@ -1,11 +1,14 @@
 package com.aa.whattoplay.games.domain.igdb;
 
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
+import com.aa.whattoplay.games.infastructure.entities.igdb.Website;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static com.aa.whattoplay.games.TestDataGenerator.getOneThousandTestJsonFranchises;
 import static com.aa.whattoplay.games.TestDataGenerator.getTestJsonFranchises;
@@ -22,7 +25,6 @@ class JsonFilesManagerTest {
     void shouldSaveGamesToDefaultPath() {
         // given
         jsonFilesManager = new JsonFilesManager();
-
         // when
         // then
         jsonFilesManager.saveJsonToDefaultPath(getTestJsonGamesWithoutListsOfIds());
@@ -30,6 +32,7 @@ class JsonFilesManagerTest {
     }
 
     @Test
+    @Disabled
     void shouldSaveGamesToCustomPath() {
         // given
         jsonFilesManager = new JsonFilesManager();
@@ -48,6 +51,35 @@ class JsonFilesManagerTest {
         jsonFilesManager.saveJsonToCustomPath(getTestJsonGamesWithoutListsOfIds(), "D:\\test\\");
         List<GameJson> gameJsons = (List<GameJson> ) jsonFilesManager.getAllObjectsFromJsonsFiles("D:\\test\\", GameJson.class);
         assertEquals(3, gameJsons.size());
+    }
+
+    @Test
+    void shouldLoad() {
+        // given
+        jsonFilesManager = new JsonFilesManager();
+        // when
+        // then
+        List<GameJson> gameJsons = (List<GameJson> ) jsonFilesManager.getAllObjectsFromJsonsFiles("./games/", GameJson.class);
+//        System.out.println(
+//                gameJsons.stream()
+//                .flatMapToInt(gameJson ->{
+//                        if ( gameJson.getWebsites() != null ){
+//                            return gameJson.getWebsites().stream().mapToInt( website -> website.getUrl().length());
+//                        }
+//                        return null;
+//                    }
+//                 )
+//                .max());
+//        System.out.println(
+//                gameJsons.stream()
+//                        .mapToInt(gameJson ->{
+//                                    if ( gameJson.getExternal() != null ){
+//                                        return gameJson.getExternal().getSteam().length();
+//                                    }
+//                                    return 0;
+//                                }
+//                        )
+//                        .max());
     }
 
     @Test

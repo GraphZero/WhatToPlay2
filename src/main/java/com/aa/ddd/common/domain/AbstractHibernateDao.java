@@ -40,4 +40,9 @@ public abstract class AbstractHibernateDao <T extends PersistentClass> {
         findById( entityId ).ifPresent( this::delete);
     }
 
+    public void flushAndClearForBatchProcessing(){
+        entityManager.flush();
+        entityManager.clear();
+    }
+
 }

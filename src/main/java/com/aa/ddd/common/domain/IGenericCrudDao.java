@@ -19,4 +19,6 @@ public interface IGenericCrudDao<T extends PersistentClass> {
 
     void setClazz(Class< T > clazzToSet );
 
+    void flushAndClearForBatchProcessing();
+
 }

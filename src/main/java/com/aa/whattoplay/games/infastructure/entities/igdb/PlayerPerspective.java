@@ -2,6 +2,9 @@ package com.aa.whattoplay.games.infastructure.entities.igdb;
 
 import com.aa.whattoplay.games.infastructure.entities.IgdbAbstractEntity;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +16,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Player_Perspectives")
+@Getter
+@Setter
+@NoArgsConstructor
 public class PlayerPerspective extends IgdbAbstractEntity {
     @Id
     @Column(nullable = false)
