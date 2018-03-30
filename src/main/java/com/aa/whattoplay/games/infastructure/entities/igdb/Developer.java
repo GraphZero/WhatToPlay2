@@ -1,6 +1,5 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
-import com.aa.whattoplay.games.infastructure.entities.IgdbAbstractEntity;
 import lombok.*;
 
 import javax.persistence.Column;
