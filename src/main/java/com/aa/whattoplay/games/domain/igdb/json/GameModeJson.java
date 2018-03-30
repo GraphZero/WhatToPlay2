@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.igdb.GameModeEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameMode;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -44,8 +44,8 @@ public class GameModeJson {
         return zdt.toInstant().toEpochMilli();
     }
 
-    public GameModeEntity entity(){
-        return GameModeEntity.builder()
+    public GameMode entity(){
+        return GameMode.builder()
                 .id(id)
                 .name(name)
                 .url(url)

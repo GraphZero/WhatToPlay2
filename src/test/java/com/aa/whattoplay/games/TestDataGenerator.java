@@ -5,7 +5,7 @@ import com.aa.whattoplay.games.domain.igdb.json.FranchiseJson;
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
 import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
-import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -63,8 +63,8 @@ public class TestDataGenerator {
         return franchiseJsons;
     }
 
-    public static GameEntity getTestGameEntity(){
-        return new GameEntity( "nam", "a", "b", "c", "d", 7, 6, 5,
+    public static Game getTestGameEntity(){
+        return new Game( "nam", "a", "b", "c", "d", 7, 6, 5,
                 6, 4, 7, 3, 7,
                 LocalDate.now(), LocalDate.now(), LocalDate.now(), null, null,null,
                 null, null, null, null, Status.RELEASED,  null, null, null, null ,null);

@@ -1,4 +1,4 @@
-package com.aa.functional;
+package com.aa.whattoplay.functional;
 
 import com.aa.whattoplay.accounts.application.AccountControlService;
 import com.aa.whattoplay.accounts.application.commands.RegisterAccountCommand;

@@ -5,7 +5,6 @@ import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.domain.igdb.json.*;
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.infastructure.entities.igdb.*;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,21 +21,21 @@ import java.util.stream.Collectors;
 @Transactional
 @Slf4j
 public class JsonGamesPersistenceService {
-    private final IGenericCrudDao<GameEntity> gameEntityGenericCrudDao;
+    private final IGenericCrudDao<Game> gameEntityGenericCrudDao;
     private final IGenericCrudDao<Developer> developerGenericCrudDao;
     private final IGenericCrudDao<Franchise> franchiseGenericCrudDao;
     private final IGenericCrudDao<PlayerPerspective> playerPerspectiveGenericCrudDao;
-    private final IGenericCrudDao<GameModeEntity> gameModeEntityGenericCrudDao;
+    private final IGenericCrudDao<GameMode> gameModeEntityGenericCrudDao;
     private final IGenericCrudDao<Genre> genreGenericCrudDao;
     private final IGenericCrudDao<Collection> collectionIGenericCrudDao;
-    private final IGenericCrudDao<WebsiteEntity> websiteEntityGenericCrudDao;
+    private final IGenericCrudDao<Website> websiteEntityGenericCrudDao;
 
 
     @Autowired
-    public JsonGamesPersistenceService(IGenericCrudDao<GameEntity> gameEntityGenericCrudDao, IGenericCrudDao<Developer> developerGenericCrudDao,
+    public JsonGamesPersistenceService(IGenericCrudDao<Game> gameEntityGenericCrudDao, IGenericCrudDao<Developer> developerGenericCrudDao,
                                        IGenericCrudDao<Franchise> franchiseGenericCrudDao, IGenericCrudDao<PlayerPerspective> playerPerspectiveGenericCrudDao,
-                                       IGenericCrudDao<GameModeEntity> gameModeEntityGenericCrudDao, IGenericCrudDao<Genre> genreGenericCrudDao,
-                                       IGenericCrudDao<Collection> collectionIGenericCrudDao, IGenericCrudDao<WebsiteEntity> websiteEntityGenericCrudDao) {
+                                       IGenericCrudDao<GameMode> gameModeEntityGenericCrudDao, IGenericCrudDao<Genre> genreGenericCrudDao,
+                                       IGenericCrudDao<Collection> collectionIGenericCrudDao, IGenericCrudDao<Website> websiteEntityGenericCrudDao) {
         this.gameEntityGenericCrudDao = gameEntityGenericCrudDao;
         this.developerGenericCrudDao = developerGenericCrudDao;
         this.franchiseGenericCrudDao = franchiseGenericCrudDao;
@@ -45,14 +44,14 @@ public class JsonGamesPersistenceService {
         this.genreGenericCrudDao = genreGenericCrudDao;
         this.collectionIGenericCrudDao = collectionIGenericCrudDao;
         this.websiteEntityGenericCrudDao = websiteEntityGenericCrudDao;
-        this.gameEntityGenericCrudDao.setClazz(GameEntity.class);
+        this.gameEntityGenericCrudDao.setClazz(Game.class);
         this.developerGenericCrudDao.setClazz(Developer.class);
         this.franchiseGenericCrudDao.setClazz(Franchise.class);
         this.playerPerspectiveGenericCrudDao.setClazz(PlayerPerspective.class);
-        this.gameModeEntityGenericCrudDao.setClazz(GameModeEntity.class);
+        this.gameModeEntityGenericCrudDao.setClazz(GameMode.class);
         this.genreGenericCrudDao.setClazz(Genre.class);
         this.collectionIGenericCrudDao.setClazz(Collection.class);
-        this.websiteEntityGenericCrudDao.setClazz(WebsiteEntity.class);
+        this.websiteEntityGenericCrudDao.setClazz(Website.class);
     }
 
     public long persistGameJsons(List<GameJson> gameJsonList) {
@@ -60,7 +59,7 @@ public class JsonGamesPersistenceService {
     }
 
     public boolean persistGameJson(GameJson gameJson) {
-        GameEntity gameToPersist = buildGameEntityFromJson(
+        Game gameToPersist = buildGameEntityFromJson(
                     gameJson,
                     getDevelopersOfGameJson(gameJson),
                     getGameModesOfGameJson(gameJson),
@@ -69,7 +68,7 @@ public class JsonGamesPersistenceService {
                     getFranchiseOfGameJson(gameJson),
                     getCollectionOfGameJson(gameJson)
         );
-        Set<WebsiteEntity> websiteEntities = getWebsitesOfGameJson(gameJson, gameToPersist);
+        Set<Website> websiteEntities = getWebsitesOfGameJson(gameJson, gameToPersist);
         gameToPersist.setWebsites(websiteEntities);
         websiteEntities.forEach(websiteEntityGenericCrudDao::save);
         gameEntityGenericCrudDao.save(gameToPersist);
@@ -90,7 +89,7 @@ public class JsonGamesPersistenceService {
                 .collect(Collectors.toSet());
     }
 
-    protected Set<GameModeEntity> getGameModesOfGameJson(GameJson gameJson) {
+    protected Set<GameMode> getGameModesOfGameJson(GameJson gameJson) {
         return gameJson.getGameModesIds().stream()
                 .map(
                         gameModsId ->
@@ -98,7 +97,7 @@ public class JsonGamesPersistenceService {
                                         .findById( (long) gameModsId)
                                         .orElseGet(() -> {
                                             log.warn("Couldn't find game mode for game: " + gameJson.getId());
-                                            return GameModeEntity.builder().id(0).name("UNKNOWN GAME MODE").build();
+                                            return GameMode.builder().id(0).name("UNKNOWN GAME MODE").build();
                                         })
                 )
                 .collect(Collectors.toSet());
@@ -148,16 +147,16 @@ public class JsonGamesPersistenceService {
                 });
     }
 
-    protected Set<WebsiteEntity> getWebsitesOfGameJson(GameJson gameJson, GameEntity game) {
+    protected Set<Website> getWebsitesOfGameJson(GameJson gameJson, Game game) {
         return gameJson.getWebsites().stream()
                 .map(x -> x.entity(game))
                 .collect(Collectors.toSet());
     }
 
-    protected GameEntity buildGameEntityFromJson(GameJson gameJson, Set<Developer> developers, Set<GameModeEntity> gameModes,
-                                                 Set<PlayerPerspective> playerPerspectives, Set<Genre> genres,
-                                                 Franchise franchise, Collection collection) {
-        return GameEntity.builder()
+    protected Game buildGameEntityFromJson(GameJson gameJson, Set<Developer> developers, Set<GameMode> gameModes,
+                                           Set<PlayerPerspective> playerPerspectives, Set<Genre> genres,
+                                           Franchise franchise, Collection collection) {
+        return Game.builder()
                 .id(gameJson.getId())
                 .name(gameJson.getName())
                 .slug(gameJson.getSlug())

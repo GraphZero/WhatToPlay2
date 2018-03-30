@@ -1,7 +1,7 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
 import com.aa.whattoplay.games.domain.igdb.value.EsrbRating;
-import com.aa.whattoplay.games.infastructure.entities.Esrb;
+import com.aa.whattoplay.games.infastructure.entities.embeddables.Esrb;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

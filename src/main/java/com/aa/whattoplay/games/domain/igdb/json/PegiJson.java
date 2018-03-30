@@ -1,7 +1,7 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
 import com.aa.whattoplay.games.domain.igdb.value.PegiRating;
-import com.aa.whattoplay.games.infastructure.entities.Pegi;
+import com.aa.whattoplay.games.infastructure.entities.embeddables.Pegi;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 

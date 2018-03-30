@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.TimeToBeat;
+import com.aa.whattoplay.games.infastructure.entities.embeddables.TimeToBeat;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
 
