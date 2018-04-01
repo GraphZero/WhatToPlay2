@@ -5,7 +5,7 @@ import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.domain.igdb.json.*;
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.infastructure.entities.igdb.*;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
+import com.aa.whattoplay.games.infastructure.entities.igdb.CollectionEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,21 +19,21 @@ import java.util.stream.Collectors;
 @Transactional
 @Slf4j
 public class JsonGamesPersistenceService {
-    private final IGenericCrudDao<Game> gameEntityGenericCrudDao;
-    private final IGenericCrudDao<Developer> developerGenericCrudDao;
-    private final IGenericCrudDao<Franchise> franchiseGenericCrudDao;
-    private final IGenericCrudDao<PlayerPerspective> playerPerspectiveGenericCrudDao;
-    private final IGenericCrudDao<GameMode> gameModeEntityGenericCrudDao;
-    private final IGenericCrudDao<Genre> genreGenericCrudDao;
-    private final IGenericCrudDao<Collection> collectionIGenericCrudDao;
-    private final IGenericCrudDao<Website> websiteEntityGenericCrudDao;
+    private final IGenericCrudDao<GameEntity> gameEntityGenericCrudDao;
+    private final IGenericCrudDao<DeveloperEntity> developerGenericCrudDao;
+    private final IGenericCrudDao<FranchiseEntity> franchiseGenericCrudDao;
+    private final IGenericCrudDao<PlayerPerspectiveEntity> playerPerspectiveGenericCrudDao;
+    private final IGenericCrudDao<GameModeEntity> gameModeEntityGenericCrudDao;
+    private final IGenericCrudDao<GenreEntity> genreGenericCrudDao;
+    private final IGenericCrudDao<CollectionEntity> collectionIGenericCrudDao;
+    private final IGenericCrudDao<WebsiteEntity> websiteEntityGenericCrudDao;
     private HashMap<String, Integer> numberOfInconsistentData;
 
     @Autowired
-    public JsonGamesPersistenceService(IGenericCrudDao<Game> gameEntityGenericCrudDao, IGenericCrudDao<Developer> developerGenericCrudDao,
-                                       IGenericCrudDao<Franchise> franchiseGenericCrudDao, IGenericCrudDao<PlayerPerspective> playerPerspectiveGenericCrudDao,
-                                       IGenericCrudDao<GameMode> gameModeEntityGenericCrudDao, IGenericCrudDao<Genre> genreGenericCrudDao,
-                                       IGenericCrudDao<Collection> collectionIGenericCrudDao, IGenericCrudDao<Website> websiteEntityGenericCrudDao) {
+    public JsonGamesPersistenceService(IGenericCrudDao<GameEntity> gameEntityGenericCrudDao, IGenericCrudDao<DeveloperEntity> developerGenericCrudDao,
+                                       IGenericCrudDao<FranchiseEntity> franchiseGenericCrudDao, IGenericCrudDao<PlayerPerspectiveEntity> playerPerspectiveGenericCrudDao,
+                                       IGenericCrudDao<GameModeEntity> gameModeEntityGenericCrudDao, IGenericCrudDao<GenreEntity> genreGenericCrudDao,
+                                       IGenericCrudDao<CollectionEntity> collectionIGenericCrudDao, IGenericCrudDao<WebsiteEntity> websiteEntityGenericCrudDao) {
         this.gameEntityGenericCrudDao = gameEntityGenericCrudDao;
         this.developerGenericCrudDao = developerGenericCrudDao;
         this.franchiseGenericCrudDao = franchiseGenericCrudDao;
@@ -42,14 +42,14 @@ public class JsonGamesPersistenceService {
         this.genreGenericCrudDao = genreGenericCrudDao;
         this.collectionIGenericCrudDao = collectionIGenericCrudDao;
         this.websiteEntityGenericCrudDao = websiteEntityGenericCrudDao;
-        this.gameEntityGenericCrudDao.setClazz(Game.class);
-        this.developerGenericCrudDao.setClazz(Developer.class);
-        this.franchiseGenericCrudDao.setClazz(Franchise.class);
-        this.playerPerspectiveGenericCrudDao.setClazz(PlayerPerspective.class);
-        this.gameModeEntityGenericCrudDao.setClazz(GameMode.class);
-        this.genreGenericCrudDao.setClazz(Genre.class);
-        this.collectionIGenericCrudDao.setClazz(Collection.class);
-        this.websiteEntityGenericCrudDao.setClazz(Website.class);
+        this.gameEntityGenericCrudDao.setClazz(GameEntity.class);
+        this.developerGenericCrudDao.setClazz(DeveloperEntity.class);
+        this.franchiseGenericCrudDao.setClazz(FranchiseEntity.class);
+        this.playerPerspectiveGenericCrudDao.setClazz(PlayerPerspectiveEntity.class);
+        this.gameModeEntityGenericCrudDao.setClazz(GameModeEntity.class);
+        this.genreGenericCrudDao.setClazz(GenreEntity.class);
+        this.collectionIGenericCrudDao.setClazz(CollectionEntity.class);
+        this.websiteEntityGenericCrudDao.setClazz(WebsiteEntity.class);
         initiliazeErrorHashMap();
     }
 
@@ -64,7 +64,7 @@ public class JsonGamesPersistenceService {
 
     protected void persistGameJson(GameJson gameJson) {
         long gameId = gameJson.getId();
-        Game gameToPersist = buildGameEntityFromJson(
+        GameEntity gameEntityToPersist = buildGameEntityFromJson(
                 gameJson,
                 getDevelopersOfGameJson(Optional.ofNullable(gameJson.getDevelopersIds()).orElse(new ArrayList<>()), gameId),
                 getGameModesOfGameJson(Optional.ofNullable(gameJson.getGameModesIds()).orElse(new ArrayList<>()), gameId),
@@ -73,44 +73,44 @@ public class JsonGamesPersistenceService {
                 getFranchiseOfGameJson(gameJson),
                 getCollectionOfGameJson(gameJson)
         );
-        gameEntityGenericCrudDao.save(gameToPersist);
-        Set<Website> websiteEntities = getWebsitesOfGameJson(Optional.ofNullable(gameJson.getWebsites()).orElse(new ArrayList<>()), gameToPersist);
-        gameToPersist.setWebsites(websiteEntities);
-        websiteEntities.forEach(websiteEntityGenericCrudDao::save);
-        gameEntityGenericCrudDao.update(gameToPersist);
+        gameEntityGenericCrudDao.save(gameEntityToPersist);
+        Set<WebsiteEntity> websiteEntityEntities = getWebsitesOfGameJson(Optional.ofNullable(gameJson.getWebsites()).orElse(new ArrayList<>()), gameEntityToPersist);
+        gameEntityToPersist.setWebsiteEntities(websiteEntityEntities);
+        websiteEntityEntities.forEach(websiteEntityGenericCrudDao::save);
+        gameEntityGenericCrudDao.update(gameEntityToPersist);
     }
 
-    protected Set<Developer> getDevelopersOfGameJson(List<Long> developersId, long gameId) {
+    protected Set<DeveloperEntity> getDevelopersOfGameJson(List<Long> developersId, long gameId) {
         return developersId.stream()
                 .map(
                         developerId ->
                                 developerGenericCrudDao
                                         .findById(developerId)
                                         .orElseGet(() -> {
-                                            numberOfInconsistentData.merge("Number of inconsistent developers", 1, Integer::sum);
-                                            log.info("Couldn't find developer for game: " + gameId + " developerId: " + developerId);
+                                            numberOfInconsistentData.merge("Number of inconsistent developerEntities", 1, Integer::sum);
+                                            log.info("Couldn't find developer for gameEntity: " + gameId + " developerId: " + developerId);
                                             return developerGenericCrudDao.findById((long) 0).get();
                                         })
                 )
                 .collect(Collectors.toSet());
     }
 
-    protected Set<GameMode> getGameModesOfGameJson(List<Short> gameModesId, long gameId) {
+    protected Set<GameModeEntity> getGameModesOfGameJson(List<Short> gameModesId, long gameId) {
         return gameModesId.stream()
                 .map(
                         gameModsId ->
                                 gameModeEntityGenericCrudDao
                                         .findById((long) gameModsId)
                                         .orElseGet(() -> {
-                                            numberOfInconsistentData.merge("Number of inconsistent game modes", 1, Integer::sum);
-                                            log.info("Couldn't find game mode for game: " + gameId + " gameModeId: " + gameModsId);
+                                            numberOfInconsistentData.merge("Number of inconsistent gameEntity modes", 1, Integer::sum);
+                                            log.info("Couldn't find gameEntity mode for gameEntity: " + gameId + " gameModeId: " + gameModsId);
                                             return gameModeEntityGenericCrudDao.findById((long) 0).get();
                                         })
                 )
                 .collect(Collectors.toSet());
     }
 
-    protected Set<PlayerPerspective> getPlayerPerspectivesOfGameJson(List<Short> playerPerspectivesIds, long gameId) {
+    protected Set<PlayerPerspectiveEntity> getPlayerPerspectivesOfGameJson(List<Short> playerPerspectivesIds, long gameId) {
         return playerPerspectivesIds.stream()
                 .map(
                         playerPerspectiveId ->
@@ -118,58 +118,58 @@ public class JsonGamesPersistenceService {
                                         .findById((long) playerPerspectiveId)
                                         .orElseGet(() -> {
                                             numberOfInconsistentData.merge("Number of inconsistent player perspectives", 1, Integer::sum);
-                                            log.info("Couldn't find player perspective for game: " + gameId + " playerPerspectiveId: " + playerPerspectiveId);
+                                            log.info("Couldn't find player perspective for gameEntity: " + gameId + " playerPerspectiveId: " + playerPerspectiveId);
                                             return playerPerspectiveGenericCrudDao.findById((long) 0).get();
                                         })
                 )
                 .collect(Collectors.toSet());
     }
 
-    protected Set<Genre> getGenresOfGameJson(List<Short> genresIds, long gameId) {
+    protected Set<GenreEntity> getGenresOfGameJson(List<Short> genresIds, long gameId) {
         return genresIds.stream()
                 .map(
                         genreId ->
                                 genreGenericCrudDao
                                         .findById((long) genreId)
                                         .orElseGet(() -> {
-                                            numberOfInconsistentData.merge("Number of inconsistent genres", 1, Integer::sum);
-                                            log.info("Couldn't find genre for game: " + gameId);
+                                            numberOfInconsistentData.merge("Number of inconsistent genreEntities", 1, Integer::sum);
+                                            log.info("Couldn't find genre for gameEntity: " + gameId);
                                             return genreGenericCrudDao.findById((long) 0).get();
                                         })
                 )
                 .collect(Collectors.toSet());
     }
 
-    protected Franchise getFranchiseOfGameJson(GameJson gameJson) {
+    protected FranchiseEntity getFranchiseOfGameJson(GameJson gameJson) {
         return franchiseGenericCrudDao
                 .findById(gameJson.getFranchiseId())
                 .orElseGet(() -> {
                     numberOfInconsistentData.merge("Number of inconsistent franchises", 1, Integer::sum);
-                    log.info("Couldn't find franchise for game: " + gameJson.getId() + " franchiseId: " + gameJson.getFranchiseId());
+                    log.info("Couldn't find franchiseEntity for gameEntity: " + gameJson.getId() + " franchiseId: " + gameJson.getFranchiseId());
                     return franchiseGenericCrudDao.findById((long) 0).get();
                 });
     }
 
-    protected Collection getCollectionOfGameJson(GameJson gameJson) {
+    protected CollectionEntity getCollectionOfGameJson(GameJson gameJson) {
         return collectionIGenericCrudDao
                 .findById(gameJson.getCollectionId())
                 .orElseGet(() -> {
                     numberOfInconsistentData.merge("Number of inconsistent collections", 1, Integer::sum);
-                    log.info("Couldn't find collection for game: " + gameJson.getId() + " collectionId: " + gameJson.getCollectionId());
+                    log.info("Couldn't find collectionEntity for gameEntity: " + gameJson.getId() + " collectionId: " + gameJson.getCollectionId());
                     return collectionIGenericCrudDao.findById((long) 0).get();
                 });
     }
 
-    protected Set<Website> getWebsitesOfGameJson(List<WebsiteJson> websiteJsons, Game game) {
+    protected Set<WebsiteEntity> getWebsitesOfGameJson(List<WebsiteJson> websiteJsons, GameEntity gameEntity) {
         return websiteJsons.stream()
-                .map(x -> x.entity(game))
+                .map(x -> x.entity(gameEntity))
                 .collect(Collectors.toSet());
     }
 
-    protected Game buildGameEntityFromJson(GameJson gameJson, Set<Developer> developers, Set<GameMode> gameModes,
-                                           Set<PlayerPerspective> playerPerspectives, Set<Genre> genres,
-                                           Franchise franchise, Collection collection) {
-        return Game.builder()
+    protected GameEntity buildGameEntityFromJson(GameJson gameJson, Set<DeveloperEntity> developerEntities, Set<GameModeEntity> gameModeEntities,
+                                                 Set<PlayerPerspectiveEntity> playerPerspectiveEntities, Set<GenreEntity> genreEntities,
+                                                 FranchiseEntity franchiseEntity, CollectionEntity collectionEntity) {
+        return GameEntity.builder()
                 .id(gameJson.getId())
                 .name(gameJson.getName())
                 .slug(gameJson.getSlug())
@@ -189,13 +189,13 @@ public class JsonGamesPersistenceService {
                 .createdAt(Instant.ofEpochMilli(gameJson.getCreatedAt()).atZone(ZoneId.systemDefault()).toLocalDate())
                 .updatedAt(Instant.ofEpochMilli(gameJson.getUpdatedAt()).atZone(ZoneId.systemDefault()).toLocalDate())
                 .firstReleaseDate(Instant.ofEpochMilli(gameJson.getFirstReleaseDate()).atZone(ZoneId.systemDefault()).toLocalDate())
-                .collection(collection)
-                .franchise(franchise)
-                .developers(developers)
-                .gameModes(gameModes)
-                .genres(genres)
-                .playerPerspectives(playerPerspectives)
-                .websites(new HashSet<>())
+                .collectionEntity(collectionEntity)
+                .franchiseEntity(franchiseEntity)
+                .developerEntities(developerEntities)
+                .gameModeEntities(gameModeEntities)
+                .genreEntities(genreEntities)
+                .playerPerspectiveEntities(playerPerspectiveEntities)
+                .websiteEntities(new HashSet<>())
                 .status(gameJson.getStatus())
                 .timeToBeat(Optional.ofNullable(gameJson.getTimeToBeat()).orElse(new TimeToBeatJson()).entity())
                 .esrb(Optional.ofNullable(gameJson.getEsrb()).orElse(new EsrbJson()).entity())
@@ -207,10 +207,10 @@ public class JsonGamesPersistenceService {
 
     private void initiliazeErrorHashMap(){
         numberOfInconsistentData = new HashMap<>();
-        numberOfInconsistentData.put("Number of inconsistent developers", 0);
-        numberOfInconsistentData.put("Number of inconsistent game modes", 0);
+        numberOfInconsistentData.put("Number of inconsistent developerEntities", 0);
+        numberOfInconsistentData.put("Number of inconsistent gameEntity modes", 0);
         numberOfInconsistentData.put("Number of inconsistent player perspectives", 0);
-        numberOfInconsistentData.put("Number of inconsistent genres", 0);
+        numberOfInconsistentData.put("Number of inconsistent genreEntities", 0);
         numberOfInconsistentData.put("Number of inconsistent franchises", 0);
         numberOfInconsistentData.put("Number of inconsistent collections", 0);
     }

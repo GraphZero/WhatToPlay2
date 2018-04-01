@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
+import com.aa.whattoplay.games.infastructure.entities.igdb.DeveloperEntity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -70,8 +70,8 @@ public class DeveloperJson {
         this.developerImageHeight = developerImageUrl.getHeight();
     }
 
-    public Developer entity(){
-        return Developer.builder()
+    public DeveloperEntity entity(){
+        return DeveloperEntity.builder()
                 .id(id)
                 .name(name)
                 .url(url)

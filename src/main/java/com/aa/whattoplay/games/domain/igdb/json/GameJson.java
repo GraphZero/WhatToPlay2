@@ -185,32 +185,32 @@ public class GameJson implements Serializable {
         this.totalRatingCount = totalRatingCount;
     }
 
-    @JsonGetter("collection")
+    @JsonGetter("collectionEntity")
     public long getCollectionId() {
         return collectionId;
     }
 
-    @JsonSetter("collection")
+    @JsonSetter("collectionEntity")
     public void setCollectionId(long collectionId) {
         this.collectionId = collectionId;
     }
 
-    @JsonGetter("franchise")
+    @JsonGetter("franchiseEntity")
     public long getFranchiseId() {
         return franchiseId;
     }
 
-    @JsonSetter("franchise")
+    @JsonSetter("franchiseEntity")
     public void setFranchiseId(long franchiseId) {
         this.franchiseId = franchiseId;
     }
 
-    @JsonGetter("developers")
+    @JsonGetter("developerEntities")
     public List<Long> getDevelopersIds() {
         return developersIds;
     }
 
-    @JsonSetter("developers")
+    @JsonSetter("developerEntities")
     public void setDevelopersIds(List<Long> developersIds) {
         this.developersIds = developersIds;
     }
@@ -245,12 +245,12 @@ public class GameJson implements Serializable {
         this.gameModesIds = gameModesIds;
     }
 
-    @JsonGetter("genres")
+    @JsonGetter("genreEntities")
     public List<Short> getGenresIds() {
         return genresIds;
     }
 
-    @JsonSetter("genres")
+    @JsonSetter("genreEntities")
     public void setGenresIds(List<Short> genresIds) {
         this.genresIds = genresIds;
     }

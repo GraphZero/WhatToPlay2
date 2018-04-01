@@ -2,7 +2,7 @@ package com.aa.whattoplay.games.infastructure.entities.accounts;
 
 import com.aa.ddd.common.domain.AbstractEntity;
 import com.aa.whattoplay.games.domain.suggestions.UserRating;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,7 +23,7 @@ public class UserPersonalRating extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "game_id", nullable = false, referencedColumnName = "id")
-    private Game game;
+    private GameEntity gameEntity;
 
     @Enumerated(value = EnumType.STRING)
     private UserRating rating;
@@ -45,7 +45,7 @@ public class UserPersonalRating extends AbstractEntity {
     public String toString() {
         return "UserPersonalRating{" +
                 "user=" + user.getId() +
-                ", game=" + game.getId() +
+                ", gameEntity=" + gameEntity.getId() +
                 ", rating=" + rating +
                 '}';
     }

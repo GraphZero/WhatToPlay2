@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
+import com.aa.whattoplay.games.infastructure.entities.igdb.FranchiseEntity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -45,8 +45,8 @@ public class FranchiseJson {
         return zdt.toInstant().toEpochMilli();
     }
 
-    public Franchise entity(){
-        return Franchise.builder()
+    public FranchiseEntity entity(){
+        return FranchiseEntity.builder()
                 .id(id)
                 .name(name)
                 .url(url)

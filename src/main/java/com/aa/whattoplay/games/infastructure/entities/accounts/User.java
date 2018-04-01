@@ -1,8 +1,6 @@
 package com.aa.whattoplay.games.infastructure.entities.accounts;
 
 import com.aa.ddd.common.domain.AbstractEntity;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import javax.persistence.*;

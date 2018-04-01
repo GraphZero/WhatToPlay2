@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.igdb.PlayerPerspective;
+import com.aa.whattoplay.games.infastructure.entities.igdb.PlayerPerspectiveEntity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -45,8 +45,8 @@ public class PlayerPerspectiveJson {
         return zdt.toInstant().toEpochMilli();
     }
 
-    public PlayerPerspective entity(){
-        return PlayerPerspective.builder()
+    public PlayerPerspectiveEntity entity(){
+        return PlayerPerspectiveEntity.builder()
                 .id(id)
                 .name(name)
                 .url(url)

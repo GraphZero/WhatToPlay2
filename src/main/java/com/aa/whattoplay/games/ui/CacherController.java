@@ -28,7 +28,7 @@ public class CacherController {
     @RequestMapping(path = "/cacheDevelopers", method = RequestMethod.POST)
     public ResponseEntity<String> cacheDevelopers(){
         externalDataCacherService.persistDevelopersFromDefaultJsonFiles();
-        return new ResponseEntity<>("Finished caching developers", HttpStatus.OK);
+        return new ResponseEntity<>("Finished caching developerEntities", HttpStatus.OK);
     }
 
     @RequestMapping(path = "/cacheGames", method = RequestMethod.POST)

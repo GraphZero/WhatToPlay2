@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
+import com.aa.whattoplay.games.infastructure.entities.igdb.CollectionEntity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -45,8 +45,8 @@ public class CollectionJson {
         return zdt.toInstant().toEpochMilli();
     }
 
-    public Collection entity(){
-        return Collection.builder()
+    public CollectionEntity entity(){
+        return CollectionEntity.builder()
                 .id(id)
                 .name(name)
                 .url(url)

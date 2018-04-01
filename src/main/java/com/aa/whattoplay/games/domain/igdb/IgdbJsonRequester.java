@@ -74,7 +74,7 @@ public class IgdbJsonRequester  {
     public List<GenreJson> getAllGenresFromIgdb()  {
         HttpResponse<GenreJson[]> genresJson = null;
         try {
-            genresJson = Unirest.get("https://api-2445582011268.apicast.io/genres/")
+            genresJson = Unirest.get("https://api-2445582011268.apicast.io/genreEntities/")
                     .header("accept", "application/json")
                     .header("user-key", TOKEN)
                     .queryString("fields", getBasicFields())
@@ -97,7 +97,7 @@ public class IgdbJsonRequester  {
                     .queryString("limit", "50")
                     .asObject(GameModeJson[].class);
         } catch (UnirestException e) {
-            logger.error(new StringBuilder().append(String.format("%sCouldn't parse Game Modes. \n", this.getClass().getName())).append(e.getMessage()).toString());
+            logger.error(new StringBuilder().append(String.format("%sCouldn't parse GameEntity Modes. \n", this.getClass().getName())).append(e.getMessage()).toString());
             throw new CouldntParseGameModesException();
         }
         return Arrays.asList(genresJson.getBody());
@@ -151,7 +151,7 @@ public class IgdbJsonRequester  {
     }
 
     public List<DeveloperJson> getAllDevelopersFromIgdb() {
-        logger.info(" ===================== Persisting developers starts. ===================== ");
+        logger.info(" ===================== Persisting developerEntities starts. ===================== ");
         final String urlForScroll = "https://api-2445582011268.apicast.io/companies/";
         final String scrollUrlForDevelopers;
         final long requiredRequestsNumb;
@@ -162,7 +162,7 @@ public class IgdbJsonRequester  {
             scrollUrlForDevelopers = jsonResponse.getHeaders().get("X-Next-Page").get(0);
             requiredRequestsNumb = Math.round(Integer.parseInt(jsonResponse.getHeaders().get("X-Count").get(0)) / 50);
             logger.info(new StringBuilder().append(" Scroll url for requests: ").append(scrollUrlForDevelopers).toString());
-            logger.info(new StringBuilder().append(" Got ").append(jsonResponse.getHeaders().get("X-Count").get(0)).append(" developers. ").toString());
+            logger.info(new StringBuilder().append(" Got ").append(jsonResponse.getHeaders().get("X-Count").get(0)).append(" developerEntities. ").toString());
             logger.info(new StringBuilder().append(" Doing ").append(requiredRequestsNumb + 1).append(" iterations. ").toString());
             developerJsons = new ArrayList<>(Arrays.asList(jsonResponse.getBody()));
             for (int i = 0; i < requiredRequestsNumb; i++) {
@@ -171,7 +171,7 @@ public class IgdbJsonRequester  {
                             .asObject(DeveloperJson[].class)
                             .getBody()));
                 } catch (UnirestException e) {
-                    logger.info(new StringBuilder().append(" Got to the end of the developers scroll! ").toString());
+                    logger.info(new StringBuilder().append(" Got to the end of the developerEntities scroll! ").toString());
                 }
             }
         } catch (UnirestException e) {
@@ -308,18 +308,18 @@ public class IgdbJsonRequester  {
                 "aggregated_rating_count," +
                 "total_rating," +
                 "total_rating_count," +
-                "collection," +
-                "franchise," +
+                "collectionEntity," +
+                "franchiseEntity," +
                 "time_to_beat," +
-                "developers," +
+                "developerEntities," +
                 "game_modes," +
-                "genres," +
+                "genreEntities," +
                 "player_perspectives," +
-                "websites," +
+                "websiteEntities," +
                 "status," +
                 "esrb," +
                 "pegi," +
-                "websites," +
+                "websiteEntities," +
                 "external," +
                 "cover," +
                 "screenshots";

@@ -8,10 +8,9 @@ import com.aa.whattoplay.games.domain.igdb.json.CollectionJson;
 import com.aa.whattoplay.games.domain.igdb.json.DeveloperJson;
 import com.aa.whattoplay.games.domain.igdb.json.FranchiseJson;
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
+import com.aa.whattoplay.games.infastructure.entities.igdb.CollectionEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.DeveloperEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.FranchiseEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * This class loads objects from JSON files and then persist them in relational database.
@@ -33,12 +31,12 @@ import java.util.stream.Collectors;
 public class ExternalDataCacherService {
     private final JsonFilesManager jsonFilesManager;
     private final JsonGamesPersistenceService jsonGamesPersistenceService;
-    private final IGenericCrudDao<Collection> collectionsEntityCrudDao;
-    private final IGenericCrudDao<Franchise> franchisesEntityCrudDao;
-    private final IGenericCrudDao<Developer> developerEntityCrudDao;
+    private final IGenericCrudDao<CollectionEntity> collectionsEntityCrudDao;
+    private final IGenericCrudDao<FranchiseEntity> franchisesEntityCrudDao;
+    private final IGenericCrudDao<DeveloperEntity> developerEntityCrudDao;
 
     public void persistCollectionsFromDefaultJsonFiles(){
-        collectionsEntityCrudDao.setClazz(Collection.class);
+        collectionsEntityCrudDao.setClazz(CollectionEntity.class);
         List<CollectionJson> collectionJsons = (List<CollectionJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./collections/", CollectionJson.class);
         collectionJsons.forEach( collectionJson ->
                 collectionsEntityCrudDao.save(collectionJson.entity())
@@ -46,7 +44,7 @@ public class ExternalDataCacherService {
     }
 
     public void persistFranchisesFromDefaultJsonFiles(){
-        franchisesEntityCrudDao.setClazz(Franchise.class);
+        franchisesEntityCrudDao.setClazz(FranchiseEntity.class);
         List<FranchiseJson> franchisesJsons = (List<FranchiseJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./franchises/", FranchiseJson.class);
         franchisesJsons.forEach( franchiseJson ->
                 franchisesEntityCrudDao.save(franchiseJson.entity())
@@ -54,8 +52,8 @@ public class ExternalDataCacherService {
     }
 
     public void persistDevelopersFromDefaultJsonFiles(){
-        developerEntityCrudDao.setClazz(Developer.class);
-        List<DeveloperJson> developerJsons = (List<DeveloperJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./developers/", DeveloperJson.class);
+        developerEntityCrudDao.setClazz(DeveloperEntity.class);
+        List<DeveloperJson> developerJsons = (List<DeveloperJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./developerEntities/", DeveloperJson.class);
         developerJsons.forEach( developerJson ->
                 developerEntityCrudDao.save(developerJson.entity())
         );
@@ -65,7 +63,7 @@ public class ExternalDataCacherService {
         List<GameJson> gamesJsons = (List<GameJson>) jsonFilesManager.getAllObjectsFromJsonsFiles("./games/", GameJson.class);
         HashMap<String, Integer> numberOFInconsistentGames = jsonGamesPersistenceService.persistGameJsons(gamesJsons);
         jsonFilesManager.saveJsonToCustomPath(new ArrayList<>(numberOFInconsistentGames.values()), "D:\\Errors");
-        log.info("Found " + numberOFInconsistentGames + " Game objects which are inconsistent, may have default value");
+        log.info("Found " + numberOFInconsistentGames + " GameEntity objects which are inconsistent, may have default value");
     }
 
 }

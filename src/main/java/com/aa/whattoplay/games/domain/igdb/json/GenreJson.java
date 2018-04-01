@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.domain.igdb.json;
 
-import com.aa.whattoplay.games.infastructure.entities.igdb.Genre;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GenreEntity;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.*;
@@ -45,8 +45,8 @@ public class GenreJson {
         return zdt.toInstant().toEpochMilli();
     }
 
-    public Genre entity(){
-        return Genre.builder()
+    public GenreEntity entity(){
+        return GenreEntity.builder()
                 .id(id)
                 .name(name)
                 .url(url)
