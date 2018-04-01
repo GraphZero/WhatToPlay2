@@ -4,8 +4,8 @@ import com.aa.whattoplay.games.domain.igdb.json.DeveloperJson;
 import com.aa.whattoplay.games.domain.igdb.json.FranchiseJson;
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
+import com.aa.whattoplay.games.infastructure.entities.igdb.DeveloperEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -63,22 +63,22 @@ public class TestDataGenerator {
         return franchiseJsons;
     }
 
-    public static Game getTestGameEntity(){
-        return new Game( "nam", "a", "b", "c", "d", 7, 6, 5,
+    public static GameEntity getTestGameEntity(){
+        return new GameEntity( "nam", "a", "b", "c", "d", 7, 6, 5,
                 6, 4, 7, 3, 7,
                 LocalDate.now(), LocalDate.now(), LocalDate.now(), null, null,null,
                 null, null, null, null, Status.RELEASED,  null, null, null, null ,null);
     }
 
-    public static Set<Developer> getTestDevelopersEntities(){
-        Set<Developer> developers;
-        Developer developer = new Developer("a", "b", "c", "d",
+    public static Set<DeveloperEntity> getTestDevelopersEntities(){
+        Set<DeveloperEntity> developerEntities;
+        DeveloperEntity developerEntity = new DeveloperEntity("a", "b", "c", "d",
                 LocalDate.now(), "e", "f", 5, 10);
-        Developer developer1 = new Developer("b", "b", "c", "d",
+        DeveloperEntity developerEntity1 = new DeveloperEntity("b", "b", "c", "d",
                 LocalDate.now(), "e", "f", 5, 10);
-        Developer developer2 = new Developer("c", "b", "c", "d",
+        DeveloperEntity developerEntity2 = new DeveloperEntity("c", "b", "c", "d",
                 LocalDate.now(), "e", "f", 5, 10);
-        developers = new HashSet<>( Arrays.asList( developer, developer1, developer2 ));
-        return developers;
+        developerEntities = new HashSet<>( Arrays.asList(developerEntity, developerEntity1, developerEntity2));
+        return developerEntities;
     }
 }

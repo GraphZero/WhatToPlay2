@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
+import com.aa.whattoplay.games.domain.suggestions.value.Developer;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -88,4 +89,16 @@ public class DeveloperEntity extends IgdbAbstractEntity {
     public int hashCode() {
         return Objects.hash(name, url, description, website, startDate, developerImageUrl, developerImageCloudinaryId, developerImageWidth, developerImageHeight);
     }
+
+    public Developer value(){
+        return Developer.builder()
+                .id(getId())
+                .name(name)
+                .url(url)
+                .description(description)
+                .website(website)
+                .startDate(startDate)
+                .build();
+    }
+
 }

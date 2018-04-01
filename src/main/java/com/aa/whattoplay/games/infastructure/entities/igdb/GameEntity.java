@@ -2,6 +2,7 @@ package com.aa.whattoplay.games.infastructure.entities.igdb;
 
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
+import com.aa.whattoplay.games.domain.suggestions.value.Game;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Esrb;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.ImageInfo;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Pegi;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "Games")
@@ -200,4 +202,40 @@ public class GameEntity extends IgdbAbstractEntity {
                 ", cover=" + cover +
                 '}';
     }
+
+    public Game value(){
+        return Game.builder()
+                .id(getId())
+                .name(name)
+                .slug(slug)
+                .url(url)
+                .summary(summary)
+                .storyline(storyline)
+                .hypes(hypes)
+                .popularity(popularity)
+                .rating(rating)
+                .ratingCount(ratingCount)
+                .aggregatedRating(aggregatedRating)
+                .aggregatedRatingCount(aggregatedRatingCount)
+                .totalRating(totalRating)
+                .totalRatingCount(totalRatingCount)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .firstReleaseDate(firstReleaseDate)
+                .collection(collectionEntity.value())
+                .franchise(franchiseEntity.value())
+                .developer(developerEntities.stream().map(DeveloperEntity::value).collect(Collectors.toSet()))
+                .gameMode(gameModeEntities.stream().map(GameModeEntity::value).collect(Collectors.toSet()))
+                .genre(genreEntities.stream().map(GenreEntity::value).collect(Collectors.toSet()))
+                .playerPerspective(playerPerspectiveEntities.stream().map(PlayerPerspectiveEntity::value).collect(Collectors.toSet()))
+                .website(websiteEntities.stream().map(WebsiteEntity::value).collect(Collectors.toSet()))
+                .status(status)
+                .timeToBeat(timeToBeat)
+                .esrb(esrb)
+                .pegi(pegi)
+                .external(external)
+                .cover(cover)
+                .build();
+    }
+
 }

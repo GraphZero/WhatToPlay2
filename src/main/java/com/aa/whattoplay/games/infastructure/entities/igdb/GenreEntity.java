@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
+import com.aa.whattoplay.games.domain.suggestions.value.Genre;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -18,11 +19,6 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GenreEntity extends IgdbAbstractEntity {
-    @Id
-    @Column(nullable = false)
-    @NotNull
-    private long id;
-
     @Column(nullable = false)
     @NotNull
     private String name;
@@ -33,7 +29,6 @@ public class GenreEntity extends IgdbAbstractEntity {
     @Builder
     public GenreEntity(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         super(id);
-        this.id = id1;
         this.name = name;
         this.url = url;
         this.createdAt = createdAt;
@@ -45,16 +40,22 @@ public class GenreEntity extends IgdbAbstractEntity {
         if (this == o) return true;
         if (!(o instanceof GenreEntity)) return false;
         GenreEntity genreEntity = (GenreEntity) o;
-        return id == genreEntity.id &&
-                Objects.equals(name, genreEntity.name) &&
-                Objects.equals(url, genreEntity.url) &&
-                Objects.equals(createdAt, genreEntity.createdAt) &&
-                Objects.equals(updatedAt, genreEntity.updatedAt);
+        return Objects.equals(getId(), genreEntity.getId());
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name, url, createdAt, updatedAt);
+        return Objects.hash(getId(), name);
     }
+
+    public Genre value(){
+        return Genre.builder()
+                .id(getId())
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
+
 }

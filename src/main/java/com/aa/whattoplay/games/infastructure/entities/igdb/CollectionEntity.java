@@ -1,5 +1,7 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
+import com.aa.whattoplay.games.domain.suggestions.value.Collection;
+import com.aa.whattoplay.games.domain.suggestions.value.Game;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -53,7 +55,17 @@ public class CollectionEntity extends IgdbAbstractEntity {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(name, url, createdAt, updatedAt);
     }
+
+    public Collection value(){
+        return Collection.builder()
+                .id(getId())
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
+
 }

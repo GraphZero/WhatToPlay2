@@ -2,6 +2,7 @@ package com.aa.whattoplay.games.infastructure.entities.igdb;
 
 import com.aa.ddd.common.domain.AbstractEntity;
 import com.aa.whattoplay.games.domain.igdb.value.WebsiteCategory;
+import com.aa.whattoplay.games.domain.suggestions.value.Website;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,4 +41,14 @@ public class WebsiteEntity extends AbstractEntity {
     public boolean equals(Object obj) {
         return false;
     }
+
+    public Website value(){
+        return Website.builder()
+                .id(getId())
+                .websiteCategory(websiteCategory)
+                .url(url)
+                .gameEntity(gameEntity)
+                .build();
+    }
+
 }

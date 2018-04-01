@@ -3,9 +3,9 @@ package com.aa.whattoplay.games.application;
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.domain.igdb.JsonFilesManager;
 import com.aa.whattoplay.games.domain.igdb.JsonGamesPersistenceService;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Collection;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
+import com.aa.whattoplay.games.infastructure.entities.igdb.CollectionEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.DeveloperEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.FranchiseEntity;
 import name.falgout.jeffrey.testing.junit5.MockitoExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -19,13 +19,13 @@ class ExternalDataCacherServiceTest {
     private JsonFilesManager jsonFilesManager;
 
     @Mock
-    private IGenericCrudDao<Collection> collectionIGenericCrudDao;
+    private IGenericCrudDao<CollectionEntity> collectionIGenericCrudDao;
 
     @Mock
-    private IGenericCrudDao<Franchise> franchiseIGenericCrudDao;
+    private IGenericCrudDao<FranchiseEntity> franchiseIGenericCrudDao;
 
     @Mock
-    private IGenericCrudDao<Developer> developerIGenericCrudDao;
+    private IGenericCrudDao<DeveloperEntity> developerIGenericCrudDao;
 
     @Mock
     private JsonGamesPersistenceService jsonGamesPersistenceService;

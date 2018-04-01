@@ -1,7 +1,7 @@
 package com.aa.whattoplay.games.domain.igdb;
 
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ class JsonGamesPersistenceServiceTest {
         // when
         jsonGamesPersistenceService.persistGameJson(gameJson);
         // then
-        Game game = testEntityManager.find(Game.class, getTestJsonGamesWithoutListsOfIds().get(0).getId());
-        assertEquals( 2, game.getDevelopers().size() );
+        GameEntity gameEntity = testEntityManager.find(GameEntity.class, getTestJsonGamesWithoutListsOfIds().get(0).getId());
+        assertEquals( 2, gameEntity.getDeveloperEntities().size() );
     }
 }

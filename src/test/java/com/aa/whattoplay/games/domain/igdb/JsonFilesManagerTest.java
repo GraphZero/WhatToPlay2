@@ -1,14 +1,11 @@
 package com.aa.whattoplay.games.domain.igdb;
 
 import com.aa.whattoplay.games.domain.igdb.json.GameJson;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Website;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.aa.whattoplay.games.TestDataGenerator.getOneThousandTestJsonFranchises;
 import static com.aa.whattoplay.games.TestDataGenerator.getTestJsonFranchises;
@@ -63,8 +60,8 @@ class JsonFilesManagerTest {
 //        System.out.println(
 //                gameJsons.stream()
 //                .flatMapToInt(gameJson ->{
-//                        if ( gameJson.getWebsites() != null ){
-//                            return gameJson.getWebsites().stream().mapToInt( website -> website.getUrl().length());
+//                        if ( gameJson.getWebsiteEntities() != null ){
+//                            return gameJson.getWebsiteEntities().stream().mapToInt( website -> website.getUrl().length());
 //                        }
 //                        return null;
 //                    }

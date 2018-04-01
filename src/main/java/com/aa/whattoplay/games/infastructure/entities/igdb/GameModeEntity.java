@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
+import com.aa.whattoplay.games.domain.suggestions.value.GameMode;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -36,4 +37,16 @@ public class GameModeEntity extends IgdbAbstractEntity {
     public boolean equals(Object obj) {
         return false;
     }
+
+
+    public GameMode value(){
+        return GameMode.builder()
+                .id(getId())
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
+
 }

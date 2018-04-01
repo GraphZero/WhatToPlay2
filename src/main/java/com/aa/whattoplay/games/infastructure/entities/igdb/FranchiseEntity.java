@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
+import com.aa.whattoplay.games.domain.suggestions.value.Franchise;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -15,11 +16,15 @@ import java.time.LocalDate;
 @ToString
 @NoArgsConstructor
 public class FranchiseEntity extends IgdbAbstractEntity {
+
     @Column(name ="name", nullable = false)
     private String name;
+
     private String url;
+
     @Column(name ="created_at", nullable = false)
     private LocalDate createdAt;
+
     @Column(name ="updated_at", nullable = false)
     private LocalDate updatedAt;
 
@@ -48,4 +53,15 @@ public class FranchiseEntity extends IgdbAbstractEntity {
     public boolean equals(Object obj) {
         return false;
     }
+
+    public Franchise value(){
+        return Franchise.builder()
+                .id(getId())
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
+
 }

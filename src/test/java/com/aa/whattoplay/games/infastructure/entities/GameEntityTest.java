@@ -1,8 +1,8 @@
 package com.aa.whattoplay.games.infastructure.entities;
 
-import com.aa.whattoplay.games.infastructure.entities.igdb.Developer;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Franchise;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
+import com.aa.whattoplay.games.infastructure.entities.igdb.DeveloperEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.FranchiseEntity;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @ExtendWith(SpringExtension.class)
-class GameTest {
+class GameEntityTest {
 
     @Autowired
     private TestEntityManager testEntityManager;
@@ -33,28 +33,28 @@ class GameTest {
     @Test
     void shouldLinkGameEntityAndFranchises() {
         // given
-        Franchise franchise = testEntityManager.persist(new Franchise("a", "b", LocalDate.now(), LocalDate.now()));
-        Game game = getTestGameEntity();
-        game.setFranchise(franchise);
+        FranchiseEntity franchiseEntity = testEntityManager.persist(new FranchiseEntity("a", "b", LocalDate.now(), LocalDate.now()));
+        GameEntity gameEntity = getTestGameEntity();
+        gameEntity.setFranchiseEntity(franchiseEntity);
         // when
-        game = testEntityManager.persist(game);
-        Game game1 = testEntityManager.find(Game.class, game.getId());
+        gameEntity = testEntityManager.persist(gameEntity);
+        GameEntity gameEntity1 = testEntityManager.find(GameEntity.class, gameEntity.getId());
         // then
-        assertEquals( "a", game1.getFranchise().getName());
+        assertEquals( "a", gameEntity1.getFranchiseEntity().getName());
     }
 
     @Test
     void shouldLinkDevelopersWithGames() {
         // given
-        Game game = getTestGameEntity();
-        Set<Developer> developers = getTestDevelopersEntities();
-        developers.forEach(testEntityManager::persist);
-        game.setDevelopers(developers);
+        GameEntity gameEntity = getTestGameEntity();
+        Set<DeveloperEntity> developerEntities = getTestDevelopersEntities();
+        developerEntities.forEach(testEntityManager::persist);
+        gameEntity.setDeveloperEntities(developerEntities);
         // when
-        game = testEntityManager.persist(game);
-        Game game1 = testEntityManager.find(Game.class, game.getId());
+        gameEntity = testEntityManager.persist(gameEntity);
+        GameEntity gameEntity1 = testEntityManager.find(GameEntity.class, gameEntity.getId());
         // then
-        assertEquals( 3, game1.getDevelopers().size());
+        assertEquals( 3, gameEntity1.getDeveloperEntities().size());
     }
 
 }

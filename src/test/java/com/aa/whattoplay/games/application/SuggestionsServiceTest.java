@@ -1,12 +1,11 @@
 package com.aa.whattoplay.games.application;
 
-import com.aa.whattoplay.accounts.domain.Account;
 import com.aa.whattoplay.accounts.infastructure.entities.AccountEntity;
 import com.aa.whattoplay.games.TestDataGenerator;
 import com.aa.whattoplay.games.application.commands.AddUserRating;
 import com.aa.whattoplay.games.domain.suggestions.UserRating;
 import com.aa.whattoplay.games.infastructure.entities.accounts.UserPersonalRating;
-import com.aa.whattoplay.games.infastructure.entities.igdb.Game;
+import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 
 @ExtendWith(SpringExtension.class)
@@ -44,17 +44,17 @@ class SuggestionsServiceTest {
     void shouldAddUserRating() {
         // given
         AccountEntity accountEntity = new AccountEntity("test", "test", "test", "testtest", "test@b", true);
-        Game game = TestDataGenerator.getTestGameEntity();
+        GameEntity gameEntity = TestDataGenerator.getTestGameEntity();
         testEntityManager.persist(accountEntity);
-        testEntityManager.persist(game);
+        testEntityManager.persist(gameEntity);
         // when
         Optional<UserPersonalRating> userPersonalRating
-                = suggestionsService.addUserRating(new AddUserRating(accountEntity.getId(), game.getId(), UserRating.LOVE));
+                = suggestionsService.addUserRating(new AddUserRating(accountEntity.getId(), gameEntity.getId(), UserRating.LOVE));
         // then
         userPersonalRating.ifPresent(
                 userPersonalRating1 ->
                         assertEquals(accountEntity.getId(), userPersonalRating1.getUser().getId())
         );
-        if ( ! userPersonalRating.isPresent() ) fail("Couldnt persist Personal Ratings");
+        if (!userPersonalRating.isPresent()) fail("Couldnt persist Personal Ratings");
     }
 }

@@ -1,5 +1,6 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
+import com.aa.whattoplay.games.domain.suggestions.value.PlayerPerspective;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +20,6 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 public class PlayerPerspectiveEntity extends IgdbAbstractEntity {
-    @Id
-    @Column(nullable = false)
-    @NotNull
-    private long id;
 
     @Column( nullable = false)
     @NotNull
@@ -35,7 +32,6 @@ public class PlayerPerspectiveEntity extends IgdbAbstractEntity {
     @Builder
     public PlayerPerspectiveEntity(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         super(id);
-        this.id = id1;
         this.name = name;
         this.url = url;
         this.createdAt = createdAt;
@@ -47,16 +43,23 @@ public class PlayerPerspectiveEntity extends IgdbAbstractEntity {
         if (this == o) return true;
         if (!(o instanceof PlayerPerspectiveEntity)) return false;
         PlayerPerspectiveEntity that = (PlayerPerspectiveEntity) o;
-        return id == that.id &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(url, that.url) &&
-                Objects.equals(createdAt, that.createdAt) &&
-                Objects.equals(updatedAt, that.updatedAt);
+        return getId() == that.getId() &&
+                Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name, url, createdAt, updatedAt);
+        return Objects.hash(getId(), name);
     }
+
+    public PlayerPerspective value(){
+        return PlayerPerspective.builder()
+                .id(getId())
+                .name(name)
+                .url(url)
+                .createdAt(createdAt)
+                .updatedAt(updatedAt)
+                .build();
+    }
+
 }
