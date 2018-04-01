@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Website extends AbstractEntity {
+public class WebsiteEntity extends AbstractEntity {
 
     @Enumerated(value = EnumType.STRING)
     private WebsiteCategory websiteCategory;
@@ -22,13 +22,13 @@ public class Website extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "game_id", nullable = false, referencedColumnName = "id")
-    private Game game;
+    private GameEntity gameEntity;
 
     @Builder
-    public Website(WebsiteCategory websiteCategory, String url, Game game) {
+    public WebsiteEntity(WebsiteCategory websiteCategory, String url, GameEntity gameEntity) {
         this.websiteCategory = websiteCategory;
         this.url = url;
-        this.game = game;
+        this.gameEntity = gameEntity;
     }
 
     @Override

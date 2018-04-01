@@ -17,7 +17,7 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Genre extends IgdbAbstractEntity {
+public class GenreEntity extends IgdbAbstractEntity {
     @Id
     @Column(nullable = false)
     @NotNull
@@ -31,7 +31,7 @@ public class Genre extends IgdbAbstractEntity {
     private LocalDate updatedAt;
 
     @Builder
-    public Genre(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+    public GenreEntity(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         super(id);
         this.id = id1;
         this.name = name;
@@ -43,13 +43,13 @@ public class Genre extends IgdbAbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Genre)) return false;
-        Genre genre = (Genre) o;
-        return id == genre.id &&
-                Objects.equals(name, genre.name) &&
-                Objects.equals(url, genre.url) &&
-                Objects.equals(createdAt, genre.createdAt) &&
-                Objects.equals(updatedAt, genre.updatedAt);
+        if (!(o instanceof GenreEntity)) return false;
+        GenreEntity genreEntity = (GenreEntity) o;
+        return id == genreEntity.id &&
+                Objects.equals(name, genreEntity.name) &&
+                Objects.equals(url, genreEntity.url) &&
+                Objects.equals(createdAt, genreEntity.createdAt) &&
+                Objects.equals(updatedAt, genreEntity.updatedAt);
     }
 
     @Override

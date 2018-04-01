@@ -20,7 +20,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Setter
 @Getter
-public class Game extends IgdbAbstractEntity {
+public class GameEntity extends IgdbAbstractEntity {
     @Column(nullable = false)
     @NotEmpty
     private String name;
@@ -43,11 +43,11 @@ public class Game extends IgdbAbstractEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "collection_id", nullable = false, referencedColumnName = "id")
-    private Collection collection;
+    private CollectionEntity collectionEntity;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "franchise_id", nullable = false, referencedColumnName = "id")
-    private Franchise franchise;
+    private FranchiseEntity franchiseEntity;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Games_Developers",
@@ -57,7 +57,7 @@ public class Game extends IgdbAbstractEntity {
             inverseJoinColumns = {
                     @JoinColumn(name = "developer_id")
             })
-    private Set<Developer> developers;
+    private Set<DeveloperEntity> developerEntities;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Games_Game_Modes",
@@ -67,7 +67,7 @@ public class Game extends IgdbAbstractEntity {
             inverseJoinColumns = {
                     @JoinColumn(name = "game_mode_id")
             })
-    private Set<GameMode> gameModes;
+    private Set<GameModeEntity> gameModeEntities;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Games_Genres",
@@ -77,7 +77,7 @@ public class Game extends IgdbAbstractEntity {
             inverseJoinColumns = {
                     @JoinColumn(name = "genre_id")
             })
-    private Set<Genre> genres;
+    private Set<GenreEntity> genreEntities;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Games_Player_Perspectives",
@@ -87,10 +87,10 @@ public class Game extends IgdbAbstractEntity {
             inverseJoinColumns = {
                     @JoinColumn(name = "player_perspective_id")
             })
-    private Set<PlayerPerspective> playerPerspectives;
+    private Set<PlayerPerspectiveEntity> playerPerspectiveEntities;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "game")
-    private Set<Website> websites;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "gameEntity")
+    private Set<WebsiteEntity> websiteEntities;
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -110,16 +110,16 @@ public class Game extends IgdbAbstractEntity {
     @Embedded
     private ImageInfo cover;
 
-    public Game() {
+    public GameEntity() {
     }
 
     @Builder
-    public Game(long id, @NotNull String name, String slug, String url, String summary, String storyline,
-                int hypes, double popularity, double rating, int ratingCount, double aggregatedRating,
-                int aggregatedRatingCount, double totalRating, int totalRatingCount, LocalDate createdAt,
-                LocalDate updatedAt, LocalDate firstReleaseDate, Collection collection, Franchise franchise,
-                Set<Developer> developers, Set<GameMode> gameModes, Set<Genre> genres, Set<PlayerPerspective> playerPerspectives,
-                Set<Website> websites, Status status, TimeToBeat timeToBeat, Esrb esrb, Pegi pegi, External external, ImageInfo cover) {
+    public GameEntity(long id, @NotNull String name, String slug, String url, String summary, String storyline,
+                      int hypes, double popularity, double rating, int ratingCount, double aggregatedRating,
+                      int aggregatedRatingCount, double totalRating, int totalRatingCount, LocalDate createdAt,
+                      LocalDate updatedAt, LocalDate firstReleaseDate, CollectionEntity collectionEntity, FranchiseEntity franchiseEntity,
+                      Set<DeveloperEntity> developerEntities, Set<GameModeEntity> gameModeEntities, Set<GenreEntity> genreEntities, Set<PlayerPerspectiveEntity> playerPerspectiveEntities,
+                      Set<WebsiteEntity> websiteEntities, Status status, TimeToBeat timeToBeat, Esrb esrb, Pegi pegi, External external, ImageInfo cover) {
         super(id);
         this.name = name;
         this.slug = slug;
@@ -137,13 +137,13 @@ public class Game extends IgdbAbstractEntity {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.firstReleaseDate = firstReleaseDate;
-        this.collection = collection;
-        this.franchise = franchise;
-        this.developers = developers;
-        this.gameModes = gameModes;
-        this.genres = genres;
-        this.playerPerspectives = playerPerspectives;
-        this.websites = websites;
+        this.collectionEntity = collectionEntity;
+        this.franchiseEntity = franchiseEntity;
+        this.developerEntities = developerEntities;
+        this.gameModeEntities = gameModeEntities;
+        this.genreEntities = genreEntities;
+        this.playerPerspectiveEntities = playerPerspectiveEntities;
+        this.websiteEntities = websiteEntities;
         this.status = status;
         this.timeToBeat = timeToBeat;
         this.esrb = esrb;
@@ -156,13 +156,48 @@ public class Game extends IgdbAbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Game)) return false;
-        Game game = (Game) o;
-        return Objects.equals(getId(), game.getId());
+        if (!(o instanceof GameEntity)) return false;
+        GameEntity gameEntity = (GameEntity) o;
+        return Objects.equals(getId(), gameEntity.getId());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "GameEntity{" +
+                "name='" + name + '\'' +
+                ", slug='" + slug + '\'' +
+                ", url='" + url + '\'' +
+                ", summary='" + summary + '\'' +
+                ", storyline='" + storyline + '\'' +
+                ", hypes=" + hypes +
+                ", popularity=" + popularity +
+                ", rating=" + rating +
+                ", ratingCount=" + ratingCount +
+                ", aggregatedRating=" + aggregatedRating +
+                ", aggregatedRatingCount=" + aggregatedRatingCount +
+                ", totalRating=" + totalRating +
+                ", totalRatingCount=" + totalRatingCount +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
+                ", firstReleaseDate=" + firstReleaseDate +
+                ", collectionEntity=" + collectionEntity.getId() +
+                ", franchiseEntity=" + franchiseEntity.getId() +
+                ", developersNumber=" + developerEntities.size() +
+                ", gameModesNumber=" + gameModeEntities.size() +
+                ", genresNumber=" + genreEntities.size() +
+                ", playerPerspectivesNumber=" + playerPerspectiveEntities.size() +
+                ", websitesNumber=" + websiteEntities.size() +
+                ", status=" + status +
+                ", timeToBeat=" + timeToBeat +
+                ", esrb=" + esrb +
+                ", pegi=" + pegi +
+                ", external=" + external +
+                ", cover=" + cover +
+                '}';
     }
 }

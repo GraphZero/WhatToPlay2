@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Franchise extends IgdbAbstractEntity {
+public class FranchiseEntity extends IgdbAbstractEntity {
     @Column(name ="name", nullable = false)
     private String name;
     private String url;
@@ -23,7 +23,7 @@ public class Franchise extends IgdbAbstractEntity {
     @Column(name ="updated_at", nullable = false)
     private LocalDate updatedAt;
 
-    public Franchise(@NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+    public FranchiseEntity(@NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         this.name = name;
         this.url = url;
         this.createdAt = createdAt;
@@ -31,7 +31,7 @@ public class Franchise extends IgdbAbstractEntity {
     }
 
     @Builder
-    public Franchise(long id, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+    public FranchiseEntity(long id, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         super(id);
         this.name = name;
         this.url = url;

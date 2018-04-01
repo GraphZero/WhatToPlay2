@@ -15,7 +15,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @NoArgsConstructor
-public class Developer extends IgdbAbstractEntity {
+public class DeveloperEntity extends IgdbAbstractEntity {
 
     @Column(nullable = false)
     @NotNull
@@ -38,8 +38,8 @@ public class Developer extends IgdbAbstractEntity {
     @Column(name ="image_height")
     private int developerImageHeight;
 
-    public Developer(@NotNull String name, String url, String description, String website,
-                     LocalDate startDate, String developerImageUrl, String developerImageCloudinaryId, int developerImageWidth, int developerImageHeight) {
+    public DeveloperEntity(@NotNull String name, String url, String description, String website,
+                           LocalDate startDate, String developerImageUrl, String developerImageCloudinaryId, int developerImageWidth, int developerImageHeight) {
         this.name = name;
         this.url = url;
         this.description = description;
@@ -52,9 +52,9 @@ public class Developer extends IgdbAbstractEntity {
     }
 
     @Builder
-    public Developer(long id, @NotNull String name, String url, String description, String website,
-                     LocalDate startDate, String developerImageUrl, String developerImageCloudinaryId,
-                     int developerImageWidth, int developerImageHeight) {
+    public DeveloperEntity(long id, @NotNull String name, String url, String description, String website,
+                           LocalDate startDate, String developerImageUrl, String developerImageCloudinaryId,
+                           int developerImageWidth, int developerImageHeight) {
         super(id);
         this.name = name;
         this.url = url;
@@ -71,17 +71,17 @@ public class Developer extends IgdbAbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Developer)) return false;
-        Developer developer = (Developer) o;
-        return developerImageWidth == developer.developerImageWidth &&
-                developerImageHeight == developer.developerImageHeight &&
-                Objects.equals(name, developer.name) &&
-                Objects.equals(url, developer.url) &&
-                Objects.equals(description, developer.description) &&
-                Objects.equals(website, developer.website) &&
-                Objects.equals(startDate, developer.startDate) &&
-                Objects.equals(developerImageUrl, developer.developerImageUrl) &&
-                Objects.equals(developerImageCloudinaryId, developer.developerImageCloudinaryId);
+        if (!(o instanceof DeveloperEntity)) return false;
+        DeveloperEntity developerEntity = (DeveloperEntity) o;
+        return developerImageWidth == developerEntity.developerImageWidth &&
+                developerImageHeight == developerEntity.developerImageHeight &&
+                Objects.equals(name, developerEntity.name) &&
+                Objects.equals(url, developerEntity.url) &&
+                Objects.equals(description, developerEntity.description) &&
+                Objects.equals(website, developerEntity.website) &&
+                Objects.equals(startDate, developerEntity.startDate) &&
+                Objects.equals(developerImageUrl, developerEntity.developerImageUrl) &&
+                Objects.equals(developerImageCloudinaryId, developerEntity.developerImageCloudinaryId);
     }
 
     @Override

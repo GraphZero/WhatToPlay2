@@ -12,14 +12,14 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @NoArgsConstructor
-public class GameMode extends IgdbAbstractEntity {
+public class GameModeEntity extends IgdbAbstractEntity {
     private String name;
     private String url;
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
     @Builder
-    public GameMode(long id, String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+    public GameModeEntity(long id, String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         super(id);
         this.name = name;
         this.url = url;

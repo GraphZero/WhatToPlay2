@@ -1,30 +1,22 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Player_Perspectives")
+@Table(name="Collections")
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
-public class PlayerPerspective extends IgdbAbstractEntity {
-    @Id
+public class CollectionEntity extends IgdbAbstractEntity {
     @Column(nullable = false)
-    @NotNull
-    private long id;
-
-    @Column( nullable = false)
     @NotNull
     private String name;
 
@@ -32,10 +24,16 @@ public class PlayerPerspective extends IgdbAbstractEntity {
     private LocalDate createdAt;
     private LocalDate updatedAt;
 
+    public CollectionEntity(@NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+        this.name = name;
+        this.url = url;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     @Builder
-    public PlayerPerspective(long id, @NotNull long id1, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
+    public CollectionEntity(long id, @NotNull String name, String url, LocalDate createdAt, LocalDate updatedAt) {
         super(id);
-        this.id = id1;
         this.name = name;
         this.url = url;
         this.createdAt = createdAt;
@@ -45,10 +43,9 @@ public class PlayerPerspective extends IgdbAbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PlayerPerspective)) return false;
-        PlayerPerspective that = (PlayerPerspective) o;
-        return id == that.id &&
-                Objects.equals(name, that.name) &&
+        if (!(o instanceof CollectionEntity)) return false;
+        CollectionEntity that = (CollectionEntity) o;
+        return Objects.equals(name, that.name) &&
                 Objects.equals(url, that.url) &&
                 Objects.equals(createdAt, that.createdAt) &&
                 Objects.equals(updatedAt, that.updatedAt);
@@ -57,6 +54,6 @@ public class PlayerPerspective extends IgdbAbstractEntity {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, url, createdAt, updatedAt);
+        return Objects.hash(name, url, createdAt, updatedAt);
     }
 }
