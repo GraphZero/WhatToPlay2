@@ -1,9 +1,5 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
-games/
-developers/
-franchises/
-logs/
 
 ### STS ###
 .apt_generated
