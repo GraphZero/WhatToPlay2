@@ -12,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -19,7 +20,6 @@ import java.util.Set;
 @AllArgsConstructor
 @Setter
 @Getter
-@EqualsAndHashCode
 public class Game extends IgdbAbstractEntity {
     @Column(nullable = false)
     @NotEmpty
@@ -153,4 +153,16 @@ public class Game extends IgdbAbstractEntity {
     }
 
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Game)) return false;
+        Game game = (Game) o;
+        return Objects.equals(getId(), game.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 }
