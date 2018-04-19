@@ -72,11 +72,11 @@ public class TestDataGenerator {
 
     public static Set<DeveloperEntity> getTestDevelopersEntities(){
         Set<DeveloperEntity> developerEntities;
-        DeveloperEntity developerEntity = new DeveloperEntity("a", "b", "c", "d",
+        DeveloperEntity developerEntity = new DeveloperEntity(1,"a", "b", "c", "d",
                 LocalDate.now(), "e", "f", 5, 10);
-        DeveloperEntity developerEntity1 = new DeveloperEntity("b", "b", "c", "d",
+        DeveloperEntity developerEntity1 = new DeveloperEntity(2,"b", "b", "c", "d",
                 LocalDate.now(), "e", "f", 5, 10);
-        DeveloperEntity developerEntity2 = new DeveloperEntity("c", "b", "c", "d",
+        DeveloperEntity developerEntity2 = new DeveloperEntity(3,"c", "b", "c", "d",
                 LocalDate.now(), "e", "f", 5, 10);
         developerEntities = new HashSet<>( Arrays.asList(developerEntity, developerEntity1, developerEntity2));
         return developerEntities;

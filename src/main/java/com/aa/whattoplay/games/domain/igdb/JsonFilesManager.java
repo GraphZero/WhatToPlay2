@@ -72,8 +72,14 @@ public class JsonFilesManager {
 
     public List getAllObjectsFromJsonsFiles(String filesPath, Class clazz) {
         List list = new ArrayList<>();
-        for (int i = 1; i <= new File(filesPath).listFiles().length; i++) {
-            list.addAll(getObjectsFromFile(filesPath, clazz, i));
+        File jsons[] = new File(filesPath).listFiles();
+        if ( jsons != null ){
+            for (int i = 1; i <= jsons.length; i++) {
+                list.addAll(getObjectsFromFile(filesPath, clazz, i));
+            }
+            return list;
+        } else{
+            logger.warn("Couldn't find JSON files to read from");
         }
         return list;
     }

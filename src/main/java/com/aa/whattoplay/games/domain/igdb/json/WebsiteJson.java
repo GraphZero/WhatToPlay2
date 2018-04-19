@@ -24,7 +24,7 @@ public class WebsiteJson {
 
     public WebsiteEntity entity(GameEntity gameEntity){
         return WebsiteEntity.builder()
-                .game(gameEntity)
+                .gameEntity(gameEntity)
                 .websiteCategory(websiteCategory)
                 .url(url)
                 .build();

@@ -4,6 +4,7 @@ import com.aa.whattoplay.security.domain.UserRepository;
 import com.aa.whattoplay.security.infastructure.entities.UserEntity;
 import name.falgout.jeffrey.testing.junit5.MockitoExtension;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -31,6 +32,7 @@ class UserAuthServiceTest {
     }
 
     @Test
+    @DisplayName(value = "Should Load User By Username")
     void shouldLoadUserByUsername() {
         // given
         Mockito.when(userRepository.findByUsername(Mockito.anyString())).thenReturn(Optional.of(new UserEntity(
@@ -49,16 +51,4 @@ class UserAuthServiceTest {
         assertEquals( "d", userDetails.getUsername(), "Didnt load user.");
     }
 
-    @Test
-    void name() {
-        // given
-        // when
-        // then
-        String test = "abrakadabra";
-        Map<Character, Long> map = test
-                .chars()
-                .boxed()
-                .collect(Collectors.groupingBy(( x -> (char) x.intValue()), Collectors.counting()));
-        System.out.println(map);
-    }
 }

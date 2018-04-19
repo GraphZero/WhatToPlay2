@@ -13,12 +13,11 @@ import static com.aa.whattoplay.games.TestDataGenerator.getTestJsonGamesWithoutL
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
+@Disabled
 class JsonFilesManagerTest {
     private JsonFilesManager jsonFilesManager;
 
     @Test
-    @Disabled
     void shouldSaveGamesToDefaultPath() {
         // given
         jsonFilesManager = new JsonFilesManager();
@@ -29,7 +28,6 @@ class JsonFilesManagerTest {
     }
 
     @Test
-    @Disabled
     void shouldSaveGamesToCustomPath() {
         // given
         jsonFilesManager = new JsonFilesManager();
@@ -57,30 +55,9 @@ class JsonFilesManagerTest {
         // when
         // then
         List<GameJson> gameJsons = (List<GameJson> ) jsonFilesManager.getAllObjectsFromJsonsFiles("./games/", GameJson.class);
-//        System.out.println(
-//                gameJsons.stream()
-//                .flatMapToInt(gameJson ->{
-//                        if ( gameJson.getWebsiteEntities() != null ){
-//                            return gameJson.getWebsiteEntities().stream().mapToInt( website -> website.getUrl().length());
-//                        }
-//                        return null;
-//                    }
-//                 )
-//                .max());
-//        System.out.println(
-//                gameJsons.stream()
-//                        .mapToInt(gameJson ->{
-//                                    if ( gameJson.getExternal() != null ){
-//                                        return gameJson.getExternal().getSteam().length();
-//                                    }
-//                                    return 0;
-//                                }
-//                        )
-//                        .max());
     }
 
     @Test
-    @Disabled
     void shouldSaveFranchisesToDefaultPath() {
         // given
         jsonFilesManager = new JsonFilesManager();
@@ -91,7 +68,6 @@ class JsonFilesManagerTest {
     }
 
     @Test
-    @Disabled
     void shouldSave1002FranchisesToDefaultPath() {
         // given
         jsonFilesManager = new JsonFilesManager();

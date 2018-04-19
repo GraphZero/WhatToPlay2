@@ -3,6 +3,7 @@ package com.aa.whattoplay.games.infastructure.entities;
 import com.aa.whattoplay.games.infastructure.entities.igdb.DeveloperEntity;
 import com.aa.whattoplay.games.infastructure.entities.igdb.FranchiseEntity;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,8 @@ class GameEntityTest {
 
 
     @Test
-    void shouldLinkGameEntityAndFranchises() {
+    @DisplayName(value = "Should Link GameEntity And Franchises")
+    void shouldLinkGameEntityAndFranchises(){
         // given
         FranchiseEntity franchiseEntity = testEntityManager.persist(new FranchiseEntity("a", "b", LocalDate.now(), LocalDate.now()));
         GameEntity gameEntity = getTestGameEntity();
@@ -44,6 +46,7 @@ class GameEntityTest {
     }
 
     @Test
+    @DisplayName(value = "Should Link Developers With Games")
     void shouldLinkDevelopersWithGames() {
         // given
         GameEntity gameEntity = getTestGameEntity();

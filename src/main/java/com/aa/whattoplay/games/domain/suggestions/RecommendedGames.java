@@ -8,6 +8,6 @@ import java.util.List;
 
 @AllArgsConstructor
 public class RecommendedGames {
-    public User owningUser;
+    public long owningUserId;
     public List<Game> recommendedGames;
 }

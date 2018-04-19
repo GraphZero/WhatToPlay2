@@ -21,7 +21,7 @@ public class RandomSuggestionService implements ISuggestionService {
                 .stream()
                 .map(GameEntity::value)
                 .collect(Collectors.toList());
-        return new RecommendedGames(user, randomGames);
+        return new RecommendedGames(user.getId(), randomGames);
     }
 
 
