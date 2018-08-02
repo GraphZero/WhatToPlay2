@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
-@Getter @ToString
+@Getter() @ToString
 public class Role {
     private long roleId;
     private String roleName;

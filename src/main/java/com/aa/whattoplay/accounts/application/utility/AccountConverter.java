@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class AccountConverter {
 
     public static Account convertToAccount(AccountEntity accountEntity){
+
         return new Account(accountEntity.getId(),
                 accountEntity.getFirstName(),
                 accountEntity.getLastName(),

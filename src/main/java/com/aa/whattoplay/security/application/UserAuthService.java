@@ -25,8 +25,7 @@ public class UserAuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
         return userRepository.findByUsername(username)
                 .map(UserEntityToUserConverter::convert)
-                .orElseThrow(
-                () -> new UsernameNotFoundException(username)
+                .orElseThrow(() -> new UsernameNotFoundException(username)
         );
     }
 
