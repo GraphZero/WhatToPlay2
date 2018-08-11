@@ -4,7 +4,7 @@ import com.aa.ddd.common.annotations.DomainService;
 import com.aa.whattoplay.games.domain.suggestions.GameRepository;
 import com.aa.whattoplay.games.domain.suggestions.ISuggestionService;
 import com.aa.whattoplay.games.domain.suggestions.RecommendedGames;
-import com.aa.whattoplay.games.domain.suggestions.Game;
+import com.aa.whattoplay.games.domain.suggestions.GameEvaluation;
 import com.aa.whattoplay.games.infastructure.entities.accounts.User;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +22,11 @@ public class RandomSuggestionService implements ISuggestionService {
 
     @Override
     public RecommendedGames suggestGamesForUser(User user) {
-        List<Game> randomGames = new ArrayList<>(gameRepository.getSeveralRandomGames(10))
+        List<GameEvaluation> randomGameEvaluations = new ArrayList<>(gameRepository.getSeveralRandomGames(10))
                 .stream()
                 .map(GameEntity::value)
                 .collect(Collectors.toList());
-        return new RecommendedGames(user.getId(), randomGames);
+        return new RecommendedGames(user.getId(), randomGameEvaluations);
     }
 
 

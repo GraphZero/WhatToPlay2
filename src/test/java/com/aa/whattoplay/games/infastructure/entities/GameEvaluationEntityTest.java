@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @ExtendWith(SpringExtension.class)
-class GameEntityTest {
+class GameEvaluationEntityTest {
 
     @Autowired
     private TestEntityManager testEntityManager;

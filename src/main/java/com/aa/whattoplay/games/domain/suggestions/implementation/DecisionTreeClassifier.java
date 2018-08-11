@@ -6,12 +6,7 @@ import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 import weka.core.Instances;
-import weka.core.converters.CSVLoader;
 import weka.core.converters.ConverterUtils;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
 
 @DomainService
 @Slf4j
@@ -20,10 +15,7 @@ public class DecisionTreeClassifier {
     public static final String TESTING_DATA_SET_FILENAME="decision-test.arff";
 
     public static Instances getDataSet(String fileName) throws Exception {
-        /**
-         * we can set the file i.e., loader.setFile("finename") to load the data
-         */
-        int classIdx = 1;
+        int classIdx = 0;
         /** the arffloader to load the arff file */
         ConverterUtils.DataSource loader = new ConverterUtils.DataSource("./storage/csv/attributes.csv");
         /** load the traing data */

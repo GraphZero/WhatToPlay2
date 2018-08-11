@@ -49,7 +49,7 @@ class SuggestionsServiceTest {
         testEntityManager.persist(gameEntity);
         // when
         Optional<UserPersonalRating> userPersonalRating
-                = suggestionsService.addUserRating(new AddUserRating(accountEntity.getId(), gameEntity.getId(), UserRating.LOVE));
+                = suggestionsService.addUserRating(new AddUserRating(accountEntity.getId(), gameEntity.getId(), UserRating.INTERESTED));
         // then
         userPersonalRating.ifPresent(
                 userPersonalRating1 ->

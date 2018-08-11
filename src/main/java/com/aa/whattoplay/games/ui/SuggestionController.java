@@ -4,7 +4,9 @@ package com.aa.whattoplay.games.ui;
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.application.SuggestionsService;
 import com.aa.whattoplay.games.application.queries.QueryRecommendedGamesForUser;
+import com.aa.whattoplay.games.domain.suggestions.GameEvaluation;
 import com.aa.whattoplay.games.domain.suggestions.RecommendedGames;
+import com.aa.whattoplay.games.domain.suggestions.UserRating;
 import com.aa.whattoplay.games.domain.suggestions.implementation.CsvFileSaver;
 import com.aa.whattoplay.games.domain.suggestions.implementation.DecisionTreeClassifier;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
@@ -44,8 +46,12 @@ public class SuggestionController {
         gamesDao.setClazz(GameEntity.class);
         GameEntity gameEntity = gamesDao.findById(1L).get();
         GameEntity gameEntity1 = gamesDao.findById(2L).get();
-        csvSaver.saveAttributesToCsvFile(gameEntity.value().getLearnableAttributes());
-        csvSaver.saveAttributesToCsvFile(gameEntity1.value().getLearnableAttributes());
+        GameEvaluation gameEvaluation = gameEntity.value();
+        GameEvaluation gameEvaluation1 = gameEntity1.value();
+        gameEvaluation.setUserRating(UserRating.INTERESTED);
+        gameEvaluation1.setUserRating(UserRating.NOT_INTERESTED);
+        csvSaver.saveAttributesToCsvFile(gameEvaluation.getLearnableAttributes());
+        csvSaver.saveAttributesToCsvFile(gameEvaluation1.getLearnableAttributes());
         DecisionTreeClassifier.process();
         return ResponseEntity.ok("ok");
     }

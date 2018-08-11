@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class RecommendedGames {
     public long owningUserId;
-    public List<Game> recommendedGames;
+    public List<GameEvaluation> recommendedGameEvaluations;
 
     public Map<Genre, Long> getGenreOccurences() {
-        return recommendedGames
+        return recommendedGameEvaluations
                 .stream()
                 .flatMap(x -> x.getGenre().stream())
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));

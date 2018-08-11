@@ -10,7 +10,7 @@ import java.util.List;
 
 @Configuration
 public class DecisionTreeConfig {
-    private static final List<String> attributes = Arrays.asList(
+    private static final List<String> attributes = Arrays.asList("userRating", "popularity", "rating",
             "developer", "gameMode", "genre", "playerPerspective", "firstReleaseDate", "collection", "franchise",
             "status", "esrb", "pegi");
 
