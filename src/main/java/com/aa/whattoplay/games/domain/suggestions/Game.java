@@ -1,8 +1,9 @@
-package com.aa.whattoplay.games.domain.suggestions.value;
+package com.aa.whattoplay.games.domain.suggestions;
 
 import com.aa.ddd.common.annotations.ValueObject;
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
+import com.aa.whattoplay.games.domain.suggestions.value.*;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Esrb;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.ImageInfo;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Pegi;
@@ -11,9 +12,11 @@ import lombok.Builder;
 import lombok.Value;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-@ValueObject
 @Value
 @Builder
 public class Game {
@@ -47,4 +50,19 @@ public class Game {
     private Pegi pegi;
     private External external;
     private ImageInfo cover;
+
+    public List<Object> getLearnableAttributes() {
+        return  Arrays.asList(
+                developer.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
+                gameMode.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
+                genre.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
+                playerPerspective.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
+                firstReleaseDate.getYear(),
+                collection.getName().trim(),
+                franchise.getName().trim(),
+                status.getGameStatus(),
+                esrb.getEsrbRating(),
+                pegi == null ? "EIGHTEEN" : pegi.getPegiRating() );
+    }
+
 }

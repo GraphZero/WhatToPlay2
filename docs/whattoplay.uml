@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.aa.whattoplay</OriginalElement>
+  <nodes>
+    <node x="21.599999999999994" y="976.0">com.aa.whattoplay.security.application.utility</node>
+    <node x="249.42083333333335" y="1065.0">com.aa.whattoplay.security.infastructure.repositories</node>
+    <node x="154.0576388888889" y="867.0">com.aa.whattoplay.security.infastructure.entities</node>
+    <node x="153.7" y="976.0">com.aa.whattoplay.security.domain.UserRepository</node>
+    <node x="494.70952380952394" y="773.0">com.aa.whattoplay.accounts.application.commands</node>
+    <node x="837.3761904761906" y="862.0">com.aa.whattoplay.accounts.domain.AccountRepository</node>
+    <node x="655.9639761904762" y="615.0">com.aa.whattoplay.games.domain.suggestions.implementation</node>
+    <node x="787.7601190476191" y="773.0">com.aa.whattoplay.accounts.infastructure.entities</node>
+    <node x="666.7541666666668" y="951.0">com.aa.whattoplay.accounts.application.AccountControlService</node>
+    <node x="1014.3702380952382" y="862.0">com.aa.whattoplay.accounts.application.utility</node>
+    <node x="865.0255476190476" y="615.0">com.aa.whattoplay.games.infastructure.repos</node>
+    <node x="424.36514285714304" y="714.0">com.aa.whattoplay.games.ui.SuggestionController</node>
+    <node x="138.00000000000006" y="357.0">com.aa.whattoplay.games.application.commands</node>
+    <node x="576.3184523809523" y="1112.0">com.aa.whattoplay.mails.domain.EmailService</node>
+    <node x="516.6666666666665" y="1201.0">com.aa.whattoplay.mails.application.internal.listeners</node>
+    <node x="0.0" y="506.0">com.aa.whattoplay.games.application.queries</node>
+    <node x="294.42083333333335" y="1136.6666666666667">com.aa.whattoplay.security.config.rest</node>
+    <node x="954.4315476190475" y="1201.0">com.aa.whattoplay.mails.infastructure.MailsInfoSpringData</node>
+    <node x="0.0" y="867.0">com.aa.whattoplay.security.domain.User</node>
+    <node x="487.9639761904761" y="506.0">com.aa.whattoplay.games.domain.suggestions.ISuggestionService</node>
+    <node x="308.71157142857163" y="615.0">com.aa.whattoplay.games.application.SuggestionsService</node>
+    <node x="566.1398809523808" y="1033.0">com.aa.whattoplay.mails.application.commands</node>
+    <node x="95.42083333333335" y="1065.0">com.aa.whattoplay.security.application.UserAuthService</node>
+    <node x="557.0428571428572" y="862.0">com.aa.whattoplay.accounts.application.IAccountControlService</node>
+    <node x="751.2175476190475" y="79.0">com.aa.whattoplay.games.infastructure.entities.igdb</node>
+    <node x="711.3184523809523" y="1112.0">com.aa.whattoplay.mails.domain.MailSenderImpl</node>
+    <node x="327.00000000000006" y="357.0">com.aa.whattoplay.games.infastructure.entities.accounts</node>
+    <node x="757.3184523809523" y="1201.0">com.aa.whattoplay.mails.application.service</node>
+    <node x="575.1507142857145" y="357.0">com.aa.whattoplay.games.domain.suggestions.RecommendedGames</node>
+    <node x="888.5148809523808" y="1033.0">com.aa.whattoplay.mails.domain.EmailSendingInfo</node>
+    <node x="881.3851190476191" y="951.0">com.aa.whattoplay.accounts.infastructure.SpringDataAccountRepository</node>
+    <node x="636.3675476190476" y="238.0">com.aa.whattoplay.games.domain.suggestions.value</node>
+    <node x="1045.0255476190475" y="238.0">com.aa.whattoplay.games.domain.igdb</node>
+    <node x="1084.5047142857143" y="357.0">com.aa.whattoplay.games.application.ExternalDataCacherService</node>
+    <node x="778.6398809523808" y="1033.0">com.aa.whattoplay.mails.domain.Email</node>
+    <node x="701.9675476190475" y="0.0">com.aa.whattoplay.games.infastructure.entities.embeddables</node>
+    <node x="1109.0047142857145" y="506.0">com.aa.whattoplay.games.ui.CacherController</node>
+    <node x="181.25000000000006" y="238.0">com.aa.whattoplay.games.domain.suggestions.UserRating</node>
+    <node x="138.69097222222223" y="1144.0">com.aa.whattoplay.security.config.SecurityConfig</node>
+    <node x="1045.6202380952382" y="773.0">com.aa.whattoplay.accounts.domain.Account</node>
+    <node x="435.75416666666683" y="951.0">com.aa.whattoplay.accounts.ui.AccountManagmentController</node>
+    <node x="790.7755476190476" y="506.0">com.aa.whattoplay.games.domain.suggestions.GameRepository</node>
+    <node x="42.54583333333335" y="788.0">com.aa.whattoplay.security.domain.Role</node>
+    <node x="882.5148809523808" y="1112.0">com.aa.whattoplay.mails.domain.MailsInfoRepository</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.aa.whattoplay.accounts.application.utility" target="com.aa.whattoplay.accounts.domain.Account">
+      <point x="36.33333333333326" y="-14.5" />
+      <point x="1105.2035714285714" y="842.0" />
+      <point x="1115.3702380952382" y="842.0" />
+      <point x="23.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.infastructure.MailsInfoSpringData" target="com.aa.whattoplay.mails.domain.EmailSendingInfo">
+      <point x="38.75" y="-14.5" />
+      <point x="1070.6815476190475" y="1181.0" />
+      <point x="1053.2142857142856" y="1181.0" />
+      <point x="1053.2142857142856" y="1087.0" />
+      <point x="1006.0148809523808" y="1087.0" />
+      <point x="47.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.infastructure.SpringDataAccountRepository" target="com.aa.whattoplay.accounts.domain.AccountRepository">
+      <point x="-51.75" y="-14.5" />
+      <point x="933.1351190476191" y="931.0" />
+      <point x="949.1261904761905" y="931.0" />
+      <point x="37.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.domain.UserRepository" target="com.aa.whattoplay.security.infastructure.entities">
+      <point x="0.0" y="-14.5" />
+      <point x="217.2" y="956.0" />
+      <point x="235.95763888888888" y="956.0" />
+      <point x="23.400000000000006" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.commands" target="com.aa.whattoplay.games.domain.suggestions.UserRating">
+      <point x="0.0" y="-14.5" />
+      <point x="-26.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.entities.accounts" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="31.75" y="-14.5" />
+      <point x="422.25000000000006" y="178.0" />
+      <point x="782.1175476190475" y="178.0" />
+      <point x="-20.600000000000023" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.ui.SuggestionController" target="com.aa.whattoplay.games.application.SuggestionsService">
+      <point x="-20.0" y="-14.5" />
+      <point x="484.36514285714304" y="684.0" />
+      <point x="383.21157142857163" y="684.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.service" target="com.aa.whattoplay.mails.domain.MailsInfoRepository">
+      <point x="47.916666666666686" y="-14.5" />
+      <point x="862.7351190476189" y="1181.0" />
+      <point x="920.7648809523808" y="1181.0" />
+      <point x="-38.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.ui.AccountManagmentController" target="com.aa.whattoplay.accounts.application.commands">
+      <point x="-52.75" y="-14.5" />
+      <point x="488.50416666666683" y="931.0" />
+      <point x="524.8702380952382" y="931.0" />
+      <point x="524.8702380952382" y="842.0" />
+      <point x="517.8761904761906" y="842.0" />
+      <point x="-46.33333333333337" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.infastructure.SpringDataAccountRepository" target="com.aa.whattoplay.accounts.infastructure.entities">
+      <point x="51.75" y="-14.5" />
+      <point x="1036.6351190476191" y="931.0" />
+      <point x="1000.1202380952382" y="931.0" />
+      <point x="1000.1202380952382" y="832.0" />
+      <point x="875.5101190476191" y="832.0" />
+      <point x="29.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.application.AccountControlService" target="com.aa.whattoplay.accounts.domain.AccountRepository">
+      <point x="68.0" y="-14.5" />
+      <point x="819.7541666666668" y="931.0" />
+      <point x="874.6261904761906" y="931.0" />
+      <point x="-37.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.application.UserAuthService" target="com.aa.whattoplay.security.domain.UserRepository">
+      <point x="0.0" y="-14.5" />
+      <point x="162.42083333333335" y="1045.0" />
+      <point x="174.86666666666667" y="1045.0" />
+      <point x="-42.33333333333334" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.SuggestionsService" target="com.aa.whattoplay.games.domain.suggestions.RecommendedGames">
+      <point x="37.25" y="-14.5" />
+      <point x="420.46157142857163" y="575.0" />
+      <point x="477.4639761904761" y="575.0" />
+      <point x="477.4639761904761" y="486.0" />
+      <point x="588.9007142857145" y="486.0" />
+      <point x="-68.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.ui.SuggestionController" target="com.aa.whattoplay.games.application.queries">
+      <point x="-60.0" y="-14.5" />
+      <point x="444.36514285714304" y="694.0" />
+      <point x="29.25" y="694.0" />
+      <point x="-29.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.igdb" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="-25.75" y="-14.5" />
+      <point x="1070.7755476190475" y="198.0" />
+      <point x="830.1842142857142" y="198.0" />
+      <point x="27.466666666666697" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.application.utility" target="com.aa.whattoplay.accounts.infastructure.entities">
+      <point x="-36.33333333333326" y="-14.5" />
+      <point x="1032.536904761905" y="822.0" />
+      <point x="895.0101190476191" y="822.0" />
+      <point x="48.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.repos" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="27.0" y="-14.5" />
+      <point x="946.0255476190476" y="595.0" />
+      <point x="994.5255476190476" y="595.0" />
+      <point x="994.5255476190476" y="208.0" />
+      <point x="823.3175476190476" y="208.0" />
+      <point x="20.600000000000023" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.domain.Role" target="com.aa.whattoplay.security.domain.User">
+      <point x="-8.875" y="14.5" />
+      <point x="69.17083333333335" y="847.0" />
+      <point x="53.25" y="847.0" />
+      <point x="17.75" y="-14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.application.utility" target="com.aa.whattoplay.security.application.utility">
+      <point x="-27.25" y="14.5" />
+      <point x="48.849999999999994" y="1025.0" />
+      <point x="1.5999999999999943" y="1025.0" />
+      <point x="1.5999999999999943" y="990.5" />
+      <point x="-54.5" y="-0.0" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.infastructure.entities" target="com.aa.whattoplay.security.infastructure.entities">
+      <point x="-23.4" y="14.5" />
+      <point x="189.1576388888889" y="926.0" />
+      <point x="124.05763888888889" y="926.0" />
+      <point x="124.05763888888889" y="874.25" />
+      <point x="-58.5" y="-7.25" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.application.AccountControlService" target="com.aa.whattoplay.accounts.application.commands">
+      <point x="-68.0" y="-14.5" />
+      <point x="683.7541666666668" y="921.0" />
+      <point x="546.5428571428572" y="921.0" />
+      <point x="546.5428571428572" y="842.0" />
+      <point x="564.209523809524" y="842.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.ExternalDataCacherService" target="com.aa.whattoplay.games.domain.igdb">
+      <point x="-62.333333333333485" y="-14.5" />
+      <point x="1115.6713809523808" y="337.0" />
+      <point x="1135.1505476190475" y="337.0" />
+      <point x="38.625" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.entities.accounts" target="com.aa.whattoplay.games.domain.suggestions.UserRating">
+      <point x="-31.75" y="-14.5" />
+      <point x="358.75000000000006" y="337.0" />
+      <point x="260.00000000000006" y="337.0" />
+      <point x="26.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.config.SecurityConfig" target="com.aa.whattoplay.security.config.rest">
+      <point x="42.0" y="-14.5" />
+      <point x="243.69097222222223" y="1119.0" />
+      <point x="348.7210642802156" y="1116.1131639722864" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.ISuggestionService" target="com.aa.whattoplay.games.infastructure.entities.accounts">
+      <point x="-36.75" y="-14.5" />
+      <point x="524.7139761904762" y="476.0" />
+      <point x="426.78571428571433" y="476.0" />
+      <point x="36.28571428571428" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.implementation" target="com.aa.whattoplay.games.domain.suggestions.value">
+      <point x="23.428571428571445" y="-14.5" />
+      <point x="761.3925476190475" y="595.0" />
+      <point x="763.0175476190475" y="595.0" />
+      <point x="763.0175476190475" y="337.0" />
+      <point x="732.6675476190476" y="337.0" />
+      <point x="42.80000000000007" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.application.AccountControlService" target="com.aa.whattoplay.accounts.infastructure.entities">
+      <point x="0.0" y="-14.5" />
+      <point x="751.7541666666668" y="911.0" />
+      <point x="783.0428571428572" y="911.0" />
+      <point x="783.0428571428572" y="832.0" />
+      <point x="817.0101190476191" y="832.0" />
+      <point x="-29.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.infastructure.repositories" target="com.aa.whattoplay.security.domain.UserRepository">
+      <point x="-35.0" y="-14.5" />
+      <point x="284.42083333333335" y="1045.0" />
+      <point x="259.5333333333333" y="1045.0" />
+      <point x="42.333333333333314" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.repos" target="com.aa.whattoplay.games.infastructure.repos">
+      <point x="0.0" y="14.5" />
+      <point x="919.0255476190476" y="664.0" />
+      <point x="845.0255476190476" y="664.0" />
+      <point x="845.0255476190476" y="629.5" />
+      <point x="-54.0" y="-0.0" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.entities.igdb" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="-34.33333333333333" y="14.5" />
+      <point x="768.3842142857142" y="148.0" />
+      <point x="711.2175476190475" y="148.0" />
+      <point x="711.2175476190475" y="83.83333333333337" />
+      <point x="-51.5" y="-9.666666666666629" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.value" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="0.0" y="-14.5" />
+      <point x="689.8675476190476" y="198.0" />
+      <point x="795.8508809523809" y="198.0" />
+      <point x="-6.866666666666674" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.application.UserAuthService" target="com.aa.whattoplay.security.application.utility">
+      <point x="-44.66666666666666" y="-14.5" />
+      <point x="117.75416666666669" y="1045.0" />
+      <point x="103.35" y="1045.0" />
+      <point x="27.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.config.SecurityConfig" target="com.aa.whattoplay.security.application.UserAuthService">
+      <point x="0.0" y="-14.5" />
+      <point x="201.69097222222223" y="1119.0" />
+      <point x="195.92083333333335" y="1119.0" />
+      <point x="33.5" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.service" target="com.aa.whattoplay.mails.domain.EmailService">
+      <point x="-47.916666666666686" y="-14.5" />
+      <point x="766.9017857142856" y="1181.0" />
+      <point x="661.8184523809523" y="1181.0" />
+      <point x="28.5" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.domain.MailSenderImpl" target="com.aa.whattoplay.mails.domain.Email">
+      <point x="0.0" y="-14.5" />
+      <point x="776.8184523809523" y="1087.0" />
+      <point x="797.8898809523808" y="1087.0" />
+      <point x="-19.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.service" target="com.aa.whattoplay.mails.application.commands">
+      <point x="-28.75" y="-14.5" />
+      <point x="786.0684523809523" y="1171.0" />
+      <point x="700.8184523809523" y="1171.0" />
+      <point x="700.8184523809523" y="1087.0" />
+      <point x="681.9732142857142" y="1087.0" />
+      <point x="46.33333333333337" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.ui.SuggestionController" target="com.aa.whattoplay.games.domain.suggestions.RecommendedGames">
+      <point x="20.0" y="-14.5" />
+      <point x="524.365142857143" y="684.0" />
+      <point x="645.4639761904762" y="684.0" />
+      <point x="645.4639761904762" y="486.0" />
+      <point x="643.9007142857145" y="486.0" />
+      <point x="-13.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.application.utility" target="com.aa.whattoplay.security.domain.User">
+      <point x="-21.799999999999983" y="-14.5" />
+      <point x="54.30000000000001" y="956.0" />
+      <point x="53.25" y="956.0" />
+      <point x="17.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.application.AccountControlService" target="com.aa.whattoplay.accounts.application.IAccountControlService">
+      <point x="-34.0" y="-14.5" />
+      <point x="717.7541666666668" y="911.0" />
+      <point x="686.7928571428572" y="911.0" />
+      <point x="43.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.entities.accounts" target="com.aa.whattoplay.games.infastructure.entities.accounts">
+      <point x="-36.28571428571428" y="14.5" />
+      <point x="354.2142857142858" y="416.0" />
+      <point x="297.00000000000006" y="416.0" />
+      <point x="297.00000000000006" y="364.25" />
+      <point x="-63.5" y="-7.25" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.domain.AccountRepository" target="com.aa.whattoplay.accounts.infastructure.entities">
+      <point x="0.0" y="-14.5" />
+      <point x="911.8761904761905" y="842.0" />
+      <point x="856.0101190476191" y="842.0" />
+      <point x="9.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.value" target="com.aa.whattoplay.games.domain.suggestions.value">
+      <point x="-42.8" y="14.5" />
+      <point x="647.0675476190476" y="287.0" />
+      <point x="616.3675476190476" y="287.0" />
+      <point x="616.3675476190476" y="259.75" />
+      <point x="-53.5" y="7.25" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.service" target="com.aa.whattoplay.mails.domain.Email">
+      <point x="9.583333333333314" y="-14.5" />
+      <point x="824.4017857142856" y="1161.0" />
+      <point x="852.8184523809523" y="1161.0" />
+      <point x="852.8184523809523" y="1087.0" />
+      <point x="836.3898809523808" y="1087.0" />
+      <point x="19.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.application.IAccountControlService" target="com.aa.whattoplay.accounts.application.commands">
+      <point x="-43.25" y="-14.5" />
+      <point x="600.2928571428572" y="842.0" />
+      <point x="610.5428571428573" y="842.0" />
+      <point x="46.33333333333337" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.ExternalDataCacherService" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="-1.1368683772161603E-13" y="-14.5" />
+      <point x="1178.0047142857143" y="337.0" />
+      <point x="1158.5255476190478" y="337.0" />
+      <point x="1158.5255476190478" y="178.0" />
+      <point x="843.9175476190475" y="178.0" />
+      <point x="41.19999999999993" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.domain.User" target="com.aa.whattoplay.security.domain.Role">
+      <point x="-17.75" y="-14.5" />
+      <point x="17.75" y="837.0" />
+      <point x="51.42083333333335" y="837.0" />
+      <point x="-26.625" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.igdb" target="com.aa.whattoplay.games.domain.igdb">
+      <point x="12.875" y="14.5" />
+      <point x="1109.4005476190475" y="307.0" />
+      <point x="1005.0255476190475" y="307.0" />
+      <point x="1005.0255476190475" y="242.83333333333331" />
+      <point x="-51.5" y="-9.666666666666686" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.GameRepository" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="0.0" y="-14.5" />
+      <point x="858.2755476190476" y="218.0" />
+      <point x="816.4508809523809" y="218.0" />
+      <point x="13.733333333333348" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.implementation" target="com.aa.whattoplay.games.domain.suggestions.RecommendedGames">
+      <point x="0.0" y="-14.5" />
+      <point x="737.9639761904762" y="446.0" />
+      <point x="698.9007142857145" y="446.0" />
+      <point x="41.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.implementation" target="com.aa.whattoplay.games.domain.suggestions.GameRepository">
+      <point x="70.28571428571433" y="-14.5" />
+      <point x="808.2496904761904" y="595.0" />
+      <point x="824.5255476190476" y="595.0" />
+      <point x="-33.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.application.utility" target="com.aa.whattoplay.security.infastructure.entities">
+      <point x="43.599999999999994" y="-14.5" />
+      <point x="119.69999999999999" y="946.0" />
+      <point x="212.5576388888889" y="946.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.internal.listeners" target="com.aa.whattoplay.mails.application.commands">
+      <point x="-30.5" y="-14.5" />
+      <point x="547.1666666666665" y="1181.0" />
+      <point x="559.8690476190475" y="1181.0" />
+      <point x="559.8690476190475" y="1087.0" />
+      <point x="589.3065476190475" y="1087.0" />
+      <point x="-46.333333333333314" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.SuggestionsService" target="com.aa.whattoplay.games.application.commands">
+      <point x="-37.25000000000006" y="-14.5" />
+      <point x="345.9615714285716" y="575.0" />
+      <point x="207.50000000000006" y="575.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.implementation" target="com.aa.whattoplay.games.infastructure.entities.accounts">
+      <point x="-46.85714285714289" y="-14.5" />
+      <point x="690.7469761904762" y="466.0" />
+      <point x="444.9285714285715" y="466.0" />
+      <point x="54.428571428571445" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.internal.listeners" target="com.aa.whattoplay.mails.domain.EmailService">
+      <point x="30.5" y="-14.5" />
+      <point x="608.1666666666665" y="1181.0" />
+      <point x="604.8184523809523" y="1181.0" />
+      <point x="-28.5" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.ISuggestionService" target="com.aa.whattoplay.games.domain.suggestions.RecommendedGames">
+      <point x="36.75" y="-14.5" />
+      <point x="598.2139761904762" y="486.0" />
+      <point x="616.4007142857145" y="486.0" />
+      <point x="-41.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.SuggestionsService" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="22.350000000000023" y="-14.5" />
+      <point x="405.56157142857165" y="565.0" />
+      <point x="464.50000000000006" y="565.0" />
+      <point x="464.50000000000006" y="188.0" />
+      <point x="788.9842142857142" y="188.0" />
+      <point x="-13.733333333333348" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.implementation" target="com.aa.whattoplay.games.infastructure.entities.igdb">
+      <point x="46.85714285714289" y="-14.5" />
+      <point x="784.821119047619" y="595.0" />
+      <point x="774.2755476190476" y="595.0" />
+      <point x="774.2755476190476" y="218.0" />
+      <point x="809.5842142857142" y="218.0" />
+      <point x="6.866666666666674" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.service" target="com.aa.whattoplay.mails.domain.MailSenderImpl">
+      <point x="-9.583333333333314" y="-14.5" />
+      <point x="805.2351190476189" y="1161.0" />
+      <point x="776.8184523809523" y="1161.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.domain.MailsInfoRepository" target="com.aa.whattoplay.mails.domain.EmailSendingInfo">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.value" target="com.aa.whattoplay.games.infastructure.entities.embeddables">
+      <point x="-35.66666666666663" y="-14.5" />
+      <point x="654.2008809523809" y="54.0" />
+      <point x="726.9675476190475" y="54.0" />
+      <point x="-50.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.ui.AccountManagmentController" target="com.aa.whattoplay.accounts.application.IAccountControlService">
+      <point x="52.75" y="-14.5" />
+      <point x="594.0041666666668" y="931.0" />
+      <point x="600.2928571428572" y="931.0" />
+      <point x="-43.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.SuggestionsService" target="com.aa.whattoplay.games.infastructure.entities.accounts">
+      <point x="-22.350000000000023" y="-14.5" />
+      <point x="360.8615714285716" y="595.0" />
+      <point x="357.4900000000001" y="595.0" />
+      <point x="357.4900000000001" y="476.0" />
+      <point x="372.3571428571429" y="476.0" />
+      <point x="-18.142857142857167" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.application.utility" target="com.aa.whattoplay.security.domain.Role">
+      <point x="21.80000000000001" y="-14.5" />
+      <point x="97.9" y="956.0" />
+      <point x="111.25763888888889" y="956.0" />
+      <point x="111.25763888888889" y="847.0" />
+      <point x="104.67083333333335" y="847.0" />
+      <point x="26.625" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.RecommendedGames" target="com.aa.whattoplay.games.domain.suggestions.value">
+      <point x="41.25" y="-14.5" />
+      <point x="698.9007142857145" y="337.0" />
+      <point x="711.2675476190475" y="337.0" />
+      <point x="21.399999999999977" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.repos" target="com.aa.whattoplay.games.domain.suggestions.GameRepository">
+      <point x="-27.0" y="-14.5" />
+      <point x="33.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.domain.suggestions.implementation" target="com.aa.whattoplay.games.domain.suggestions.ISuggestionService">
+      <point x="-70.28571428571433" y="-14.5" />
+      <point x="667.6782619047617" y="595.0" />
+      <point x="610.4639761904762" y="595.0" />
+      <point x="49.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.security.infastructure.repositories" target="com.aa.whattoplay.security.infastructure.entities">
+      <point x="35.0" y="-14.5" />
+      <point x="354.42083333333335" y="956.0" />
+      <point x="259.3576388888889" y="956.0" />
+      <point x="46.80000000000001" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.application.service" target="com.aa.whattoplay.mails.domain.EmailSendingInfo">
+      <point x="28.75" y="-14.5" />
+      <point x="843.5684523809523" y="1171.0" />
+      <point x="872.0148809523808" y="1171.0" />
+      <point x="872.0148809523808" y="1087.0" />
+      <point x="912.0148809523808" y="1087.0" />
+      <point x="-47.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.accounts.application.IAccountControlService" target="com.aa.whattoplay.accounts.infastructure.entities">
+      <point x="43.25" y="-14.5" />
+      <point x="686.7928571428572" y="822.0" />
+      <point x="797.5101190476191" y="822.0" />
+      <point x="-48.75" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.entities.igdb" target="com.aa.whattoplay.games.domain.suggestions.value">
+      <point x="0.0" y="14.5" />
+      <point x="802.7175476190475" y="208.0" />
+      <point x="725.5342142857141" y="208.0" />
+      <point x="35.66666666666663" y="-14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.SuggestionsService" target="com.aa.whattoplay.games.domain.suggestions.ISuggestionService">
+      <point x="52.14999999999998" y="-14.5" />
+      <point x="435.3615714285716" y="585.0" />
+      <point x="512.4639761904762" y="585.0" />
+      <point x="-49.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.infastructure.entities.igdb" target="com.aa.whattoplay.games.infastructure.entities.embeddables">
+      <point x="-25.75" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.ui.CacherController" target="com.aa.whattoplay.games.application.ExternalDataCacherService">
+      <point x="-1.1368683772161603E-13" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.infastructure.MailsInfoSpringData" target="com.aa.whattoplay.mails.domain.MailsInfoRepository">
+      <point x="-38.75" y="-14.5" />
+      <point x="993.1815476190475" y="1181.0" />
+      <point x="997.2648809523808" y="1181.0" />
+      <point x="38.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.games.application.SuggestionsService" target="com.aa.whattoplay.games.application.queries">
+      <point x="-67.05000000000004" y="-14.5" />
+      <point x="316.1615714285716" y="595.0" />
+      <point x="87.75" y="595.0" />
+      <point x="29.25" y="14.5" />
+    </edge>
+    <edge source="com.aa.whattoplay.mails.domain.EmailService" target="com.aa.whattoplay.mails.application.commands">
+      <point x="0.0" y="-14.5" />
+      <point x="633.3184523809523" y="1087.0" />
+      <point x="635.6398809523808" y="1087.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6928" x="636.0" y="615.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -260,17 +260,6 @@ public class GameJson implements Serializable {
         return status;
     }
 
-//    @JsonSetter("status")
-//    public void setStatus(int status) {
-//        for (Status e : Status.values()) {
-//            if (e.getGameStatus() == status) {
-//                this.status = e;
-//                return;
-//            }
-//        }
-//        this.status = Status.RELEASED;
-//    }
-
     @JsonSetter("status")
     public void setStatus(String status) {
         for (Status e : Status.values()) {

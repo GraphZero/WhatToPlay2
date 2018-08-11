@@ -2,7 +2,7 @@ package com.aa.whattoplay.games.infastructure.entities.igdb;
 
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
-import com.aa.whattoplay.games.domain.suggestions.value.Game;
+import com.aa.whattoplay.games.domain.suggestions.Game;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Esrb;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.ImageInfo;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Pegi;

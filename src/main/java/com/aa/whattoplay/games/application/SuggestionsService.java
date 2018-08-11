@@ -9,6 +9,7 @@ import com.aa.whattoplay.games.domain.suggestions.RecommendedGames;
 import com.aa.whattoplay.games.infastructure.entities.accounts.User;
 import com.aa.whattoplay.games.infastructure.entities.accounts.UserPersonalRating;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.Optional;
 

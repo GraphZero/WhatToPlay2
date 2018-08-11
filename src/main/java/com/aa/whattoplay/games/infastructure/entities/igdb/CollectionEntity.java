@@ -1,7 +1,6 @@
 package com.aa.whattoplay.games.infastructure.entities.igdb;
 
 import com.aa.whattoplay.games.domain.suggestions.value.Collection;
-import com.aa.whattoplay.games.domain.suggestions.value.Game;
 import lombok.*;
 
 import javax.persistence.Column;

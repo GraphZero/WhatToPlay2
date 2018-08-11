@@ -4,10 +4,11 @@ import com.aa.ddd.common.annotations.DomainService;
 import com.aa.whattoplay.games.domain.suggestions.GameRepository;
 import com.aa.whattoplay.games.domain.suggestions.ISuggestionService;
 import com.aa.whattoplay.games.domain.suggestions.RecommendedGames;
-import com.aa.whattoplay.games.domain.suggestions.value.Game;
+import com.aa.whattoplay.games.domain.suggestions.Game;
 import com.aa.whattoplay.games.infastructure.entities.accounts.User;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Primary;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 @DomainService
 @RequiredArgsConstructor
+@Primary
 public class RandomSuggestionService implements ISuggestionService {
     private final GameRepository gameRepository;
 
