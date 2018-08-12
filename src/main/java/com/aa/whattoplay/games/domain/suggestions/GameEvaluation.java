@@ -29,10 +29,7 @@ public class GameEvaluation {
     private Set<Genre> genre;
     private Set<PlayerPerspective> playerPerspective;
     private Status status;
-    private Esrb esrb;
     private Pegi pegi;
-
-
 
     public List<Object> getLearnableAttributes() {
         return  Arrays.asList(userRating, popularity, rating,
@@ -44,7 +41,6 @@ public class GameEvaluation {
                 collection.getName().trim(),
                 franchise.getName().trim(),
                 status.getGameStatus(),
-                esrb.getEsrbRating(),
                 pegi == null ? "EIGHTEEN" : pegi.getPegiRating() );
     }
 

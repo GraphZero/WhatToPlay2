@@ -4,25 +4,30 @@ import com.aa.ddd.common.annotations.ApplicationService;
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.application.commands.AddUserRating;
 import com.aa.whattoplay.games.application.queries.QueryRecommendedGamesForUser;
-import com.aa.whattoplay.games.domain.suggestions.ISuggestionService;
+import com.aa.whattoplay.games.domain.suggestions.SuggestionService;
 import com.aa.whattoplay.games.domain.suggestions.RecommendedGames;
+import com.aa.whattoplay.games.domain.suggestions.implementation.CsvFileSaver;
 import com.aa.whattoplay.games.infastructure.entities.accounts.User;
 import com.aa.whattoplay.games.infastructure.entities.accounts.UserPersonalRating;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.extern.slf4j.Slf4j;
 
+import java.io.IOException;
 import java.util.Optional;
 
 @ApplicationService
+@Slf4j
 public class SuggestionsService {
-    private final ISuggestionService suggestionService;
+    private final SuggestionService suggestionService;
+    private final CsvFileSaver csvFileSaver;
     private final IGenericCrudDao<User> usersDao;
     private final IGenericCrudDao<UserPersonalRating> userRatingsDao;
     private final IGenericCrudDao<GameEntity> gamesDao;
 
-    public SuggestionsService(ISuggestionService suggestionService, IGenericCrudDao<User> usersDao,
+    public SuggestionsService(SuggestionService suggestionService, CsvFileSaver csvFileSaver, IGenericCrudDao<User> usersDao,
                               IGenericCrudDao<UserPersonalRating> userRatingsDao, IGenericCrudDao<GameEntity> gamesDao) {
         this.suggestionService = suggestionService;
+        this.csvFileSaver = csvFileSaver;
         this.usersDao = usersDao;
         this.userRatingsDao = userRatingsDao;
         this.gamesDao = gamesDao;
@@ -46,6 +51,12 @@ public class SuggestionsService {
                             .map(game -> {
                                 UserPersonalRating userRating = new UserPersonalRating(user, game, addUserRating.getUserRating());
                                 userRatingsDao.save(userRating);
+                                try {
+                                    csvFileSaver.saveAttributesToCsvFile(userRating.gameEvaluation().getLearnableAttributes(), Long.toString(user.getId()));
+                                } catch (IOException e) {
+                                    log.warn("Couldn't save user " + user.getId() + " rating. " );
+                                    e.printStackTrace();
+                                }
                                 return userRating;
                             })
                             .orElse(null)

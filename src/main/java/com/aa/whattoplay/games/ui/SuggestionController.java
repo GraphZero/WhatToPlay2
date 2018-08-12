@@ -3,6 +3,7 @@ package com.aa.whattoplay.games.ui;
 
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.application.SuggestionsService;
+import com.aa.whattoplay.games.application.commands.AddUserRating;
 import com.aa.whattoplay.games.application.queries.QueryRecommendedGamesForUser;
 import com.aa.whattoplay.games.domain.suggestions.GameEvaluation;
 import com.aa.whattoplay.games.domain.suggestions.RecommendedGames;
@@ -24,8 +25,6 @@ import java.io.IOException;
 @Slf4j
 public class SuggestionController {
     private final SuggestionsService suggestionsService;
-     private final CsvFileSaver csvSaver;
-    private final IGenericCrudDao<GameEntity> gamesDao;
 
     @CrossOrigin
     @RequestMapping(path = "/getSuggestionsForUser", method = RequestMethod.GET)
@@ -43,17 +42,17 @@ public class SuggestionController {
     @CrossOrigin
     @RequestMapping(path = "/test", method = RequestMethod.GET)
     public ResponseEntity<String> saveCsv() throws Exception {
-        gamesDao.setClazz(GameEntity.class);
-        GameEntity gameEntity = gamesDao.findById(1L).get();
-        GameEntity gameEntity1 = gamesDao.findById(2L).get();
-        GameEvaluation gameEvaluation = gameEntity.value();
-        GameEvaluation gameEvaluation1 = gameEntity1.value();
-        gameEvaluation.setUserRating(UserRating.INTERESTED);
-        gameEvaluation1.setUserRating(UserRating.NOT_INTERESTED);
-        csvSaver.saveAttributesToCsvFile(gameEvaluation.getLearnableAttributes());
-        csvSaver.saveAttributesToCsvFile(gameEvaluation1.getLearnableAttributes());
         DecisionTreeClassifier.process();
         return ResponseEntity.ok("ok");
+    }
+
+    @CrossOrigin
+    @RequestMapping(path = "/addRating", method = RequestMethod.POST)
+    public ResponseEntity<String> saveCsv(@RequestParam final long userId,
+                                          @RequestParam final long gameId,
+                                          @RequestParam final UserRating userRating) {
+        suggestionsService.addUserRating(new AddUserRating(userId, gameId, userRating));
+        return ResponseEntity.ok("Rating was added.");
     }
 
 }

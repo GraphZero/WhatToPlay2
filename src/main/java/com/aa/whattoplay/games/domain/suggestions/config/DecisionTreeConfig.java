@@ -4,7 +4,6 @@ import com.aa.whattoplay.games.domain.suggestions.implementation.CsvFileSaver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class DecisionTreeConfig {
     private static final List<String> attributes = Arrays.asList("userRating", "popularity", "rating",
             "developer", "gameMode", "genre", "playerPerspective", "firstReleaseDate", "collection", "franchise",
-            "status", "esrb", "pegi");
+            "status", "pegi");
 
 
     static List<String> getAttributesToLearnFrom() {
@@ -20,7 +19,7 @@ public class DecisionTreeConfig {
     }
 
     @Bean
-    public CsvFileSaver csvFileSaver() throws IOException {
+    public CsvFileSaver csvFileSaver(){
         return new CsvFileSaver(getAttributesToLearnFrom());
     }
 }

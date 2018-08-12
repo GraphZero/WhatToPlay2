@@ -1,14 +1,17 @@
 package com.aa.whattoplay.games.infastructure.entities.accounts;
 
 import com.aa.ddd.common.domain.AbstractEntity;
+import com.aa.whattoplay.games.domain.suggestions.GameEvaluation;
 import com.aa.whattoplay.games.domain.suggestions.UserRating;
-import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
+import com.aa.whattoplay.games.domain.suggestions.value.PlayerPerspective;
+import com.aa.whattoplay.games.infastructure.entities.igdb.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "Users_Ratings")
@@ -27,6 +30,24 @@ public class UserPersonalRating extends AbstractEntity {
 
     @Enumerated(value = EnumType.STRING)
     private UserRating rating;
+
+    public GameEvaluation gameEvaluation() {
+        return GameEvaluation
+                .builder()
+                .collection(gameEntity.getCollectionEntity().value())
+                .developer(gameEntity.getDeveloperEntities().stream().map(DeveloperEntity::value).collect(Collectors.toSet()))
+                .firstReleaseDate(gameEntity.getFirstReleaseDate())
+                .franchise(gameEntity.getFranchiseEntity().value())
+                .gameMode(gameEntity.getGameModeEntities().stream().map(GameModeEntity::value).collect(Collectors.toSet()))
+                .genre(gameEntity.getGenreEntities().stream().map(GenreEntity::value).collect(Collectors.toSet()))
+                .pegi(gameEntity.getPegi())
+                .playerPerspective(gameEntity.getPlayerPerspectiveEntities().stream().map(PlayerPerspectiveEntity::value).collect(Collectors.toSet()))
+                .popularity(gameEntity.getPopularity())
+                .rating(gameEntity.getRating())
+                .status(gameEntity.getStatus())
+                .userRating(rating)
+                .build();
+        }
 
     @Override
     public int hashCode() {

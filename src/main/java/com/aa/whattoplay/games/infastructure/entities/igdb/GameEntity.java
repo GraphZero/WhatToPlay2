@@ -215,7 +215,6 @@ public class GameEntity extends IgdbAbstractEntity {
                 .genre(genreEntities.stream().map(GenreEntity::value).collect(Collectors.toSet()))
                 .playerPerspective(playerPerspectiveEntities.stream().map(PlayerPerspectiveEntity::value).collect(Collectors.toSet()))
                 .status(status)
-                .esrb(esrb)
                 .pegi(pegi)
                 .build();
     }

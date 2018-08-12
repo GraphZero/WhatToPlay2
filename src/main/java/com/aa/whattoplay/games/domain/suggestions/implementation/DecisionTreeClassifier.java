@@ -11,23 +11,14 @@ import weka.core.converters.ConverterUtils;
 @DomainService
 @Slf4j
 public class DecisionTreeClassifier {
-    public static final String TRAINING_DATA_SET_FILENAME="decision-train.arff";
-    public static final String TESTING_DATA_SET_FILENAME="decision-test.arff";
+    private static final int classIndex = 0;
+    public static final String TRAINING_DATA_SET_FILENAME="./storage/csv/1/attributes.csv";
+    public static final String TESTING_DATA_SET_FILENAME="./storage/csv/1/attributes.csv";
 
     public static Instances getDataSet(String fileName) throws Exception {
-        int classIdx = 0;
-        /** the arffloader to load the arff file */
-        ConverterUtils.DataSource loader = new ConverterUtils.DataSource("./storage/csv/attributes.csv");
-        /** load the traing data */
-//        loader.setSource(CSVLoader.class.getResourceAsStream("./storage/csv/attributes.csv"));
-        /**
-         * we can also set the file like loader3.setFile(new
-         * File("test-confused.arff"));
-         */
-//        loader.setFile(new File("./storage/csv/attributes.csv"));
+        ConverterUtils.DataSource loader = new ConverterUtils.DataSource(fileName);
         Instances dataSet = loader.getDataSet();
-        /** set the index based on the data given in the arff files */
-        dataSet.setClassIndex(classIdx);
+        dataSet.setClassIndex(classIndex);
         return dataSet;
     }
 
