@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Native queries will probably only work with MsSql dialect.
@@ -20,4 +22,7 @@ public interface SpringDataGamesRepository extends GameRepository, JpaRepository
     @Override
     @Query(value = "SELECT TOP (:limit) * FROM Games ORDER BY NEWID()", nativeQuery = true)
     Collection<GameEntity> getSeveralRandomGames(@Param("limit") long numberOfGames);
+
+    @Override
+    Set<GameEntity> getByNameContaining(String name);
 }

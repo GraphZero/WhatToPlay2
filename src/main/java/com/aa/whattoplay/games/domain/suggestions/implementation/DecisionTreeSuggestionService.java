@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
+import java.util.List;
 
 @RequiredArgsConstructor
 @DomainService
@@ -25,6 +26,6 @@ public class DecisionTreeSuggestionService implements SuggestionService {
         } catch (IOException e) {
             log.debug("lol bug " + e.getMessage());
         }
-        return null;
+        return new RecommendedGames(user.getId(), List.of());
     }
 }

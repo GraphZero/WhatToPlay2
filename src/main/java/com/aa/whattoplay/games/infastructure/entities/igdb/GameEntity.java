@@ -3,6 +3,7 @@ package com.aa.whattoplay.games.infastructure.entities.igdb;
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.domain.igdb.value.Status;
 import com.aa.whattoplay.games.domain.suggestions.GameEvaluation;
+import com.aa.whattoplay.games.domain.suggestions.value.GameDto;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Esrb;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.ImageInfo;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Pegi;
@@ -214,6 +215,26 @@ public class GameEntity extends IgdbAbstractEntity {
                 .gameMode(gameModeEntities.stream().map(GameModeEntity::value).collect(Collectors.toSet()))
                 .genre(genreEntities.stream().map(GenreEntity::value).collect(Collectors.toSet()))
                 .playerPerspective(playerPerspectiveEntities.stream().map(PlayerPerspectiveEntity::value).collect(Collectors.toSet()))
+                .status(status)
+                .pegi(pegi)
+                .build();
+    }
+
+    public GameDto dto(){
+        return GameDto.builder()
+                .id(getId())
+                .name(name)
+                .summary(summary)
+                .storyline(storyline)
+                .popularity(popularity)
+                .rating(rating)
+                .firstReleaseDate(firstReleaseDate)
+                .collection(collectionEntity.value())
+                .franchise(franchiseEntity.value())
+                .developers(developerEntities.stream().map(DeveloperEntity::value).collect(Collectors.toSet()))
+                .gameModes(gameModeEntities.stream().map(GameModeEntity::value).collect(Collectors.toSet()))
+                .genres(genreEntities.stream().map(GenreEntity::value).collect(Collectors.toSet()))
+                .playerPerspectives(playerPerspectiveEntities.stream().map(PlayerPerspectiveEntity::value).collect(Collectors.toSet()))
                 .status(status)
                 .pegi(pegi)
                 .build();

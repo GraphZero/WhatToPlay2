@@ -26,7 +26,7 @@ public class RandomSuggestionService implements SuggestionService {
                 .stream()
                 .map(GameEntity::value)
                 .collect(Collectors.toList());
-        return new RecommendedGames(user.getId(), randomGameEvaluations);
+        return new RecommendedGames(user.getId(), gameRepository.getSeveralRandomGames(10).stream().map(GameEntity::dto).collect(Collectors.toList()));
     }
 
 

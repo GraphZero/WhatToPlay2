@@ -38,8 +38,8 @@ public class GameEvaluation {
                 genre.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
                 playerPerspective.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
                 firstReleaseDate.getYear(),
-                collection.getName().trim(),
-                franchise.getName().trim(),
+                collection.getName().trim().equals("UNKNOWN COLLECTION") ? "" : collection.getName().trim(),
+                franchise.getName().trim().equals("UNKNOWN FRANCHISE") ? "" : collection.getName().trim(),
                 status.getGameStatus(),
                 pegi == null ? "EIGHTEEN" : pegi.getPegiRating() );
     }

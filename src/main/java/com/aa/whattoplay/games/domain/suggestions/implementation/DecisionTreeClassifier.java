@@ -12,20 +12,11 @@ import weka.core.converters.ConverterUtils;
 @Slf4j
 public class DecisionTreeClassifier {
     private static final int classIndex = 0;
-    public static final String TRAINING_DATA_SET_FILENAME="./storage/csv/1/attributes.csv";
-    public static final String TESTING_DATA_SET_FILENAME="./storage/csv/1/attributes.csv";
 
-    public static Instances getDataSet(String fileName) throws Exception {
-        ConverterUtils.DataSource loader = new ConverterUtils.DataSource(fileName);
-        Instances dataSet = loader.getDataSet();
-        dataSet.setClassIndex(classIndex);
-        return dataSet;
-    }
+    public static void process(String trainingDataSetFileName, String testingDataSetFileName) throws Exception {
 
-    public static void process() throws Exception {
-
-        Instances trainingDataSet = getDataSet(TRAINING_DATA_SET_FILENAME);
-        Instances testingDataSet = getDataSet(TESTING_DATA_SET_FILENAME);
+        Instances trainingDataSet = getDataSet(trainingDataSetFileName);
+        Instances testingDataSet = getDataSet(testingDataSetFileName);
 
         System.out.println("************************** J48 *************************");
         /** Classifier here is Linear Regression */
@@ -48,6 +39,13 @@ public class DecisionTreeClassifier {
         System.out.println(classifier);
         System.out.println(eval.toMatrixString());
         System.out.println(eval.toClassDetailsString());
+    }
+
+    public static Instances getDataSet(String fileName) throws Exception {
+        ConverterUtils.DataSource loader = new ConverterUtils.DataSource(fileName);
+        Instances dataSet = loader.getDataSet();
+        dataSet.setClassIndex(classIndex);
+        return dataSet;
     }
 
 }

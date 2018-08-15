@@ -41,16 +41,17 @@ public class SuggestionController {
 
     @CrossOrigin
     @RequestMapping(path = "/test", method = RequestMethod.GET)
-    public ResponseEntity<String> saveCsv() throws Exception {
-        DecisionTreeClassifier.process();
+    public ResponseEntity<String> process() throws Exception {
+        DecisionTreeClassifier.process("./storage/csv/1/attributes.csv", "./storage/csv/1/attributes.csv");
         return ResponseEntity.ok("ok");
     }
 
     @CrossOrigin
     @RequestMapping(path = "/addRating", method = RequestMethod.POST)
-    public ResponseEntity<String> saveCsv(@RequestParam final long userId,
-                                          @RequestParam final long gameId,
-                                          @RequestParam final UserRating userRating) {
+    public ResponseEntity<String> addRatingForUser(@RequestParam final long userId,
+                                                   @RequestParam final long gameId,
+                                                   @RequestParam final UserRating userRating) {
+        log.debug("Adding rating for user " + userId + " to a game " + gameId);
         suggestionsService.addUserRating(new AddUserRating(userId, gameId, userRating));
         return ResponseEntity.ok("Rating was added.");
     }
