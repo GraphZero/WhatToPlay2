@@ -11,6 +11,7 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -32,16 +33,25 @@ public class GameEvaluation {
     private Pegi pegi;
 
     public List<Object> getLearnableAttributes() {
-        return  Arrays.asList(userRating, popularity, rating,
-                developer.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
-                gameMode.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
-                genre.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
-                playerPerspective.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList()),
+        return  Arrays.asList(userRating, popularity,
+                rating == 0.0 ? null : rating,
+                getCollectionOrEmptyString(developer.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList())),
+                getCollectionOrEmptyString(gameMode.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList())),
+                getCollectionOrEmptyString(genre.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList())),
+                getCollectionOrEmptyString(playerPerspective.stream().map(dev -> dev.getName().trim()).collect(Collectors.toList())),
                 firstReleaseDate.getYear(),
-                collection.getName().trim().equals("UNKNOWN COLLECTION") ? "" : collection.getName().trim(),
-                franchise.getName().trim().equals("UNKNOWN FRANCHISE") ? "" : collection.getName().trim(),
-                status.getGameStatus(),
-                pegi == null ? "EIGHTEEN" : pegi.getPegiRating() );
+                collection.getName().replaceAll(",", "").replaceAll(":", "").trim().equals("UNKNOWN COLLECTION") ? "" : collection.getName().trim(),
+                franchise.getName().replaceAll(",", "").replaceAll(":", "").trim().equals("UNKNOWN FRANCHISE") ? "" : collection.getName().trim(),
+                status,
+                pegi == null ? "" : pegi.getPegiRating() );
+    }
+
+    private Object getCollectionOrEmptyString(List<Object> collectionToCollect){
+        if ( collectionToCollect.size() > 0 ){
+            return collectionToCollect;
+        } else{
+            return "";
+        }
     }
 
 }

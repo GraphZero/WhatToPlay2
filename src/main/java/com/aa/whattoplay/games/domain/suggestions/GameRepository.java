@@ -9,6 +9,6 @@ import java.util.Set;
 public interface GameRepository {
     GameEntity getOneRandomGame();
     Collection<GameEntity> getSeveralRandomGames(long numberOfGames);
-    Set<GameEntity> getByNameContaining(String name);
+    Set<GameEntity> getByNameStartingWith(String name);
     Optional<GameEntity> findById(long id);
 }

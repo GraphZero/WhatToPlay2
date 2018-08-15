@@ -22,7 +22,7 @@ public class GamesController {
     @RequestMapping(path = "/findGameContaining", method = RequestMethod.GET)
     public ResponseEntity<Set<GameDto>> getGameContainingString(@RequestParam final String field) throws Exception {
         return ResponseEntity.ok(gameRepository
-                .getByNameContaining(field)
+                .getByNameStartingWith(field)
                 .stream()
                 .limit(10)
                 .map(GameEntity::dto)

@@ -40,7 +40,7 @@ public class SuggestionController {
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/test", method = RequestMethod.GET)
+    @RequestMapping(path = "/process", method = RequestMethod.GET)
     public ResponseEntity<String> process() throws Exception {
         DecisionTreeClassifier.process("./storage/csv/1/attributes.csv", "./storage/csv/1/attributes.csv");
         return ResponseEntity.ok("ok");
@@ -53,7 +53,7 @@ public class SuggestionController {
                                                    @RequestParam final UserRating userRating) {
         log.debug("Adding rating for user " + userId + " to a game " + gameId);
         suggestionsService.addUserRating(new AddUserRating(userId, gameId, userRating));
-        return ResponseEntity.ok("Rating was added.");
+        return ResponseEntity.ok("\"Rating was added.\"");
     }
 
 }

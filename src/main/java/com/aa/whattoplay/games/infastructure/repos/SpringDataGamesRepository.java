@@ -24,5 +24,5 @@ public interface SpringDataGamesRepository extends GameRepository, JpaRepository
     Collection<GameEntity> getSeveralRandomGames(@Param("limit") long numberOfGames);
 
     @Override
-    Set<GameEntity> getByNameContaining(String name);
+    Set<GameEntity> getByNameStartingWith(String name);
 }
