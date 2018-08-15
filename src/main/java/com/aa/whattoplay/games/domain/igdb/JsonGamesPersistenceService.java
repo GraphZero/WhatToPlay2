@@ -5,7 +5,6 @@ import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.domain.igdb.json.*;
 import com.aa.whattoplay.games.domain.igdb.value.External;
 import com.aa.whattoplay.games.infastructure.entities.igdb.*;
-import com.aa.whattoplay.games.infastructure.entities.igdb.CollectionEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;

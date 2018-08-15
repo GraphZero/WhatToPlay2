@@ -1,4 +1,4 @@
-package com.aa.whattoplay.games.domain.suggestions;
+package com.aa.whattoplay.games.domain.suggestions.implementation;
 
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 

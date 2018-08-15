@@ -1,13 +1,12 @@
 package com.aa.whattoplay.games.infastructure.repos;
 
-import com.aa.whattoplay.games.domain.suggestions.GameRepository;
+import com.aa.whattoplay.games.domain.suggestions.implementation.GameRepository;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
-import java.util.Optional;
 import java.util.Set;
 
 /**

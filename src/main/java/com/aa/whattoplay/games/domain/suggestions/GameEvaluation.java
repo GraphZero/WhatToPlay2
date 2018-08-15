@@ -2,7 +2,6 @@ package com.aa.whattoplay.games.domain.suggestions;
 
 import com.aa.whattoplay.games.domain.igdb.value.Status;
 import com.aa.whattoplay.games.domain.suggestions.value.*;
-import com.aa.whattoplay.games.infastructure.entities.embeddables.Esrb;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Pegi;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +10,6 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 

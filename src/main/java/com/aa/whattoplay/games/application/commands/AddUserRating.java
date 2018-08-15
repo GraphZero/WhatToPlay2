@@ -1,7 +1,7 @@
 package com.aa.whattoplay.games.application.commands;
 
 import com.aa.ddd.common.annotations.Command;
-import com.aa.whattoplay.games.domain.suggestions.UserRating;
+import com.aa.whattoplay.games.domain.suggestions.value.UserRating;
 import lombok.Value;
 
 @Command

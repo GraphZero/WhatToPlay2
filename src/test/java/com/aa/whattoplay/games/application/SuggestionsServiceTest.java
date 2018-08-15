@@ -3,7 +3,7 @@ package com.aa.whattoplay.games.application;
 import com.aa.whattoplay.accounts.infastructure.entities.AccountEntity;
 import com.aa.whattoplay.games.TestDataGenerator;
 import com.aa.whattoplay.games.application.commands.AddUserRating;
-import com.aa.whattoplay.games.domain.suggestions.UserRating;
+import com.aa.whattoplay.games.domain.suggestions.value.UserRating;
 import com.aa.whattoplay.games.infastructure.entities.accounts.UserPersonalRating;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import org.junit.jupiter.api.Test;

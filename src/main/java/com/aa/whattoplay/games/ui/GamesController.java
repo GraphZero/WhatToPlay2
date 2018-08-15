@@ -1,6 +1,6 @@
 package com.aa.whattoplay.games.ui;
 
-import com.aa.whattoplay.games.domain.suggestions.GameRepository;
+import com.aa.whattoplay.games.domain.suggestions.implementation.GameRepository;
 import com.aa.whattoplay.games.domain.suggestions.value.GameDto;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import lombok.RequiredArgsConstructor;

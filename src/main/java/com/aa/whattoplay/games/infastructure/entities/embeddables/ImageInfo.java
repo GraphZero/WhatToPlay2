@@ -2,7 +2,6 @@ package com.aa.whattoplay.games.infastructure.entities.embeddables;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import javax.persistence.Embeddable;

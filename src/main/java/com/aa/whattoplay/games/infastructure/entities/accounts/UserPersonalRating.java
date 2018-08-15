@@ -2,8 +2,7 @@ package com.aa.whattoplay.games.infastructure.entities.accounts;
 
 import com.aa.ddd.common.domain.AbstractEntity;
 import com.aa.whattoplay.games.domain.suggestions.GameEvaluation;
-import com.aa.whattoplay.games.domain.suggestions.UserRating;
-import com.aa.whattoplay.games.domain.suggestions.value.PlayerPerspective;
+import com.aa.whattoplay.games.domain.suggestions.value.UserRating;
 import com.aa.whattoplay.games.infastructure.entities.igdb.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

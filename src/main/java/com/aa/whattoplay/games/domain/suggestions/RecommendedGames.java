@@ -2,8 +2,6 @@ package com.aa.whattoplay.games.domain.suggestions;
 
 import com.aa.whattoplay.games.domain.suggestions.value.GameDto;
 import com.aa.whattoplay.games.domain.suggestions.value.Genre;
-import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
-import com.aa.whattoplay.games.infastructure.entities.igdb.GenreEntity;
 import lombok.AllArgsConstructor;
 
 import java.util.List;

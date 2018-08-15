@@ -1,4 +1,4 @@
-package com.aa.whattoplay.games.domain.suggestions;
+package com.aa.whattoplay.games.domain.suggestions.value;
 
 public enum UserRating {
     INTERESTED,

@@ -8,7 +8,10 @@ import com.aa.whattoplay.games.infastructure.entities.embeddables.Esrb;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.ImageInfo;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.Pegi;
 import com.aa.whattoplay.games.infastructure.entities.embeddables.TimeToBeat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

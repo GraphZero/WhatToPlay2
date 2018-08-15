@@ -4,13 +4,14 @@ import com.aa.ddd.common.annotations.ApplicationService;
 import com.aa.ddd.common.domain.IGenericCrudDao;
 import com.aa.whattoplay.games.application.commands.AddUserRating;
 import com.aa.whattoplay.games.application.queries.QueryRecommendedGamesForUser;
-import com.aa.whattoplay.games.domain.suggestions.SuggestionService;
 import com.aa.whattoplay.games.domain.suggestions.RecommendedGames;
 import com.aa.whattoplay.games.domain.suggestions.implementation.CsvFileSaver;
+import com.aa.whattoplay.games.domain.suggestions.implementation.SuggestionService;
 import com.aa.whattoplay.games.infastructure.entities.accounts.User;
 import com.aa.whattoplay.games.infastructure.entities.accounts.UserPersonalRating;
 import com.aa.whattoplay.games.infastructure.entities.igdb.GameEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -24,8 +25,10 @@ public class SuggestionsService {
     private final IGenericCrudDao<UserPersonalRating> userRatingsDao;
     private final IGenericCrudDao<GameEntity> gamesDao;
 
-    public SuggestionsService(SuggestionService suggestionService, CsvFileSaver csvFileSaver, IGenericCrudDao<User> usersDao,
-                              IGenericCrudDao<UserPersonalRating> userRatingsDao, IGenericCrudDao<GameEntity> gamesDao) {
+    public SuggestionsService(@Qualifier("decisionTreeSuggestionService") SuggestionService suggestionService,
+                              CsvFileSaver csvFileSaver, IGenericCrudDao<User> usersDao,
+                              IGenericCrudDao<UserPersonalRating> userRatingsDao,
+                              IGenericCrudDao<GameEntity> gamesDao) {
         this.suggestionService = suggestionService;
         this.csvFileSaver = csvFileSaver;
         this.usersDao = usersDao;
