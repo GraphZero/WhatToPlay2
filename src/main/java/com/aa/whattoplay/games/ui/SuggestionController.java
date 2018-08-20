@@ -32,12 +32,6 @@ public class SuggestionController {
     }
 
     @CrossOrigin
-    @RequestMapping(path = "/process", method = RequestMethod.GET)
-    public ResponseEntity<String> process() throws Exception {
-        return ResponseEntity.ok("ok");
-    }
-
-    @CrossOrigin
     @RequestMapping(path = "/addRating", method = RequestMethod.POST)
     public ResponseEntity<String> addRatingForUser(@RequestParam final long userId,
                                                    @RequestParam final long gameId,

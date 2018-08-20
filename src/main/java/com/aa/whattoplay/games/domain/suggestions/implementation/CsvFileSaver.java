@@ -37,11 +37,11 @@ public class CsvFileSaver {
         if (!file.exists()) {
             Files.createDirectories(Paths.get(completeFolderPath));
             File f = Paths.get(completeFolderPath + "/attributes.csv").toFile();
-            FileWriter fw = new FileWriter(f, true);
+            FileWriter fw = new FileWriter(f, false);
             this.csvPrinter = new CSVPrinter(fw, CSVFormat.DEFAULT.withHeader(gameFields.toArray(new String[gameFields.size()])));
             attributesToSave.forEach( list -> {
                 try {
-                    csvPrinter.printRecord(pruneNotAllowedCharacters(list));
+                    csvPrinter.printRecord(pruneNotAllowedCharacters(list.subList(1, list.size())));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -54,7 +54,7 @@ public class CsvFileSaver {
             this.csvPrinter = new CSVPrinter(fw, CSVFormat.DEFAULT);
             attributesToSave.forEach( list -> {
                 try {
-                    csvPrinter.printRecord(pruneNotAllowedCharacters(list));
+                    csvPrinter.printRecord(pruneNotAllowedCharacters(list.subList(1, list.size())));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -62,6 +62,10 @@ public class CsvFileSaver {
             fw.close();
         }
         return completeFolderPath + "/attributes.csv";
+    }
+
+    public String getPath(String folderName){
+        return ATTRIBUTES_CSV_FILE + folderName + "/attributes.csv";
     }
 
     public String saveAttributesToCsvFile(List<Object> attributesToSave, String folderName) throws IOException {
